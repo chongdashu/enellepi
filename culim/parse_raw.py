@@ -6,6 +6,15 @@ class EnellepiEntry(object):
 		self.rawRating = rawRating
 		self.rawText = rawText
 
+		self.title = rawTitle
+		self.rating = float(rawRating.split()[1])
+		self.text = rawText
+
+	def __repr__(self):
+		return  self.title + " (" + str(self.rating) + ")\n" + self.text
+	def __str__(self):
+		return  self.title + " (" + str(self.rating) + ")\n" + self.text
+
 data = []
 
 filename = "1_com.rovio.angrybirdsstarwars.ads.iap.html";
@@ -22,7 +31,11 @@ for a_review in reviews:
 	#a_review = reviews[0]
 	title = a_review.find("h4").text
 	rating = a_review.find_all("div", {"title" : True})[1]['title']
-	text = a_review.find("p", "review-text").text
+	
+	if a_review.find("p", "review-text") is not None:
+		text = a_review.find("p", "review-text").text 
+	else:
+		text = ""
 	datum = EnellepiEntry(title, rating, text)
 	data.append(datum)
 	i = i+1
