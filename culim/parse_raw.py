@@ -46,10 +46,10 @@ filenames2 = [
 ]
 
 for filename in filenames:
-	parse_file(filename, data_free)
+	parse_file('raw-reviews/'+filename, data_free)
 
 for filename in filenames2:
-	parse_file(filename, data_paid)
+	parse_file('raw-reviews/'+filename, data_paid)
 
 file = open("topfree.dat", 'w')
 pickle.dump(data_free, file)
