@@ -94,7 +94,7 @@ phrase = get_phrases_from_text(sentence)
 '''
 
 all_phrases = []
-for i in range(100):
+for i in range(len(free_reviews)):
 	phrases = get_phrases_from_text(free_reviews[i]['text'])
 	all_phrases = all_phrases + phrases
 
