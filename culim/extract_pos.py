@@ -103,20 +103,40 @@ phrase = get_phrases_from_text(sentence)
 '''
 
 '''
-	'all_phrases' is a dictionary.
-	It is indexed by the the review-index.
-'''
-all_phrases = {}
+'phrases_free' is a dictionary.
+It is indexed by the the review-index.
+
+phrases_free = {}
 for i in range(len(free_reviews)):
 	phrases = get_phrases_from_text(free_reviews[i]['text'])
-	all_phrases[i] = phrases
+	phrases_free[i] = phrases
+'''
+
+'''
+'phrases_paid' is a dictionary.
+It is indexed by the the review-index.
+'''
+phrases_paid = {}
+for i in range(len(paid_reviews)):
+	phrases = get_phrases_from_text(paid_reviews[i]['text'])
+	phrases_paid[i] = phrases
+
+'''
+Uncomment when wish to write to file.
+
+f = open('phrases_2word_free.dat', 'w')
+pickle.dump(phrases_free, f)
+f.close()
+'''
+
 
 '''
 Uncomment when wish to write to file.
 '''
-f = open('phrases_2word_free.dat', 'w')
-pickle.dump(all_phrases, f)
+f = open('phrases_2word_paid.dat', 'w')
+pickle.dump(phrases_paid, f)
 f.close()
+
 
 
 
