@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import json
+import simplejson as json
 import urllib
 import pickle
 import types
