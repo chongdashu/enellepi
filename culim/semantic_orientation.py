@@ -2,6 +2,8 @@ import google_query
 import pickle
 import time
 import pprint
+import random
+import math
 
 '''
 Keywords used as a measure against each review's star-rating. 
@@ -14,14 +16,31 @@ Quite obviously which values map to which, but for clarity:
 '''
 KEYWORDS = [
 	"Poor",
-	"Bad",
-	"Okay",
-	"Good",
 	"Excellent"
 ]
 
+HITS_POOR = 70400000.0
+HITS_EXCELLENT = 112000000.0
+
+def replace_contractions(word):
+	'''
+	Replaces tokenized words like ('t) into (not).
+	'''
+	if word == "'t":
+		return "not"
+	return word
+
+'''
+Some useful printing methods.
+Do 'pprint' to pretty print things.
+'''
 pp = pprint.PrettyPrinter()
-pp = pp.pprint
+pprint = pp.pprint
+
+'''
+Seed the randomizer.
+'''
+random.seed(time.clock())
 
 '''
 Get all the reviews for the top free apps.
@@ -32,16 +51,56 @@ Get all the reviews for the top free apps.
 data = pickle.load(open('topfree.dat'))
 reviews = pickle.load(open('phrases_2word_free.dat'));
 
-dict = {}
-# Get a five-star review
-review_five_star = data[2]
-review_five_star_phrases = reviews[2]
-for phrase in review_five_star_phrases:
+def get_near_query(phrase, keyword):
+	'''
+	Creates a query for a phrase around a keyword.
+	@phrase: 	A 2-element list. Each element is a (word, tag) pair.
+	@keyword:	String of the keyword to be near to.
+	'''
 	(word1, tag1) = phrase[0]
 	(word2, tag2) = phrase[1]
-	for keyword in KEYWORDS:
-		query = '"' + word1 + '"' + '+' + word2 + '"' + ' AROUND(10) ' + keyword
-		print 'query:' + query
-		time.sleep(1.0)
-		hits = google_query.get_hit_count(query)
-		dict[(word1 + '+' + word2, keyword)] = hits
+
+	word1 = replace_contractions(word1)
+	word2 = replace_contractions(word2)
+
+	query = '"' + word1 + '+' + word2 + '"' + ' AROUND(10) ' + '"' + keyword + '"'
+
+	return query
+
+
+def calculate_semantic_orientation(phrase):
+	'''
+	Calculates the semantic orientation of a given phrase
+	@phrase A 2-element list. Each element is a (word, tag) pair.
+	'''
+	query_near_excellent = get_near_query(phrase, 'excellent')
+	query_near_poor = get_near_query(phrase, 'poor')
+
+	time.sleep(3.0 + 2*random.random())
+	hits_near_excellent = float(google_query.get_hit_count(query_near_excellent))
+	time.sleep(3.0 + 2*random.random())
+	hits_near_poor = float(google_query.get_hit_count(query_near_poor))
+
+	ratio = (hits_near_excellent * HITS_POOR) /  (hits_near_poor * HITS_EXCELLENT)
+	log_ratio = math.log(ratio)
+
+	data = { 	'query_near_excellent' : query_near_excellent,
+				'query_near_poor' : query_near_poor,
+				'hits_near_excellent' : hits_near_excellent,
+				'hits_near_poor' : hits_near_poor,
+				'ratio' : ratio,
+				'log_ratio' : log_ratio
+	}
+
+	return data
+
+def example1():
+	'''
+	This example gets a review from a user from one of the top free apps.
+	It takes a phrase from the review, and then calculates the semantic orientation of it.
+	'''
+	review = reviews[0]		# Get the review for the first app.
+	phrase = review[1]		# Get the second phrase extracted from the review.
+	so = calculate_semantic_orientation(phrase)	# calculate semantic orientation of the phrase.
+	pprint(so)				# Pretty print the results.
+
