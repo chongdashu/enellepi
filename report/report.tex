@@ -104,6 +104,20 @@ entirely. Instead, we propose that the star ratings be generated in a uniform fa
 \section{User Reviews}
 \subsection{Extraction from Google Play}
 \subsection{Tagging}
+\subsection{Phrase Extraction}
+\label{subsection:phrase_extraction}
+\subsection{Semantic Orientation}
+In order to gain insight regarding the user's sentiment based on his or her review, we make use of the extracted phrases from Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application.
+
+\subsubsection{Keywords}
+Extending upon the work performed by Turney~\cite{Turney2001}, we used the following keywords to correspond to the each of the 5 stars of a customer review on the Google Play store. 
+\begin{itemize}
+	\item 1-Star: Awful
+	\item 2-Stars: Bad
+	\item 3-Stars: Okay
+	\item 4-Stars: Good
+	\item 5-Stars: Excellent
+\end{itemize}
 
 \chapter{Results}
 
