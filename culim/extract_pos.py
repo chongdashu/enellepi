@@ -86,6 +86,7 @@ file.close()
 '''
 	Test sentence.
 '''
+
 '''
 sentence = 'The fat man was hungry today.'
 sentence_token = word_tokenize(sentence)
@@ -93,9 +94,18 @@ sentence_pos = pos_tag(sentence_token)
 phrase = get_phrases_from_text(sentence)
 '''
 
-all_phrases = []
+'''
+	'all_phrases' is a dictionary.
+	It is indexed by the the review-index.
+'''
+all_phrases = {}
 for i in range(len(free_reviews)):
 	phrases = get_phrases_from_text(free_reviews[i]['text'])
-	all_phrases = all_phrases + phrases
+	all_phrases[i] = phrases
+
+f = open('phrases_2word_free.dat', 'w')
+pickle.dump(all_phrases, f)
+f.close()
+
 
 

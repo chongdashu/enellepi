@@ -34,7 +34,8 @@ phrases = pickle.load(open('phrases_2word_free.dat'));
 '''
   Sample execution of a Google query for a given phrase.
 '''
-test_phrase = phrases[1]
+review = phrases[0]
+test_phrase = review[1]
 query = "{0} {1}".format(test_phrase[0][0], test_phrase[1][0])
 print 'query:' + query
 hits = get_hit_count(query)
