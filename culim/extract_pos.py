@@ -113,10 +113,11 @@ for i in range(len(free_reviews)):
 
 '''
 Uncomment when wish to write to file.
+'''
 f = open('phrases_2word_free.dat', 'w')
 pickle.dump(all_phrases, f)
 f.close()
-'''
+
 
 
 
