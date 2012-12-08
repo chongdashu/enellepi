@@ -2,6 +2,7 @@
 import json
 import urllib
 import pickle
+import types
 
 def google_search(searchfor):
   query = urllib.urlencode({'q': searchfor})
@@ -23,6 +24,10 @@ def get_hit_count(searchfor):
   search_results = search_response.read()
   results = json.loads(search_results)
   data = results['responseData']
+  
+  #if the search result is null, return 0 for the number of hits for that phrase
+  if isinstance(data, types.NoneType):
+    return 0
 
   print 'For more results, see %s' % data['cursor']['moreResultsUrl']
 

@@ -83,7 +83,7 @@ def calculate_semantic_orientation(phrase):
 	ratio = (hits_near_excellent * HITS_POOR + 1E-9) /  (hits_near_poor * HITS_EXCELLENT + 1E-9)
 	log_ratio = math.log(ratio)
 
-	data = { 	'phrase' : phrase
+	data = { 	'phrase' : phrase,
 				'query_near_excellent' : query_near_excellent,
 				'query_near_poor' : query_near_poor,
 				'hits_near_excellent' : hits_near_excellent,
