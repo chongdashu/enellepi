@@ -4,13 +4,13 @@ import time
 import pprint
 
 '''
-	Keywords used as a measure against each review's star-rating. 
-	Quite obviously which values map to which, but for clarity:
-		1-Star: 	Poor
-		2-Stars:	Bad
-		3-Stars:	Okay
-		4-Stars:	Good
-		5-Stars:	Excellent
+Keywords used as a measure against each review's star-rating. 
+Quite obviously which values map to which, but for clarity:
+	1-Star: 	Poor
+	2-Stars:	Bad
+	3-Stars:	Okay
+	4-Stars:	Good
+	5-Stars:	Excellent
 '''
 KEYWORDS = [
 	"Poor",
