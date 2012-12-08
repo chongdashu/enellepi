@@ -23,8 +23,13 @@ def get_hit_count(searchfor):
   search_results = search_response.read()
   results = json.loads(search_results)
   data = results['responseData']
-  
-  return data['cursor']['estimatedResultCount']
+
+  print 'For more results, see %s' % data['cursor']['moreResultsUrl']
+
+  if ('estimatedResultCount' in data['cursor']):
+    return data['cursor']['estimatedResultCount']
+  else:
+    return 0
 
 '''
   Load all the 2-word phrases which were extracted.
@@ -34,8 +39,10 @@ phrases = pickle.load(open('phrases_2word_free.dat'));
 '''
   Sample execution of a Google query for a given phrase.
 '''
+'''
 review = phrases[0]
 test_phrase = review[1]
 query = "{0} {1}".format(test_phrase[0][0], test_phrase[1][0])
 print 'query:' + query
 hits = get_hit_count(query)
+'''
