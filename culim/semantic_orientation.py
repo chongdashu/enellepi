@@ -26,7 +26,7 @@ def replace_contractions(word):
 	'''
 	Replaces tokenized words like ('t) into (not).
 	'''
-	if word == "'t":
+	if word == "n't":
 		return "not"
 	return word
 
@@ -67,7 +67,6 @@ def get_near_query(phrase, keyword):
 
 	return query
 
-
 def calculate_semantic_orientation(phrase):
 	'''
 	Calculates the semantic orientation of a given phrase
@@ -76,15 +75,16 @@ def calculate_semantic_orientation(phrase):
 	query_near_excellent = get_near_query(phrase, 'excellent')
 	query_near_poor = get_near_query(phrase, 'poor')
 
-	time.sleep(3.0 + 2*random.random())
+	time.sleep(5.0 + 5*random.random())
 	hits_near_excellent = float(google_query.get_hit_count(query_near_excellent))
-	time.sleep(3.0 + 2*random.random())
+	time.sleep(5.0 + 5*random.random())
 	hits_near_poor = float(google_query.get_hit_count(query_near_poor))
 
-	ratio = (hits_near_excellent * HITS_POOR) /  (hits_near_poor * HITS_EXCELLENT)
+	ratio = (hits_near_excellent * HITS_POOR + 1E-9) /  (hits_near_poor * HITS_EXCELLENT + 1E-9)
 	log_ratio = math.log(ratio)
 
-	data = { 	'query_near_excellent' : query_near_excellent,
+	data = { 	'phrase' : phrase
+				'query_near_excellent' : query_near_excellent,
 				'query_near_poor' : query_near_poor,
 				'hits_near_excellent' : hits_near_excellent,
 				'hits_near_poor' : hits_near_poor,
@@ -93,6 +93,26 @@ def calculate_semantic_orientation(phrase):
 	}
 
 	return data
+
+def calculate_all_free(n=50):
+	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
+	
+	so_dict = {}
+
+	confirmation = raw_input('Type "yes" to begin: ')
+	if confirmation == 'yes':
+		print 'Here goes!'
+
+		for i in range(n):
+			phrases = reviews[i]
+			so_dict[i] = []
+			for phrase in phrases:
+				so = calculate_semantic_orientation(phrase)
+				so_dict[i].append(so)
+	else:
+		print 'Wise choice...'
+
+	return so_dict
 
 def example1():
 	'''
