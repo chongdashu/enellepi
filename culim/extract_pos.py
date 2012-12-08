@@ -1,5 +1,5 @@
 from nltk.tag import pos_tag
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize, WhitespaceTokenizer
 
 import enellepi
 import pickle
@@ -59,19 +59,27 @@ def do_pos_tags_match_pattern(pos_tags, pattern):
 def get_phrases_from_text(text):
 	phrases = []
 
-	text_tokenized = word_tokenize(text)
-	text_pos_tags = pos_tag(text_tokenized)
+	# First, we split the reviews into sentences/
+	sentences = sent_tokenize(text)
 
-	for i in range(len(text_pos_tags)):
-		if i+2 >= len(text_pos_tags):
-			break
-		for pattern in TAG_PATTERNS_2WORD:
-			pos_tags = [text_pos_tags[i], text_pos_tags[i+1], text_pos_tags[i+2]]
-			# print 'matching pos_tags:' + str(pos_tags) + ' with pattern:' + str(pattern)
-			if do_pos_tags_match_pattern(pos_tags, pattern):
-				print 'found pattern match, adding: ' + str(pos_tags[:2])
-				phrases.append(pos_tags[:2])
-				continue
+	for sentence in sentences:
+		'''
+		For each sentence, we tokenize the text into word tokens.
+		Next, we run the POS tagging on the tokens.
+		'''
+		text_tokenized = word_tokenize(sentence)
+		text_pos_tags = pos_tag(text_tokenized)
+
+		for i in range(len(text_pos_tags)):
+			if i+2 >= len(text_pos_tags):
+				break
+			for pattern in TAG_PATTERNS_2WORD:
+				pos_tags = [text_pos_tags[i], text_pos_tags[i+1], text_pos_tags[i+2]]
+				# print 'matching pos_tags:' + str(pos_tags) + ' with pattern:' + str(pattern)
+				if do_pos_tags_match_pattern(pos_tags, pattern):
+					print 'found pattern match, adding: ' + str(pos_tags[:2])
+					phrases.append(pos_tags[:2])
+					continue
 
 	return phrases
 
@@ -103,9 +111,12 @@ for i in range(len(free_reviews)):
 	phrases = get_phrases_from_text(free_reviews[i]['text'])
 	all_phrases[i] = phrases
 
+'''
+Uncomment when wish to write to file.
 f = open('phrases_2word_free.dat', 'w')
 pickle.dump(all_phrases, f)
 f.close()
+'''
 
 
 
