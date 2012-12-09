@@ -12,3 +12,5 @@ text.concordance("annoying")
 
 index = text._concordance_index
 index.offsets('annoying')
+
+sentences = movie_reviews.sents()
