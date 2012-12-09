@@ -22,6 +22,9 @@ KEYWORDS = [
 HITS_POOR = 70400000.0
 HITS_EXCELLENT = 112000000.0
 
+so_dict_free = {}
+so_dict_paid = {}
+
 def replace_contractions(word):
 	'''
 	Replaces tokenized words like ('t) into (not).
@@ -50,6 +53,9 @@ Get all the reviews for the top free apps.
 '''
 data = pickle.load(open('topfree.dat'))
 reviews = pickle.load(open('phrases_2word_free.dat'));
+
+data2 = pickle.load(open('toppaid.dat'))
+reviews2 = pickle.load(open('phrases_2word_paid.dat'));
 
 def get_near_query(phrase, keyword):
 	'''
@@ -112,6 +118,28 @@ def calculate_all_free(n=50):
 	else:
 		print 'Wise choice...'
 
+	so_dict_free = so_dict
+	return so_dict
+
+def calculate_all_paid(n=50):
+	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
+	
+	so_dict = {}
+
+	confirmation = raw_input('Type "yes" to begin: ')
+	if confirmation == 'yes':
+		print 'Here goes!'
+
+		for i in range(n):
+			phrases = reviews2[i]
+			so_dict[i] = []
+			for phrase in phrases:
+				so = calculate_semantic_orientation(phrase)
+				so_dict[i].append(so)
+	else:
+		print 'Wise choice...'
+
+	so_dict_paid = so_dict
 	return so_dict
 
 def example1():
