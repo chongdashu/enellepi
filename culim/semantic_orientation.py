@@ -175,11 +175,23 @@ def example1():
 	'''
 	This example gets a review from a user from one of the top free apps.
 	It takes a phrase from the review, and then calculates the semantic orientation of it.
+	This uses the hit-distance ratio obtained by querying Google.
 	'''
 	review = reviews[0]		# Get the review for the first app.
 	phrase = review[1]		# Get the second phrase extracted from the review.
-#	so = calculate_semantic_orientation(phrase)	# calculate semantic orientation of the phrase.
-#	pprint(so)				# Pretty print the results.
-	so = calculate_semantic_orientation_dist(phrase)	# calculate semantic orientation of the phrase.
+	so = calculate_semantic_orientation(phrase)	# calculate semantic orientation of the phrase.
 	pprint(so)				# Pretty print the results.
+
+
+
+def example2():
+	'''
+	This example gets a review from a user from one of the top free apps.
+	It takes a phrase from the review, and then calculates the semantic orientation of it.
+	This uses a distance metric.
+	'''
+	review = reviews[0]		# Get the review for the first app.
+	phrase = review[1]		# Get the second phrase extracted from the review.
+	so = calculate_semantic_orientation_dist(phrase)	# calculate semantic orientation of the phrase.
+	pprint(so)	
 
