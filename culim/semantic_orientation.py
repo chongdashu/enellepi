@@ -5,6 +5,8 @@ import pprint
 import random
 import math
 
+import concordance
+
 '''
 Keywords used as a measure against each review's star-rating. 
 Quite obviously which values map to which, but for clarity:
@@ -100,6 +102,31 @@ def calculate_semantic_orientation(phrase):
 
 	return data
 
+def calculate_semantic_orientation_dist(phrase):
+	(word1, tag1) = phrase[0]
+	(word2, tag2) = phrase[1]
+
+	word1 = replace_contractions(word1)
+	word2 = replace_contractions(word2)
+	word1 = word1.encode('ascii', 'ignore');
+	word2 = word2.encode('ascii', 'ignore');
+	
+	posd = concordance.OrientationDist(word1, word2, True);
+	negd = concordance.OrientationDist(word1, word2, False);
+
+	ratio = negd/posd;
+	log_ratio = math.log(ratio);
+
+	data = { 	'phrase' : phrase,
+				'query_near_excellent' : "",
+				'query_near_poor' : "",
+				'hits_near_excellent' : posd,
+				'hits_near_poor' : negd,
+				'ratio' : ratio,
+				'log_ratio' : log_ratio
+	}
+	return data;
+
 def calculate_all_free(n=50, start_offset=0):
 	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
 	
@@ -151,6 +178,8 @@ def example1():
 	'''
 	review = reviews[0]		# Get the review for the first app.
 	phrase = review[1]		# Get the second phrase extracted from the review.
-	so = calculate_semantic_orientation(phrase)	# calculate semantic orientation of the phrase.
+#	so = calculate_semantic_orientation(phrase)	# calculate semantic orientation of the phrase.
+#	pprint(so)				# Pretty print the results.
+	so = calculate_semantic_orientation_dist(phrase)	# calculate semantic orientation of the phrase.
 	pprint(so)				# Pretty print the results.
 

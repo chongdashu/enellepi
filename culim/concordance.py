@@ -34,7 +34,12 @@ def OrientationDist(word1, word2, ispositive):
 					( text.tokens[w1+i] == word2 and text.tokens[w1-j] == w[:len(text.tokens[w1-j])])):
 						totalcount += 1;
 						totaldist += abs(j) + i;
-	return (1.0 * totaldist) / totalcount;
+	if ( totalcount > 0 ):
+		rv = (1.0 * totaldist) / totalcount;
+	else:
+		rv = 100;
+	return rv;
+	
 	
 
 def OrientationBayes(word1, word2, key):
