@@ -3,6 +3,7 @@ from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize, Whit
 
 import enellepi
 import pickle
+import pprint
 
 '''
 Tag patterns for extracting two-word phrases from reviews.
@@ -10,11 +11,18 @@ Tag patterns for extracting two-word phrases from reviews.
 '''
 TAG_PATTERNS_2WORD = [
 	['JJ', 			'NN|NNS', 	''],
-	['RB|RBR|RBS', 	'JJ', 		'not-NN)|not-NNS)'],
-	['JJ',			'JJ',		'not-NN)|not-NNS)'],
-	['NN|NNS',		'JJ',		'not-NN)|not-NNS)'],
+	['RB|RBR|RBS', 	'JJ', 		'not-NN^not-NNS'],
+	['JJ',			'JJ',		'not-NN^not-NNS'],
+	['NN|NNS',		'JJ',		'not-NN^not-NNS'],
 	['RB|RBR|RBS',	'VB|VBD|VBN|VBG',	'']
 ]
+
+'''
+Some useful printing methods.
+Do 'pprint' to pretty print things.
+'''
+pp = pprint.PrettyPrinter()
+pprint = pp.pprint
 
 def match(tag, pos_tag):
 	if (tag == ''):
@@ -27,7 +35,7 @@ def do_pos_tags_match_pattern(pos_tags, pattern):
 
 	first_tags = pattern[0].split('|')
 	second_tags = pattern[1].split('|')
-	third_tags = pattern[2].split('|')
+	third_tags = pattern[2].split('^')
 
 	print '----------------------------------------------------'
 	print 'pattern: ' + str(pattern)
@@ -47,12 +55,12 @@ def do_pos_tags_match_pattern(pos_tags, pattern):
 			matched_second = True
 			break
 
-	matched_third = False;
+	matched_third = True;
 	for tag in third_tags:
 		if match(tag, pos_tags[2]):
-			print 'matched third word for tag:' + tag + ', pos_tag:' + str(pos_tags[2])
-			matched_third = True
-			break
+			matched_third = matched_third and match(tag, pos_tags[2])
+	if matched_third:
+		print 'matched third word for tags:' + str(third_tags) + ', pos_tag:' + str(pos_tags[2])
 
 	return matched_first and matched_second and matched_third
 
@@ -105,12 +113,12 @@ phrase = get_phrases_from_text(sentence)
 '''
 'phrases_free' is a dictionary.
 It is indexed by the the review-index.
-
+'''
 phrases_free = {}
 for i in range(len(free_reviews)):
 	phrases = get_phrases_from_text(free_reviews[i]['text'])
 	phrases_free[i] = phrases
-'''
+
 
 '''
 'phrases_paid' is a dictionary.
@@ -121,14 +129,13 @@ for i in range(len(paid_reviews)):
 	phrases = get_phrases_from_text(paid_reviews[i]['text'])
 	phrases_paid[i] = phrases
 
+
 '''
 Uncomment when wish to write to file.
-
+'''
 f = open('phrases_2word_free.dat', 'w')
 pickle.dump(phrases_free, f)
 f.close()
-'''
-
 
 '''
 Uncomment when wish to write to file.
@@ -136,6 +143,7 @@ Uncomment when wish to write to file.
 f = open('phrases_2word_paid.dat', 'w')
 pickle.dump(phrases_paid, f)
 f.close()
+
 
 
 
