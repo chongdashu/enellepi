@@ -31,6 +31,9 @@ def OrientationDist(word1, word2, ispositive):
 		for i in range(1, 50):
 			for j in range(1, 50):
 				if ( i == j ): continue;
+				if ( w1 + j >= len(text.tokens) ): continue;
+				if ( w1 + i >= len(text.tokens) ): continue;
+				if ( w1 - j < 0 ): continue;
 				for  w in wb :
 					if (( text.tokens[w1+i] == word2 and text.tokens[w1+j] == w[:len(text.tokens[w1+j])] ) or
 					( text.tokens[w1+i] == word2 and text.tokens[w1-j] == w[:len(text.tokens[w1-j])])):
