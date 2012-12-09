@@ -110,6 +110,7 @@ def calculate_all_free(n=50, start_offset=0):
 		print 'Here goes!'
 
 		for i in range(start_offset, start_offset + n):
+			print i
 			phrases = reviews[i]
 			so_dict[i] = []
 			for phrase in phrases:
@@ -131,6 +132,7 @@ def calculate_all_paid(n=50, start_offset=0):
 		print 'Here goes!'
 
 		for i in range(start_offset, start_offset + n):
+			print i
 			phrases = reviews2[i]
 			so_dict[i] = []
 			for phrase in phrases:
