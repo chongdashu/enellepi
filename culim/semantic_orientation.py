@@ -100,7 +100,7 @@ def calculate_semantic_orientation(phrase):
 
 	return data
 
-def calculate_all_free(n=50):
+def calculate_all_free(n=50, start_offset=0):
 	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
 	
 	so_dict = {}
@@ -109,7 +109,7 @@ def calculate_all_free(n=50):
 	if confirmation == 'yes':
 		print 'Here goes!'
 
-		for i in range(n):
+		for i in range(start_offset, start_offset + n):
 			phrases = reviews[i]
 			so_dict[i] = []
 			for phrase in phrases:
@@ -121,7 +121,7 @@ def calculate_all_free(n=50):
 	so_dict_free = so_dict
 	return so_dict
 
-def calculate_all_paid(n=50):
+def calculate_all_paid(n=50, start_offset=0):
 	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
 	
 	so_dict = {}
@@ -130,7 +130,7 @@ def calculate_all_paid(n=50):
 	if confirmation == 'yes':
 		print 'Here goes!'
 
-		for i in range(n):
+		for i in range(start_offset, start_offset + n):
 			phrases = reviews2[i]
 			so_dict[i] = []
 			for phrase in phrases:
