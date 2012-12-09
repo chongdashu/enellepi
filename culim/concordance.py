@@ -8,9 +8,11 @@ import nltk
 import re
 
 from nltk.corpus import movie_reviews
+from nltk.text import ConcordanceIndex
 text = nltk.Text(movie_reviews.words())
-text.concordance("excellent")
-index = text._concordance_index
+#text.concordance("excellent")
+#index = text._concordance_index
+index = ConcordanceIndex(text.tokens, key=lambda s:s.lower())
 excellist = index.offsets("excellent");
 poorlist = index.offsets("poor");
 
@@ -65,10 +67,12 @@ def OrientationBayes(word1, word2, key):
 	
 	return excellprob;
 
-#rv = OrientationBayes("extremely", "annoying", "excellent");
-rv = OrientationDist("extremely", "annoying", True);
-rv2 = OrientationDist("extremely", "annoying", False);
+def example1():
+	#rv = OrientationBayes("extremely", "annoying", "excellent");
+	rv = OrientationDist("extremely", "annoying", True);
+	rv2 = OrientationDist("extremely", "annoying", False);
 
-#text.concordance("annoying")
-#index.offsets('annoying')
-#sentences = movie_reviews.sents()
+	#text.concordance("annoying")
+	#index.offsets('annoying')
+	#sentences = movie_reviews.sents()
+
