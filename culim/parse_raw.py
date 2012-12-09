@@ -7,7 +7,7 @@ data_free = []
 data_paid = []
 
 def parse_file(filename, list):
-	filename = "1_com.rovio.angrybirdsstarwars.ads.iap.html";
+	# filename = "1_com.rovio.angrybirdsstarwars.ads.iap.html";
 	file = open(filename)
 	soup = BeautifulSoup(file)
 
