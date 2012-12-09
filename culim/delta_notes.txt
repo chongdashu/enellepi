@@ -1,0 +1,8 @@
+FREE (pmi_free50.dat)
+- high variance among delta scores
+
+PAID (pmi_paid50.dat)
+- we assign a ton of 3.0 star-ratings because the bottom 47 results are not
+  usable (got blocked shortly afterward)
++ at least, the first 3 delta scores are okay
+
