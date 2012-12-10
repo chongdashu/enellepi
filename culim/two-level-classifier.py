@@ -44,7 +44,32 @@ def analyze(datapoint):
 
 	return res
 
-analyze(data_free[102])
+def get_min_and_max_logratios(data):
+	f = open('data/pmi_distance_free_50.dat')
+	so_dist_free = pickle.load(f)
+	f.close()
+
+	log_ratios = []
+	for i in so_dist_free:
+		log_ratio = 0.0
+		for so_info in so_dist_free[i]:
+			log_ratio = log_ratio + so_info['log_ratio']
+		if len(so_dist_free[i]) > 0:
+			log_ratio = log_ratio / len(so_dist_free[i])
+		log_ratios.append(log_ratio)
+
+	return (min(log_ratios), max(log_ratios))
+
+analysis = {}
+
+
+
+
+
+
+
+
+
 
 
 
