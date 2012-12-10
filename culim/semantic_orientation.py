@@ -102,6 +102,18 @@ def calculate_semantic_orientation(phrase):
 
 	return data
 
+def calculate_overall_so_dist(phrases):
+	log_ratio = 0.0;
+
+	index = 0
+	for phrase in phrases:
+		print 'calculating so for phrase %s' % (index)
+		so = calculate_semantic_orientation_dist(phrase)
+		log_ratio = log_ratio + so['log_ratio']
+		index = index + 1
+
+	return log_ratio / len(phrases)
+
 def calculate_semantic_orientation_dist(phrase):
 	(word1, tag1) = phrase[0]
 	(word2, tag2) = phrase[1]

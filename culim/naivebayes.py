@@ -74,6 +74,15 @@ def example1():
 	print 'accuracy:', nltk.classify.util.accuracy(classifier, testfeats)
 	classifier.show_most_informative_features()
 
+def classify_text(text):
+	print 'classifying text:%s' % (text)
+	text_tokens = [replace_contractions(w).encode('ascii', 'ignore') for w in word_tokenize(text)]
+	text_features = word_feats(text_tokens)
+
+	label = classifier.classify(text_features)
+
+	return label
+
 def classify_review(index = 10):
 	'''
 	Train a classifier on 'positive' and 'negative' reviews from the movie_reviews corpus from NLTK.
