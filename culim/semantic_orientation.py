@@ -149,7 +149,7 @@ def calculate_all_free(n=50, start_offset=0):
 	so_dict_free = so_dict
 	return so_dict
 
-def calculate_all_paid(n=50, start_offset=0):
+def calculate_all_paid_google(n=50, start_offset=0):
 	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
 	
 	so_dict = {}
@@ -169,6 +169,68 @@ def calculate_all_paid(n=50, start_offset=0):
 		print 'Wise choice...'
 
 	so_dict_paid = so_dict
+	return so_dict
+
+def calculate_all_free_google(n=50, start_offset=0):
+	print '***WARNING***\nThis is going to take a long time!\nIt also will make thousands of queries to Google, which might get your IP blocked!\nAre you sure you wish to continue?\n'
+	
+	so_dict = {}
+
+	confirmation = raw_input('Type "yes" to begin: ')
+	if confirmation == 'yes':
+		print 'Here goes!'
+
+		for i in range(start_offset, start_offset + n):
+			print i
+			phrases = reviews[i]
+			so_dict[i] = []
+			for phrase in phrases:
+				so = calculate_semantic_orientation(phrase)
+				so_dict[i].append(so)
+	else:
+		print 'Wise choice...'
+
+	so_dict_free = so_dict
+	return so_dict
+
+def calculate_all_paid_distance(n=50, start_offset=0):
+	
+	so_dict = {}
+
+	confirmation = raw_input('Might take a while. Ready? Type "yes" to begin: ')
+	if confirmation == 'yes':
+		print 'Here goes!'
+
+		for i in range(start_offset, start_offset + n):
+			print i
+			phrases = reviews2[i]
+			so_dict[i] = []
+			for phrase in phrases:
+				so = calculate_semantic_orientation_dist(phrase)
+				so_dict[i].append(so)
+	else:
+		print 'Wise choice...'
+
+	return so_dict
+
+def calculate_all_free_distance(n=50, start_offset=0):
+	
+	so_dict = {}
+
+	confirmation = raw_input('Might take a while. Ready? Type "yes" to begin: ')
+	if confirmation == 'yes':
+		print 'Here goes!'
+
+		for i in range(start_offset, start_offset + n):
+			print i
+			phrases = reviews[i]
+			so_dict[i] = []
+			for phrase in phrases:
+				so = calculate_semantic_orientation_dist(phrase)
+				so_dict[i].append(so)
+	else:
+		print 'Wise choice...'
+
 	return so_dict
 
 def example1():
