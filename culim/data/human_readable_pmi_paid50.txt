@@ -1,0 +1,1199 @@
+[ 0 ]
+ratio 2.26734693878
+query_near_excellent "classic+fun" AROUND(10) "excellent"
+log_ratio 0.818610398535
+hits_near_poor 1960.0
+query_near_poor "classic+fun" AROUND(10) "poor"
+phrase [(u'classic', 'JJ'), (u'fun', 'NN')]
+hits_near_excellent 7070.0
+
+
+ratio 0.00110924369748
+query_near_excellent "invalid+username" AROUND(10) "excellent"
+log_ratio -6.80407684951
+hits_near_poor 1700.0
+query_near_poor "invalid+username" AROUND(10) "poor"
+phrase [(u'invalid', 'JJ'), (u'username', 'NN')]
+hits_near_excellent 3.0
+
+
+ratio 0.090415200563
+query_near_excellent "likely+due" AROUND(10) "excellent"
+log_ratio -2.4033428779
+hits_near_poor 203000.0
+query_near_poor "likely+due" AROUND(10) "poor"
+phrase [(u'likely', 'JJ'), (u'due', 'JJ')]
+hits_near_excellent 29200.0
+
+
+ratio 4.64028492283
+query_near_excellent "next+update" AROUND(10) "excellent"
+log_ratio 1.53477577014
+hits_near_poor 7220.0
+query_near_poor "next+update" AROUND(10) "poor"
+phrase [(u'next', 'JJ'), (u'update', 'NN')]
+hits_near_excellent 53300.0
+
+
+ratio 0.241407867495
+query_near_excellent "not+seen" AROUND(10) "excellent"
+log_ratio -1.42126737974
+hits_near_poor 414000.0
+query_near_poor "not+seen" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'seen', 'VBN')]
+hits_near_excellent 159000.0
+
+
+ratio 0.702111189303
+query_near_excellent "probably+check" AROUND(10) "excellent"
+log_ratio -0.353663498178
+hits_near_poor 8120.0
+query_near_poor "probably+check" AROUND(10) "poor"
+phrase [(u'probably', 'RB'), (u'check', 'VB')]
+hits_near_excellent 9070.0
+
+
+
+
+
+[ 1 ]
+ratio 1.02142857143
+query_near_excellent "simple+way" AROUND(10) "excellent"
+log_ratio 0.0212022076506
+hits_near_poor 64000.0
+query_near_poor "simple+way" AROUND(10) "poor"
+phrase [(u'simple', 'JJ'), (u'way', 'NN')]
+hits_near_excellent 104000.0
+
+
+
+
+
+[ 2 ]
+ratio 0.12637593985
+query_near_excellent "not+save" AROUND(10) "excellent"
+log_ratio -2.06849416468
+hits_near_poor 28500.0
+query_near_poor "not+save" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'save', 'VB')]
+hits_near_excellent 5730.0
+
+
+ratio 0.207195767196
+query_near_excellent "not+have" AROUND(10) "excellent"
+log_ratio -1.5740911974
+hits_near_poor 16200000.0
+query_near_poor "not+have" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'have', 'VB')]
+hits_near_excellent 5340000.0
+
+
+
+
+
+[ 3 ]
+ratio 2.26734693878
+query_near_excellent "classic+fun" AROUND(10) "excellent"
+log_ratio 0.818610398535
+hits_near_poor 1960.0
+query_near_poor "classic+fun" AROUND(10) "poor"
+phrase [(u'classic', 'JJ'), (u'fun', 'NN')]
+hits_near_excellent 7070.0
+
+
+ratio 2.112e+17
+query_near_excellent "invalid+username" AROUND(10) "excellent"
+log_ratio 39.8915819467
+hits_near_poor 0.0
+query_near_poor "invalid+username" AROUND(10) "poor"
+phrase [(u'invalid', 'JJ'), (u'username', 'NN')]
+hits_near_excellent 3.0
+
+
+ratio 1.0
+query_near_excellent "likely+due" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "likely+due" AROUND(10) "poor"
+phrase [(u'likely', 'JJ'), (u'due', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "next+update" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "next+update" AROUND(10) "poor"
+phrase [(u'next', 'JJ'), (u'update', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+seen" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+seen" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'seen', 'VBN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "probably+check" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "probably+check" AROUND(10) "poor"
+phrase [(u'probably', 'RB'), (u'check', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 4 ]
+ratio 1.0
+query_near_excellent "simple+way" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "simple+way" AROUND(10) "poor"
+phrase [(u'simple', 'JJ'), (u'way', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 5 ]
+ratio 1.0
+query_near_excellent "not+save" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+save" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'save', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+have" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+have" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'have', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 6 ]
+ratio 1.0
+query_near_excellent "too+difficult" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "too+difficult" AROUND(10) "poor"
+phrase [(u'too', 'RB'), (u'difficult', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 7 ]
+ratio 1.0
+query_near_excellent "so+bad" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "so+bad" AROUND(10) "poor"
+phrase [(u'so', 'RB'), (u'bad', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "too+bad" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "too+bad" AROUND(10) "poor"
+phrase [(u'too', 'RB'), (u'bad', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 8 ]
+ratio 1.0
+query_near_excellent "serious+lag" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "serious+lag" AROUND(10) "poor"
+phrase [(u'serious', 'JJ'), (u'lag', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 9 ]
+ratio 1.0
+query_near_excellent "not+think" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+think" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'think', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "john+c" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "john+c" AROUND(10) "poor"
+phrase [(u'john', 'JJ'), (u'c', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "reily+lent" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "reily+lent" AROUND(10) "poor"
+phrase [(u'reily', 'RB'), (u'lent', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "gon+na" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "gon+na" AROUND(10) "poor"
+phrase [(u'gon', 'JJ'), (u'na', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 10 ]
+ratio 1.0
+query_near_excellent "sweet+climber" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "sweet+climber" AROUND(10) "poor"
+phrase [(u'sweet', 'JJ'), (u'climber', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 11 ]
+ratio 1.0
+query_near_excellent "super+smooth" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "super+smooth" AROUND(10) "poor"
+phrase [(u'super', 'JJ'), (u'smooth', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "3rd+time" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "3rd+time" AROUND(10) "poor"
+phrase [(u'3rd', 'JJ'), (u'time', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "again+later" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "again+later" AROUND(10) "poor"
+phrase [(u'again', 'RB'), (u'later', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 12 ]
+ratio 1.0
+query_near_excellent "not+heard" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+heard" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'heard', 'VBN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 13 ]
+ratio 1.0
+query_near_excellent "not+working" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+working" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'working', 'VBG')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+work" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+work" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'work', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 14 ]
+ratio 1.0
+query_near_excellent "gladly+pay" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "gladly+pay" AROUND(10) "poor"
+phrase [(u'gladly', 'RB'), (u'pay', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "little+boy" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "little+boy" AROUND(10) "poor"
+phrase [(u'little', 'JJ'), (u'boy', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "gon+na" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "gon+na" AROUND(10) "poor"
+phrase [(u'gon', 'JJ'), (u'na', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 15 ]
+ratio 1.0
+query_near_excellent "even+play" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "even+play" AROUND(10) "poor"
+phrase [(u'even', 'RB'), (u'play', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 16 ]
+ratio 1.0
+query_near_excellent "really+fun" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "really+fun" AROUND(10) "poor"
+phrase [(u'really', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "great+classic" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "great+classic" AROUND(10) "poor"
+phrase [(u'great', 'JJ'), (u'classic', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "classic+feel" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "classic+feel" AROUND(10) "poor"
+phrase [(u'classic', 'JJ'), (u'feel', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "completely+unplayable" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "completely+unplayable" AROUND(10) "poor"
+phrase [(u'completely', 'RB'), (u'unplayable', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "few+seconds" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "few+seconds" AROUND(10) "poor"
+phrase [(u'few', 'JJ'), (u'seconds', 'NNS')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 17 ]
+ratio 1.0
+query_near_excellent "great+first" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "great+first" AROUND(10) "poor"
+phrase [(u'great', 'JJ'), (u'first', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "first+time" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "first+time" AROUND(10) "poor"
+phrase [(u'first', 'JJ'), (u'time', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "so+excited" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "so+excited" AROUND(10) "poor"
+phrase [(u'so', 'RB'), (u'excited', 'VBN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "game+impossible" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "game+impossible" AROUND(10) "poor"
+phrase [(u'game', 'NN'), (u'impossible', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "Too+bad" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Too+bad" AROUND(10) "poor"
+phrase [(u'Too', 'RB'), (u'bad', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "much+fun" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "much+fun" AROUND(10) "poor"
+phrase [(u'much', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 18 ]
+ratio 1.0
+query_near_excellent "not+go" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+go" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'go', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "much+fun" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "much+fun" AROUND(10) "poor"
+phrase [(u'much', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 19 ]
+ratio 1.0
+query_near_excellent "Other+games" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Other+games" AROUND(10) "poor"
+phrase [(u'Other', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+working" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+working" AROUND(10) "poor"
+phrase [(u'not', 'RB'), (u'working', 'VBG')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+happening" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+happening" AROUND(10) "poor"
+phrase [(u'not', 'RB'), (u'happening', 'VBG')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 20 ]
+ratio 1.0
+query_near_excellent "not+worth" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+worth" AROUND(10) "poor"
+phrase [(u'not', 'RB'), (u'worth', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+play" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+play" AROUND(10) "poor"
+phrase [(u'not', 'RB'), (u'play', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 21 ]
+ratio 1.0
+query_near_excellent "Pretty+fun" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Pretty+fun" AROUND(10) "poor"
+phrase [(u'Pretty', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+wait" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+wait" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'wait', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "first+starting" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "first+starting" AROUND(10) "poor"
+phrase [(u'first', 'JJ'), (u'starting', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "other+games" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "other+games" AROUND(10) "poor"
+phrase [(u'other', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "Always+got" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Always+got" AROUND(10) "poor"
+phrase [(u'Always', 'RB'), (u'got', 'VBD')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 22 ]
+ratio 1.0
+query_near_excellent "unplayable+state" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "unplayable+state" AROUND(10) "poor"
+phrase [(u'unplayable', 'JJ'), (u'state', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "great+set" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "great+set" AROUND(10) "poor"
+phrase [(u'great', 'JJ'), (u'set', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "games+worthy" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "games+worthy" AROUND(10) "poor"
+phrase [(u'games', 'NNS'), (u'worthy', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 23 ]
+ratio 1.0
+query_near_excellent "disable+wifi" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "disable+wifi" AROUND(10) "poor"
+phrase [(u'disable', 'JJ'), (u'wifi', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "Nasty+bug" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Nasty+bug" AROUND(10) "poor"
+phrase [(u'Nasty', 'JJ'), (u'bug', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 24 ]
+ratio 1.0
+query_near_excellent "little+girl" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "little+girl" AROUND(10) "poor"
+phrase [(u'little', 'JJ'), (u'girl', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 25 ]
+ratio 1.0
+query_near_excellent "great+game" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "great+game" AROUND(10) "poor"
+phrase [(u'great', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 26 ]
+ratio 1.0
+query_near_excellent "next+day" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "next+day" AROUND(10) "poor"
+phrase [(u'next', 'JJ'), (u'day', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "real+slower" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "real+slower" AROUND(10) "poor"
+phrase [(u'real', 'JJ'), (u'slower', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 27 ]
+ratio 1.0
+query_near_excellent "classic+arcade" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "classic+arcade" AROUND(10) "poor"
+phrase [(u'classic', 'JJ'), (u'arcade', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 28 ]
+
+
+
+[ 29 ]
+ratio 1.0
+query_near_excellent "so+slow" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "so+slow" AROUND(10) "poor"
+phrase [(u'so', 'RB'), (u'slow', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "even+move" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "even+move" AROUND(10) "poor"
+phrase [(u'even', 'RB'), (u'move', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 30 ]
+ratio 1.0
+query_near_excellent "really+slow" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "really+slow" AROUND(10) "poor"
+phrase [(u'really', 'RB'), (u'slow', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 31 ]
+ratio 1.0
+query_near_excellent "so+unresponsive" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "so+unresponsive" AROUND(10) "poor"
+phrase [(u'so', 'RB'), (u'unresponsive', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "new+phone" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "new+phone" AROUND(10) "poor"
+phrase [(u'new', 'JJ'), (u'phone', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 32 ]
+ratio 1.0
+query_near_excellent "first+game" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "first+game" AROUND(10) "poor"
+phrase [(u'first', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+have" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+have" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'have', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "enough+time" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "enough+time" AROUND(10) "poor"
+phrase [(u'enough', 'JJ'), (u'time', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "whole+game" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "whole+game" AROUND(10) "poor"
+phrase [(u'whole', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 33 ]
+
+
+
+[ 34 ]
+ratio 1.0
+query_near_excellent "extremely+laggy" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "extremely+laggy" AROUND(10) "poor"
+phrase [(u'extremely', 'RB'), (u'laggy', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 35 ]
+ratio 1.0
+query_near_excellent "not+be" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+be" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'be', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "worst+99cents" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "worst+99cents" AROUND(10) "poor"
+phrase [(u'worst', 'JJ'), (u'99cents', 'NNS')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 36 ]
+ratio 1.0
+query_near_excellent "reason+other" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "reason+other" AROUND(10) "poor"
+phrase [(u'reason', 'NN'), (u'other', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 37 ]
+ratio 1.0
+query_near_excellent "completely+unplayable" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "completely+unplayable" AROUND(10) "poor"
+phrase [(u'completely', 'RB'), (u'unplayable', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "so+laggy" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "so+laggy" AROUND(10) "poor"
+phrase [(u'so', 'RB'), (u'laggy', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "even+have" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "even+have" AROUND(10) "poor"
+phrase [(u'even', 'RB'), (u'have', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 38 ]
+ratio 1.0
+query_near_excellent "first+game" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "first+game" AROUND(10) "poor"
+phrase [(u'first', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "sweet+jumper" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "sweet+jumper" AROUND(10) "poor"
+phrase [(u'sweet', 'JJ'), (u'jumper', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+possible" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+possible" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'possible', 'JJ')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 39 ]
+ratio 1.0
+query_near_excellent "alone+was" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "alone+was" AROUND(10) "poor"
+phrase [(u'alone', 'RB'), (u'was', 'VBD')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "few+hiccups" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "few+hiccups" AROUND(10) "poor"
+phrase [(u'few', 'JJ'), (u'hiccups', 'NNS')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 40 ]
+
+
+
+[ 41 ]
+ratio 1.0
+query_near_excellent "famous+line" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "famous+line" AROUND(10) "poor"
+phrase [(u'famous', 'JJ'), (u'line', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 42 ]
+ratio 1.0
+query_near_excellent "just+wrote" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "just+wrote" AROUND(10) "poor"
+phrase [(u'just', 'RB'), (u'wrote', 'VBD')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 43 ]
+ratio 1.0
+query_near_excellent "never+get" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "never+get" AROUND(10) "poor"
+phrase [(u'never', 'RB'), (u'get', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "past+level" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "past+level" AROUND(10) "poor"
+phrase [(u'past', 'JJ'), (u'level', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "really+disappointed" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "really+disappointed" AROUND(10) "poor"
+phrase [(u'really', 'RB'), (u'disappointed', 'VBN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 44 ]
+ratio 1.0
+query_near_excellent "Really+wanted" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "Really+wanted" AROUND(10) "poor"
+phrase [(u'Really', 'RB'), (u'wanted', 'VBD')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "totally+unresponsive" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "totally+unresponsive" AROUND(10) "poor"
+phrase [(u'totally', 'RB'), (u'unresponsive', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "other+games" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "other+games" AROUND(10) "poor"
+phrase [(u'other', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 45 ]
+ratio 1.0
+query_near_excellent "game+unplayable" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "game+unplayable" AROUND(10) "poor"
+phrase [(u'game', 'NN'), (u'unplayable', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+run" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+run" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'run', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 46 ]
+ratio 1.0
+query_near_excellent "up-coming+updates" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "up-coming+updates" AROUND(10) "poor"
+phrase [(u'up-coming', 'JJ'), (u'updates', 'NNS')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "fix-it+felix" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "fix-it+felix" AROUND(10) "poor"
+phrase [(u'fix-it', 'JJ'), (u'felix', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 47 ]
+ratio 1.0
+query_near_excellent "only+held" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "only+held" AROUND(10) "poor"
+phrase [(u'only', 'RB'), (u'held', 'VBN')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 48 ]
+ratio 1.0
+query_near_excellent "enough+content" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "enough+content" AROUND(10) "poor"
+phrase [(u'enough', 'RB'), (u'content', 'JJ')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "popular+movie" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "popular+movie" AROUND(10) "poor"
+phrase [(u'popular', 'JJ'), (u'movie', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "just+make" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "just+make" AROUND(10) "poor"
+phrase [(u'just', 'RB'), (u'make', 'VB')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "quick+buck" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "quick+buck" AROUND(10) "poor"
+phrase [(u'quick', 'JJ'), (u'buck', 'NN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "honestly+expected" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "honestly+expected" AROUND(10) "poor"
+phrase [(u'honestly', 'RB'), (u'expected', 'VBN')]
+hits_near_excellent 0.0
+
+
+ratio 1.0
+query_near_excellent "not+frighten" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "not+frighten" AROUND(10) "poor"
+phrase [(u"n't", 'RB'), (u'frighten', 'VB')]
+hits_near_excellent 0.0
+
+
+
+
+
+[ 49 ]
+ratio 1.0
+query_near_excellent "hilarious+fun" AROUND(10) "excellent"
+log_ratio 0.0
+hits_near_poor 0.0
+query_near_poor "hilarious+fun" AROUND(10) "poor"
+phrase [(u'hilarious', 'JJ'), (u'fun', 'NN')]
+hits_near_excellent 0.0
+
+
+
+
+
