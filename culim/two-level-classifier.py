@@ -9,7 +9,7 @@ import concordance
 import naivebayes
 import semantic_orientation
 
-random.seed(6.863)
+random.seed(6863)
 
 '''
 Some useful printing methods.
@@ -18,7 +18,7 @@ Do 'pprint' to pretty print things.
 pp = pprint.PrettyPrinter()
 pprint = pp.pprint
 
-data_free = pickle.load(open('dataset_free.dat'))
+data_free = pickle.load(open('data/dataset_free.dat'))
 random.shuffle(data_free)
 
 def replace_contractions(word):

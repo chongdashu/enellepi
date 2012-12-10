@@ -10,11 +10,12 @@ Tag patterns for extracting two-word phrases from reviews.
 @see Turney paper
 '''
 TAG_PATTERNS_2WORD = [
-	['JJ', 			'NN|NNS', 	''],
-	['RB|RBR|RBS', 	'JJ', 		'not-NN^not-NNS'],
-	['JJ',			'JJ',		'not-NN^not-NNS'],
-	['NN|NNS',		'JJ',		'not-NN^not-NNS'],
-	['RB|RBR|RBS',	'VB|VBD|VBN|VBG',	'']
+	['JJ|JJS|JJR', 	'NN|NNS', 	''],
+	['RB|RBR|RBS', 	'JJ|JJS|JJR', 	'not-NN^not-NNS'],
+	['JJ|JJS|JJR',	'JJ|JJS|JJR',	'not-NN^not-NNS'],
+	['NN|NNS',		'JJ|JJS|JJR',	'not-NN^not-NNS'],
+	['RB|RBR|RBS',	'VB|VBD|VBN|VBG',	''],
+	['DT',			'JJ|JJS|JJR', 		'']
 ]
 
 '''
@@ -115,22 +116,22 @@ def extract_all():
 	'''
 	Uncomment when wish to write to file.
 	'''
-	f = open('phrases_2word_free.dat', 'w')
+	f = open('data/phrases_2word_free.dat', 'w')
 	pickle.dump(phrases_free, f)
 	f.close()
 
 	'''
 	Uncomment when wish to write to file.
 	'''
-	f = open('phrases_2word_paid.dat', 'w')
+	f = open('data/phrases_2word_paid.dat', 'w')
 	pickle.dump(phrases_paid, f)
 	f.close()
 
-file = open("topfree.dat", 'r')
+file = open("data/topfree.dat", 'r')
 free_reviews = pickle.load(file)
 file.close()
 
-file = open("toppaid.dat", 'r')
+file = open("data/toppaid.dat", 'r')
 paid_reviews = pickle.load(file)
 file.close()
 
