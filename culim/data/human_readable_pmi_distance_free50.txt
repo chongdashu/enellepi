@@ -1,0 +1,866 @@
+[ 0 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'cuz', 'VB')]
+hits_near_excellent 100
+
+
+ratio 0.922206506365
+query_near_excellent 
+log_ratio -0.0809861039699
+hits_near_poor 43.4666666667
+query_near_poor 
+phrase [(u'very', 'JJ'), (u'annoying', 'NN')]
+hits_near_excellent 47.1333333333
+
+
+
+
+
+[ 1 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'-step', 'JJ'), (u'requirement', 'NN')]
+hits_near_excellent 100
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'then', 'RB'), (u'exit', 'VB')]
+hits_near_excellent 100
+
+
+ratio 1.10385919057
+query_near_excellent 
+log_ratio 0.0988123949487
+hits_near_poor 50.7674418605
+query_near_poor 
+phrase [(u'only', 'RB'), (u'take', 'VB')]
+hits_near_excellent 45.9908675799
+
+
+ratio 1.13699254678
+query_near_excellent 
+log_ratio 0.128386659585
+hits_near_poor 58.2916666667
+query_near_poor 
+phrase [(u'not', 'RB'), (u'let', 'VB')]
+hits_near_excellent 51.2682926829
+
+
+
+
+
+[ 2 ]
+ratio 1.02315028765
+query_near_excellent 
+log_ratio 0.0228863849284
+hits_near_poor 41.5662650602
+query_near_poor 
+phrase [(u'very', 'RB'), (u'good', 'JJ')]
+hits_near_excellent 40.6257668712
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'previous', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 100
+
+
+ratio 1.53846153846
+query_near_excellent 
+log_ratio 0.430782916092
+hits_near_poor 100
+query_near_poor 
+phrase [(u'different', 'JJ'), (u'twist', 'NN')]
+hits_near_excellent 65.0
+
+
+ratio 2.07833733014
+query_near_excellent 
+log_ratio 0.731568213543
+hits_near_poor 100
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'beat', 'VB')]
+hits_near_excellent 48.1153846154
+
+
+ratio 1.1031648063
+query_near_excellent 
+log_ratio 0.0981831455227
+hits_near_poor 57.44
+query_near_poor 
+phrase [(u'very', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 52.0683760684
+
+
+
+
+
+[ 3 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'cuz', 'VB')]
+hits_near_excellent 100
+
+
+ratio 0.922206506365
+query_near_excellent 
+log_ratio -0.0809861039699
+hits_near_poor 43.4666666667
+query_near_poor 
+phrase [(u'very', 'JJ'), (u'annoying', 'NN')]
+hits_near_excellent 47.1333333333
+
+
+
+
+
+[ 4 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'-step', 'JJ'), (u'requirement', 'NN')]
+hits_near_excellent 100
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'then', 'RB'), (u'exit', 'VB')]
+hits_near_excellent 100
+
+
+ratio 1.10385919057
+query_near_excellent 
+log_ratio 0.0988123949487
+hits_near_poor 50.7674418605
+query_near_poor 
+phrase [(u'only', 'RB'), (u'take', 'VB')]
+hits_near_excellent 45.9908675799
+
+
+ratio 1.13699254678
+query_near_excellent 
+log_ratio 0.128386659585
+hits_near_poor 58.2916666667
+query_near_poor 
+phrase [(u'not', 'RB'), (u'let', 'VB')]
+hits_near_excellent 51.2682926829
+
+
+
+
+
+[ 5 ]
+ratio 1.02315028765
+query_near_excellent 
+log_ratio 0.0228863849284
+hits_near_poor 41.5662650602
+query_near_poor 
+phrase [(u'very', 'RB'), (u'good', 'JJ')]
+hits_near_excellent 40.6257668712
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'previous', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 100
+
+
+ratio 1.53846153846
+query_near_excellent 
+log_ratio 0.430782916092
+hits_near_poor 100
+query_near_poor 
+phrase [(u'different', 'JJ'), (u'twist', 'NN')]
+hits_near_excellent 65.0
+
+
+ratio 2.07833733014
+query_near_excellent 
+log_ratio 0.731568213543
+hits_near_poor 100
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'beat', 'VB')]
+hits_near_excellent 48.1153846154
+
+
+ratio 1.1031648063
+query_near_excellent 
+log_ratio 0.0981831455227
+hits_near_poor 57.44
+query_near_poor 
+phrase [(u'very', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 52.0683760684
+
+
+
+
+
+[ 6 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'pretty', 'RB'), (u'freaking', 'VBG')]
+hits_near_excellent 100
+
+
+ratio 0.866820276498
+query_near_excellent 
+log_ratio -0.142923617233
+hits_near_poor 39.6
+query_near_poor 
+phrase [(u'something', 'NN'), (u'new', 'JJ')]
+hits_near_excellent 45.6842105263
+
+
+
+
+
+[ 7 ]
+ratio 2.23367697595
+query_near_excellent 
+log_ratio 0.803649095718
+hits_near_poor 100
+query_near_poor 
+phrase [(u'Really', 'RB'), (u'loving', 'VBG')]
+hits_near_excellent 44.7692307692
+
+
+ratio 1.20422916228
+query_near_excellent 
+log_ratio 0.185839662898
+hits_near_poor 54.1764705882
+query_near_poor 
+phrase [(u'so', 'RB'), (u'cool', 'JJ')]
+hits_near_excellent 44.9885057471
+
+
+
+
+
+[ 8 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'angry', 'JJ'), (u'birds', 'NNS')]
+hits_near_excellent 100
+
+
+ratio 1.45321100917
+query_near_excellent 
+log_ratio 0.373775597151
+hits_near_poor 66.0
+query_near_poor 
+phrase [(u'eventually', 'RB'), (u'got', 'VBD')]
+hits_near_excellent 45.4166666667
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'next', 'JJ'), (u'update', 'NN')]
+hits_near_excellent 100
+
+
+
+
+
+[ 9 ]
+ratio 1.5
+query_near_excellent 
+log_ratio 0.405465108108
+hits_near_poor 81.0
+query_near_poor 
+phrase [(u'good', 'JJ'), (u'angry', 'NN')]
+hits_near_excellent 54.0
+
+
+
+
+
+[ 10 ]
+ratio 2.88461538462
+query_near_excellent 
+log_ratio 1.05939157551
+hits_near_poor 100
+query_near_poor 
+phrase [(u'last', 'JJ'), (u'update', 'NN')]
+hits_near_excellent 34.6666666667
+
+
+ratio 1.07060382359
+query_near_excellent 
+log_ratio 0.0682228104121
+hits_near_poor 56.1111111111
+query_near_poor 
+phrase [(u'not', 'RB'), (u'open', 'VB')]
+hits_near_excellent 52.4107142857
+
+
+
+
+
+[ 11 ]
+ratio 1.20909090909
+query_near_excellent 
+log_ratio 0.189868762429
+hits_near_poor 44.3333333333
+query_near_poor 
+phrase [(u'same', 'JJ'), (u'result', 'NN')]
+hits_near_excellent 36.6666666667
+
+
+
+
+
+[ 12 ]
+
+
+
+[ 13 ]
+
+
+
+[ 14 ]
+ratio 1.08190883191
+query_near_excellent 
+log_ratio 0.07872691801
+hits_near_poor 42.0
+query_near_poor 
+phrase [(u'most', 'RBS'), (u'interesting', 'JJ')]
+hits_near_excellent 38.8202764977
+
+
+
+
+
+[ 15 ]
+
+
+
+[ 16 ]
+
+
+
+[ 17 ]
+
+
+
+[ 18 ]
+
+
+
+[ 19 ]
+
+
+
+[ 20 ]
+ratio 1.09321922317
+query_near_excellent 
+log_ratio 0.0891267592322
+hits_near_poor 51.5714285714
+query_near_poor 
+phrase [(u'still', 'RB'), (u'awful', 'JJ')]
+hits_near_excellent 47.1739130435
+
+
+ratio 7.14285714286
+query_near_excellent 
+log_ratio 1.96611285637
+hits_near_poor 100
+query_near_poor 
+phrase [(u'low', 'JJ'), (u'rate', 'NN')]
+hits_near_excellent 14.0
+
+
+
+
+
+[ 21 ]
+ratio 1.01167883212
+query_near_excellent 
+log_ratio 0.0116111609277
+hits_near_poor 46.2
+query_near_poor 
+phrase [(u'Brilliant', 'JJ'), (u'!', 'NN')]
+hits_near_excellent 45.6666666667
+
+
+ratio 0.667711598746
+query_near_excellent 
+log_ratio -0.403898937075
+hits_near_poor 35.5
+query_near_poor 
+phrase [(u'Brilliant', 'JJ'), (u'again', 'NN')]
+hits_near_excellent 53.1666666667
+
+
+
+
+
+[ 22 ]
+ratio 1.01787667487
+query_near_excellent 
+log_ratio 0.0177187662614
+hits_near_poor 51.1666666667
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'play', 'VB')]
+hits_near_excellent 50.2680412371
+
+
+
+
+
+[ 23 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'reluctantly', 'RB'), (u'spent', 'VBD')]
+hits_near_excellent 100
+
+
+ratio 4.12371134021
+query_near_excellent 
+log_ratio 1.4167535686
+hits_near_poor 100
+query_near_poor 
+phrase [(u'never', 'RB'), (u'showed', 'VBD')]
+hits_near_excellent 24.25
+
+
+ratio 1.07242442031
+query_near_excellent 
+log_ratio 0.0699218987645
+hits_near_poor 46.25
+query_near_poor 
+phrase [(u'never', 'RB'), (u'got', 'VBD')]
+hits_near_excellent 43.1265822785
+
+
+
+
+
+[ 24 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'very', 'RB'), (u'addictive', 'JJ')]
+hits_near_excellent 100
+
+
+ratio 1.1031648063
+query_near_excellent 
+log_ratio 0.0981831455227
+hits_near_poor 57.44
+query_near_poor 
+phrase [(u'very', 'RB'), (u'fun', 'JJ')]
+hits_near_excellent 52.0683760684
+
+
+
+
+
+[ 25 ]
+
+
+
+[ 26 ]
+
+
+
+[ 27 ]
+ratio 0.841498242531
+query_near_excellent 
+log_ratio -0.172571353849
+hits_near_poor 40.75
+query_near_poor 
+phrase [(u'classic', 'JJ'), (u'characters', 'NNS')]
+hits_near_excellent 48.4255319149
+
+
+
+
+
+[ 28 ]
+ratio 1.00773371919
+query_near_excellent 
+log_ratio 0.00770396727837
+hits_near_poor 48.2865853659
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'have', 'VB')]
+hits_near_excellent 47.9160163508
+
+
+
+
+
+[ 29 ]
+ratio 0.930178244872
+query_near_excellent 
+log_ratio -0.0723790500469
+hits_near_poor 46.4444444444
+query_near_poor 
+phrase [(u'Really', 'RB'), (u'fun', 'VBN')]
+hits_near_excellent 49.9306930693
+
+
+
+
+
+[ 30 ]
+
+
+
+[ 31 ]
+
+
+
+[ 32 ]
+ratio 1.26315789474
+query_near_excellent 
+log_ratio 0.233614851182
+hits_near_poor 56.0
+query_near_poor 
+phrase [(u'entertaining', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 44.3333333333
+
+
+
+
+
+[ 33 ]
+
+
+
+[ 34 ]
+ratio 1.07076354599
+query_near_excellent 
+log_ratio 0.0683719883657
+hits_near_poor 53.5339366516
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'get', 'VB')]
+hits_near_excellent 49.996039604
+
+
+
+
+
+[ 35 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'angry', 'JJ'), (u'birds', 'NNS')]
+hits_near_excellent 100
+
+
+ratio 1.02328767123
+query_near_excellent 
+log_ratio 0.0230206509904
+hits_near_poor 49.8
+query_near_poor 
+phrase [(u'not', 'RB'), (u'using', 'VBG')]
+hits_near_excellent 48.6666666667
+
+
+
+
+
+[ 36 ]
+ratio 2.01342281879
+query_near_excellent 
+log_ratio 0.699836168711
+hits_near_poor 100
+query_near_poor 
+phrase [(u'own', 'JJ'), (u'spin', 'NN')]
+hits_near_excellent 49.6666666667
+
+
+
+
+
+[ 37 ]
+ratio 1.0396039604
+query_near_excellent 
+log_ratio 0.0388398333163
+hits_near_poor 63.0
+query_near_poor 
+phrase [(u'next', 'JJ'), (u'angry', 'NN')]
+hits_near_excellent 60.6
+
+
+
+
+
+[ 38 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'angry', 'JJ'), (u'birds', 'NNS')]
+hits_near_excellent 100
+
+
+
+
+
+[ 39 ]
+ratio 1.0899931303
+query_near_excellent 
+log_ratio 0.0861713937399
+hits_near_poor 50.9090909091
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'disappointed', 'VBN')]
+hits_near_excellent 46.7058823529
+
+
+
+
+
+[ 40 ]
+
+
+
+[ 41 ]
+ratio 0.911229875639
+query_near_excellent 
+log_ratio -0.0929600802503
+hits_near_poor 45.347826087
+query_near_poor 
+phrase [(u'too', 'RB'), (u'big', 'JJ')]
+hits_near_excellent 49.7655172414
+
+
+
+
+
+[ 42 ]
+ratio 1.13623545096
+query_near_excellent 
+log_ratio 0.127720561989
+hits_near_poor 50.3636363636
+query_near_poor 
+phrase [(u'very', 'RB'), (u'cute', 'JJ')]
+hits_near_excellent 44.325
+
+
+ratio 0.883983572895
+query_near_excellent 
+log_ratio -0.123316799215
+hits_near_poor 61.5
+query_near_poor 
+phrase [(u'various', 'JJ'), (u'features', 'NNS')]
+hits_near_excellent 69.5714285714
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'previous', 'JJ'), (u'games', 'NNS')]
+hits_near_excellent 100
+
+
+
+
+
+[ 43 ]
+ratio 1.0885668277
+query_near_excellent 
+log_ratio 0.0848619941095
+hits_near_poor 56.3333333333
+query_near_poor 
+phrase [(u'big', 'JJ'), (u'boss', 'NN')]
+hits_near_excellent 51.75
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'darth', 'JJ'), (u'pig', 'NN')]
+hits_near_excellent 100
+
+
+
+
+
+[ 44 ]
+ratio 1.00524394997
+query_near_excellent 
+log_ratio 0.00523024834379
+hits_near_poor 44.5384615385
+query_near_poor 
+phrase [(u'funny', 'JJ'), (u'star', 'NN')]
+hits_near_excellent 44.306122449
+
+
+
+
+
+[ 45 ]
+ratio 0.957281553398
+query_near_excellent 
+log_ratio -0.043657726621
+hits_near_poor 58.0
+query_near_poor 
+phrase [(u'many', 'JJ'), (u'fresh', 'JJ')]
+hits_near_excellent 60.5882352941
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'enjoyable', 'JJ'), (u'ideas', 'NNS')]
+hits_near_excellent 100
+
+
+
+
+
+[ 46 ]
+ratio 7.69230769231
+query_near_excellent 
+log_ratio 2.04022082853
+hits_near_poor 100
+query_near_poor 
+phrase [(u'really', 'RB'), (u'excited', 'VBN')]
+hits_near_excellent 13.0
+
+
+ratio 3.125
+query_near_excellent 
+log_ratio 1.13943428319
+hits_near_poor 100
+query_near_poor 
+phrase [(u'even', 'RB'), (u'load', 'VB')]
+hits_near_excellent 32.0
+
+
+ratio 1.01787667487
+query_near_excellent 
+log_ratio 0.0177187662614
+hits_near_poor 51.1666666667
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'play', 'VB')]
+hits_near_excellent 50.2680412371
+
+
+ratio 0.729927007299
+query_near_excellent 
+log_ratio -0.31481073984
+hits_near_poor 35.0
+query_near_poor 
+phrase [(u'full', 'JJ'), (u'game', 'NN')]
+hits_near_excellent 47.95
+
+
+ratio 1.01601363808
+query_near_excellent 
+log_ratio 0.0158867723708
+hits_near_poor 54.2676056338
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'show', 'VB')]
+hits_near_excellent 53.4122807018
+
+
+
+
+
+[ 47 ]
+
+
+
+[ 48 ]
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'aboslutly', 'RB'), (u'amazing', 'VBG')]
+hits_near_excellent 100
+
+
+ratio 1
+query_near_excellent 
+log_ratio 0.0
+hits_near_poor 100
+query_near_poor 
+phrase [(u'little', 'RB'), (u'anoying', 'VBG')]
+hits_near_excellent 100
+
+
+ratio 1.2022906127
+query_near_excellent 
+log_ratio 0.184228581186
+hits_near_poor 60.25
+query_near_poor 
+phrase [(u'overall', 'JJ'), (u'great', 'JJ')]
+hits_near_excellent 50.1126760563
+
+
+
+
+
+[ 49 ]
+ratio 1.26666666667
+query_near_excellent 
+log_ratio 0.236388778064
+hits_near_poor 63.3333333333
+query_near_poor 
+phrase [(u"n't", 'RB'), (u'gon', 'VB')]
+hits_near_excellent 50.0
+
+
+ratio 1.0899931303
+query_near_excellent 
+log_ratio 0.0861713937399
+hits_near_poor 50.9090909091
+query_near_poor 
+phrase [(u'NOT', 'RB'), (u'disappointed', 'VBN')]
+hits_near_excellent 46.7058823529
+
+
+
+
+
