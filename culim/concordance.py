@@ -26,15 +26,17 @@ def OrientationDist(word1, word2, ispositive):
 	totaldist = 0;
 	totalcount = 0;
 
-	w1l = index.offsets( word1 );
+	w1l = index.offsets( word1 )[:20]; # take the first 20 offsets only, to save time.
 	for w1 in w1l:
 		for i in range(1, 50):
 			for j in range(1, 50):
+
 				if ( i == j ): continue;
 				if ( w1 + j >= len(text.tokens) ): continue;
 				if ( w1 + i >= len(text.tokens) ): continue;
 				if ( w1 - j < 0 ): continue;
 				for  w in wb :
+					# print "word1:%s word2:%s w1:%s i:%s j:%s w:%s" % (word1, word2, w1, i, j, w)
 					if (( text.tokens[w1+i] == word2 and text.tokens[w1+j] == w[:len(text.tokens[w1+j])] ) or
 					( text.tokens[w1+i] == word2 and text.tokens[w1-j] == w[:len(text.tokens[w1-j])])):
 						totalcount += 1;
