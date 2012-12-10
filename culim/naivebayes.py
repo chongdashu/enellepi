@@ -96,9 +96,10 @@ def classify_review(index = 10):
 	title_label = classifier.classify(title_features)
 
 	print 'Results of classification:'
-	print 'Review #:%s\nTitle:%s\nText:%s\n' % (index, sample_title, sample_text)
+	print 'Review #:%s\nTitle:%s\nText:%s' % (index, sample_title, sample_text)
 	print '------------------------------'
 	print 'Title classified as: %s\nText classified as: %s' %(title_label, text_label)
+	print '------------------------------'
 
 '''
 Example:
