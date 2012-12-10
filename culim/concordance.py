@@ -16,7 +16,7 @@ index = ConcordanceIndex(text.tokens, key=lambda s:s.lower())
 excellist = index.offsets("excellent");
 poorlist = index.offsets("poor");
 
-negative = ["poor", "bad", "unlikeabl", "unfun" "aweful", "terribl", "crap"];
+negative = ["poor", "bad", "unlikeable", "unfun" "aweful", "terrible", "crap"];
 positive = ["excellent", "good", "fun", "nice", "cool", "awesome" ];
 
 def OrientationDist(word1, word2, ispositive):
