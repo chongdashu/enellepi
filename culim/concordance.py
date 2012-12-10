@@ -16,8 +16,8 @@ index = ConcordanceIndex(text.tokens, key=lambda s:s.lower())
 excellist = index.offsets("excellent");
 poorlist = index.offsets("poor");
 
-negative = ["poor", "bad", "unlikeable", "unfun" "aweful", "terrible", "crap"];
-positive = ["excellent", "good", "fun", "nice", "cool", "awesome" ];
+negative = ["poor", "bad", "unlikeabl", "unfun" "aweful", "terribl", "crap", "frustrat", "horribl"];
+positive = ["excellent", "good", "fun", "nice", "cool", "awesome", "addict", "great" ];
 
 def OrientationDist(word1, word2, ispositive):
 	wb = [];
@@ -26,10 +26,15 @@ def OrientationDist(word1, word2, ispositive):
 	totaldist = 0;
 	totalcount = 0;
 
+	appcount = 0;
+	for w in text.tokens:
+		for wk in wb:
+			if (wk == w[:len(wk)] ): appcount += 1;
+
 	w1l = index.offsets( word1 )[:20]; # take the first 20 offsets only, to save time.
 	for w1 in w1l:
-		for i in range(1, 50):
-			for j in range(1, 50):
+		for i in range(1, 20):
+			for j in range(1, 20):
 
 				if ( i == j ): continue;
 				if ( w1 + j >= len(text.tokens) ): continue;
@@ -42,7 +47,7 @@ def OrientationDist(word1, word2, ispositive):
 						totalcount += 1;
 						totaldist += abs(j) + i;
 	if ( totalcount > 0 ):
-		rv = (1.0 * totaldist) / totalcount;
+		rv = (1.0 * totaldist) / totalcount / appcount;
 	else:
 		rv = 100;
 	return rv;
