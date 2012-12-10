@@ -53,11 +53,11 @@ Get all the reviews for the top free apps.
 	key: review-index
 	value: array of phrases extracted from that review.
 '''
-data = pickle.load(open('topfree.dat'))
-reviews = pickle.load(open('phrases_2word_free.dat'));
+data = pickle.load(open('data/topfree.dat'))
+reviews = pickle.load(open('data/phrases_2word_free.dat'));
 
-data2 = pickle.load(open('toppaid.dat'))
-reviews2 = pickle.load(open('phrases_2word_paid.dat'));
+data2 = pickle.load(open('data/toppaid.dat'))
+reviews2 = pickle.load(open('data/phrases_2word_paid.dat'));
 
 def get_near_query(phrase, keyword):
 	'''

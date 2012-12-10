@@ -38,8 +38,8 @@ This uses the 'bag-of-words' model.
 Grab a review from our extracted Google Play dataset.
 Classify the review using our trained classifier.
 '''
-data_free = pickle.load(open('topfree.dat'))
-data_paid = pickle.load(open('toppaid.dat'))
+data_free = pickle.load(open('data/topfree.dat'))
+data_paid = pickle.load(open('data/toppaid.dat'))
 
 negids = movie_reviews.fileids('neg')
 posids = movie_reviews.fileids('pos')

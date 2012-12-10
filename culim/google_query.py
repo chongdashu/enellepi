@@ -39,7 +39,7 @@ def get_hit_count(searchfor):
 '''
   Load all the 2-word phrases which were extracted.
 '''
-phrases = pickle.load(open('phrases_2word_free.dat'));
+# phrases = pickle.load(open('data/phrases_2word_free.dat'));
 
 '''
   Sample execution of a Google query for a given phrase.
