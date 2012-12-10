@@ -44,6 +44,8 @@ def analyze(datapoint):
 
 	return res
 
+analyze(data_free[102])
+
 
 
 
