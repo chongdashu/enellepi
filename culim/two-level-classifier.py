@@ -18,8 +18,11 @@ Do 'pprint' to pretty print things.
 pp = pprint.PrettyPrinter()
 pprint = pp.pprint
 
-data_free = pickle.load(open('data/dataset_free.dat'))
-random.shuffle(data_free)
+def get_list_from_dictionary(dict):
+	list = []
+	for (key,value) in dict.iteritems():
+		list.append(value)
+	return list
 
 def replace_contractions(word):
 	'''
@@ -28,6 +31,18 @@ def replace_contractions(word):
 	if word == "n't":
 		return "not"
 	return word
+
+data_free = pickle.load(open('data/dataset_free.dat'))
+random.shuffle(data_free)
+
+data_paid = pickle.load(open('data/dataset_paid.dat'))
+random.shuffle(data_paid)
+
+'''
+Create lists of the data, so that it's easier to iterate subsets of them.
+'''
+dataset_free = get_list_from_dictionary(data_free)
+dataset_paid = get_list_from_dictionary(data_paid)
 
 def analyze(datapoint):
 
@@ -60,7 +75,7 @@ def get_min_and_max_logratios(data):
 
 	return (min(log_ratios), max(log_ratios))
 
-analysis = {}
+analysis = []
 
 
 
