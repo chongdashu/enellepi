@@ -77,7 +77,46 @@ def get_min_and_max_logratios(data):
 
 	return (min(log_ratios), max(log_ratios))
 
-analysis = []
+
+def analyze_all(datasetType):
+	results = []
+	
+	dataset = []
+	if datasetType == "free":
+		dataset = dataset_free
+	elif datasetType == "paid":
+		dataset = dataset_paid
+
+	for datapoint in dataset:
+
+		original_index = datapoint['original_index']
+		
+		info = datapoint['info']
+		phrases = datapoint['phrases']
+		
+		text = info['text']
+		title = info['title']
+		rating = info['rating']
+
+		a = analyze(datapoint)
+		
+		results.append({"original_index": original_index,
+			"text" : text,
+			"title" : title,
+			"text-cls" : a['text_classification'],
+			"title-cls" : a['title_classification'],
+			'so' : a['semantic_orientation'],
+			'rating-user' : rating,
+			'rating-calculated': "TODO"
+			});
+		
+	return results
+
+def analyze_all_free():
+	return analyze_all("free")
+
+def analyze_all_paid():
+	return analyze_all("paid")
 
 
 

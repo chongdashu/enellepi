@@ -27,7 +27,7 @@ pp = pprint.PrettyPrinter()
 pprint = pp.pprint
 
 def so(word):
-	return math.log(pos_freqd.freq(word)/(neg_freqd.freq(word)+1E-9))
+	return math.log((pos_freqd.freq(word)+1E-9)/(neg_freqd.freq(word)+1E-9))
 
 def so_2(word1, word2):
 	return so(word1) + so(word2)
