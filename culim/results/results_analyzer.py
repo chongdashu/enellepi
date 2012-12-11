@@ -3,6 +3,11 @@
 import pickle
 import sys
 
+if len(sys.argv) < 2:
+	print 'usage: python <results dat file>'
+	print 'example: python results_free.dat'
+	sys.exit(0)
+
 #load results
 x = pickle.load(open(sys.argv[1]))
 
