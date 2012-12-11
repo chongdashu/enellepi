@@ -70,6 +70,7 @@ def OrientationDist(word1, word2, ispositive):
 				# Iterate over all words in 'wb' (this is either the list 'negative' or 'positive')	
 				for w in wb:
 					# print "word1:%s word2:%s w1:%s i:%s j:%s w:%s" % (word1, word2, w1, i, j, w)
+					# print "cur_iword=%s, cur_jword=%s, cur_j-word=%s, pol_word=%s" % (text.tokens[w1+i], text.tokens[w1+j][:len(w)], text.tokens[w1-j][:len(w)], w)
 					
 					# The condition for increasing 'totalcount' and 'totaldist' are as follows based on
 					# what was written below:
