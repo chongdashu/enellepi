@@ -110,7 +110,9 @@ def calculate_overall_so_dist(phrases):
 		print 'calculating so for phrase %s' % (index)
 		so = calculate_semantic_orientation_dist(phrase)
 		log_ratio = log_ratio + so['log_ratio']
+		print 'phrase %s s-o= %s' %(index, log_ratio)
 		index = index + 1
+
 
 	if len(phrases) > 0:	
 		return log_ratio / len(phrases)

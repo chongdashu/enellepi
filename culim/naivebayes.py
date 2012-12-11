@@ -75,7 +75,7 @@ def example1():
 	classifier.show_most_informative_features()
 
 def classify_text(text):
-	print 'classifying text:%s' % (text)
+	# print 'classifying text:%s' % (text)
 	text_tokens = [replace_contractions(w).encode('ascii', 'ignore') for w in word_tokenize(text)]
 	text_features = word_feats(text_tokens)
 
