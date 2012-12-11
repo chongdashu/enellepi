@@ -106,10 +106,11 @@ def analyze_all(datasetType):
 			"text-cls" : a['text_classification'],
 			"title-cls" : a['title_classification'],
 			'so' : a['semantic_orientation'],
+			'phrases' : phrases
 			'rating-user' : rating,
 			'rating-calculated': "TODO"
 			});
-		
+
 	return results
 
 def analyze_all_free():
