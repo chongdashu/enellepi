@@ -75,7 +75,7 @@ def OrientationDist(word1, word2, ispositive):
 					# what was written below:
 					#	1. 'word2' is 'i' words from 'word1' and a word in 'wb' is 'j' words from 'word1'
 					#   2. 'word2' is 'i' words from 'word1' and a word in 'wb' is '-j' words from 'word1'
-					if (( text.tokens[w1+i] == word2 and text.tokens[w1+j][:len(w)] == w ) or ( text.tokens[w1+i] == word2 and text.tokens[w1-j][:len(w)] == w):
+					if (( text.tokens[w1+i] == word2 and text.tokens[w1+j][:len(w)] == w ) or ( text.tokens[w1+i] == word2 and text.tokens[w1-j][:len(w)] == w)):
 						totalcount += 1;
 						totaldist += abs(j) + i;
 						
