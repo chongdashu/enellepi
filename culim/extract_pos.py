@@ -10,12 +10,13 @@ Tag patterns for extracting two-word phrases from reviews.
 @see Turney paper
 '''
 TAG_PATTERNS_2WORD = [
-	['JJ|JJS|JJR', 	'NN|NNS', 	''],
-	['RB|RBR|RBS', 	'JJ|JJS|JJR', 	'not-NN^not-NNS'],
-	['JJ|JJS|JJR',	'JJ|JJS|JJR',	'not-NN^not-NNS'],
-	['NN|NNS',		'JJ|JJS|JJR',	'not-NN^not-NNS'],
-	['RB|RBR|RBS',	'VB|VBD|VBN|VBG',	''],
-	['DT',			'JJ|JJS|JJR', 		'']
+	['JJ|JJS|JJR',				'NN|NNS', 			''],
+	['RB|RBR|RBS', 				'JJ|JJS|JJR', 		'not-NN^not-NNS'],
+	['JJ|JJS|JJR',				'JJ|JJS|JJR',		'not-NN^not-NNS'],
+	['NN|NNS',					'JJ|JJS|JJR',		'not-NN^not-NNS'],
+	['RB|RBR|RBS',				'VB|VBD|VBN|VBG',	''],
+	['DT',						'JJ|JJS|JJR', 		''],
+	['VBZ',						'JJ|JJS|JJR', 		'']
 ]
 
 '''
