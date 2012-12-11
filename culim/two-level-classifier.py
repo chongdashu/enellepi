@@ -8,6 +8,7 @@ import math
 import concordance
 import naivebayes
 import semantic_orientation
+import freqdist
 
 random.seed(6863)
 
@@ -51,7 +52,8 @@ def analyze(datapoint):
 
 	text_classification = naivebayes.classify_text(info['text'])
 	title_classification = naivebayes.classify_text(info['title'])
-	so = semantic_orientation.calculate_overall_so_dist(phrases)
+	# so = semantic_orientation.calculate_overall_so_dist(phrases)
+	so = freqdist.calculate_average_so(phrases)
 
 	res = { "text_classification" : text_classification, 
 			"title_classification" : title_classification, 
