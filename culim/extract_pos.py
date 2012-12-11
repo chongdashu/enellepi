@@ -4,12 +4,13 @@ from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize, Whit
 import enellepi
 import pickle
 import pprint
+from sentence_cleaner import clean_sentence, PUNCTUATION
 
 '''
 Tag patterns for extracting two-word phrases from reviews.
 @see Turney paper
 '''
-TAG_PATTERNS_2WORD = 
+TAG_PATTERNS_2WORD = \
 [
 	['JJ|JJS|JJR',				'NN|NNS', 			''],
 	['RB|RBR|RBS', 				'JJ|JJS|JJR', 		'not-NN^not-NNS'],
@@ -78,6 +79,15 @@ def get_phrases_from_text(text):
 		For each sentence, we tokenize the text into word tokens.
 		Next, we run the POS tagging on the tokens.
 		'''
+		
+		#skip those sentences that are just punctuation marks or empty
+		if len(sentence) == 0 or (len(sentence) == 1 and sentence[0] in PUNCTUATION):
+			continue
+		
+		#clean up the sentences so that they are easier to tag
+		sentence = clean_sentence(sentence)
+		#print sentence
+		
 		text_tokenized = word_tokenize(sentence)
 		text_pos_tags = pos_tag(text_tokenized)
 
