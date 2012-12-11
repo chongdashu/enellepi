@@ -9,7 +9,8 @@ import pprint
 Tag patterns for extracting two-word phrases from reviews.
 @see Turney paper
 '''
-TAG_PATTERNS_2WORD = [
+TAG_PATTERNS_2WORD = 
+[
 	['JJ|JJS|JJR',				'NN|NNS', 			''],
 	['RB|RBR|RBS', 				'JJ|JJS|JJR', 		'not-NN^not-NNS'],
 	['JJ|JJS|JJR',				'JJ|JJS|JJR',		'not-NN^not-NNS'],
@@ -27,9 +28,9 @@ pp = pprint.PrettyPrinter()
 pprint = pp.pprint
 
 def match(tag, pos_tag):
-	if (tag == ''):
+	if tag == '':
 		return True
-	if (len(tag.split('-')) > 1):
+	if len(tag.split('-')) > 1:
 		return pos_tag[1] != tag.split('-')[1]
 	return pos_tag[1] == tag
 
