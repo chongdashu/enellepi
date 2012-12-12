@@ -197,6 +197,8 @@ Precision = 22.22%
 
 \end{verbatim}
 
+The results are for Yahoo! and Bing were not kept, and, thus, will not be shown.
+
 	\section{PMI-CD}
 
 Below are the results for the free applications.
@@ -466,23 +468,54 @@ Below are the results for the free applications after training the thresholds us
 Free Apps
 
 -----------------------------------------
-Assuming we correctly classify the the positive reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Assuming we correctly classify the the positive reviews, if we use 
+semantic-orientation to calculate the exact star rating, we get 
+the following results:
+
 Accuracy: 0.70 (+/- 0.00)
+
 -----------------------------------------
-Assuming we correctly classify the the negative reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Assuming we correctly classify the the negative reviews, if we use 
+semantic-orientation to calculate the exact star rating, we get 
+the following results:
+
 Accuracy: 0.58 (+/- 0.03)
-Analyzing paid apps:
+
+Paid Apps
 -----------------------------------------
-Assuming we correctly classify the the positive reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Assuming we correctly classify the the positive reviews, if we use 
+semantic-orientation to calculate the exact star rating, we get 
+the following results:
+
 Accuracy: 0.57 (+/- 0.00)
+
 -----------------------------------------
-Assuming we correctly classify the the negative reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Assuming we correctly classify the the negative reviews, if we use 
+semantic-orientation to calculate the exact star rating, we get 
+the following results:
+
 Accuracy: 0.79 (+/- 0.00)
 
 --------------------------------------------------------------------------------
 \end{verbatim}
 
 \chapter{Analysis}
+	\section{PMI-IR}
+
+Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
+The great success of this was discovering that it was not a good choice for a fast
+project.
+
+	\section{PMI-CD}
+
+Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
+We did better with this approach than the previous one but it still was not good enough.
+
+	\section{PMI-CUE}
+
+Talk about why it works. Talk about things we observed from the data. (We don't have enough
+data to make general conclusions). Considerable improvement over both methods. Training the
+thresholds with SVMs made this even better.
 
 \chapter{Conclusion}
 
