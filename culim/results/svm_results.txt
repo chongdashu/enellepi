@@ -1,0 +1,14 @@
+Analyzing free apps:
+-----------------------------------------
+Assuming we correctly classify the the positive reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Accuracy: 0.70 (+/- 0.00)
+-----------------------------------------
+Assuming we correctly classify the the negative reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Accuracy: 0.58 (+/- 0.03)
+Analyzing paid apps:
+-----------------------------------------
+Assuming we correctly classify the the positive reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Accuracy: 0.57 (+/- 0.00)
+-----------------------------------------
+Assuming we correctly classify the the negative reviews, if we use semantic-orientation to calculate the exact star rating, we get the following results:
+Accuracy: 0.79 (+/- 0.00)
