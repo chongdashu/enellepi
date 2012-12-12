@@ -77,6 +77,29 @@ def get_min_and_max_logratios(data):
 
 	return (min(log_ratios), max(log_ratios))
 
+def get_star_rating(a_entry):
+	text_polarity = a_entry['text_classification']
+	title_polarity = a_entry['title_classification']
+	so = a_entry['semantic_orientation']
+	
+	if so == 0.0:
+		return 3.0
+	
+	if text_polarity == 'pos':
+		if so < 0.10:
+			return 3.0
+		elif so < 0.25:
+			if title_polarity == 'pos':
+				return 5.0
+			else:
+				return 4.0
+		else:
+			return 5.0
+	if text_polarity == 'neg':
+		if so > -0.25:
+			return 2.0
+		else:
+			return 1.0
 
 def analyze_all(datasetType):
 	results = []
@@ -99,6 +122,7 @@ def analyze_all(datasetType):
 		rating = info['rating']
 
 		a = analyze(datapoint)
+		rating_calculated = get_star_rating(a)
 		
 		results.append({"original_index": original_index,
 			"text" : text,
@@ -106,9 +130,9 @@ def analyze_all(datasetType):
 			"text-cls" : a['text_classification'],
 			"title-cls" : a['title_classification'],
 			'so' : a['semantic_orientation'],
-			'phrases' : phrases
+			'phrases' : phrases,
 			'rating-user' : rating,
-			'rating-calculated': "TODO"
+			'rating-calculated': rating_calculated
 			});
 
 	return results
@@ -118,19 +142,3 @@ def analyze_all_free():
 
 def analyze_all_paid():
 	return analyze_all("paid")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
