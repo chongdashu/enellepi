@@ -82,7 +82,9 @@ breaklines=true
 \usepackage{mathtools}
 \usepackage[english]{babel}
 \usepackage{graphicx}
-
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes,arrows}
 %%% END Article customizations
 
 
@@ -185,6 +187,7 @@ text = "This is a great game but lags horribly. I'm constantly dying because it 
 \end{figure}
 
 \section{Phrase Sentiment}
+\label{section:phrase_sentiment}
 In order to gain insight regarding the user's sentiment based on his or her review, we make use of the extracted phrases from 
 Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application. The basis of extracting information from the phrases is derived from the mutual information of the words contained within the phrase, against known words that we identified as having either \textit{positive} or \textit{negative} sentiment polarity. 
 
@@ -335,7 +338,12 @@ pprint(bad_free[55])
 \end{table}
 
 \section{Text Polarity}
-A second method into gaining insight into the sentiments expressed within a sentence is to determine its polarity. The polarity may be either \textit{positive} or \textit{negative}, and it treats polarity using the \textbf{Bag of Words} (BOW) model~\cite{harris1954}. In this model, a document is represented by the occurrences of words in it regardless their position in the document. This is implemented with the \textit{NLTK} \verb|movie_reviews| corpus by creating feature vectors based on the appearance of words in each sub-corpus, with each sub-corpus forming a single training instance. We do this separately for both the \textit{oositive} and \textit{negative} categories. Classification is then performed by a Naive Bayes classifier~\cite{lewis1998naive, mccallum1998comparison} using the feature vector of word-appearances, using the following approximation:
+\label{section:text_polarity}
+\subsection{Bag of Words}
+A second method into gaining insight into the sentiments expressed within a sentence is to determine its polarity. The polarity may be either \textit{positive} or \textit{negative}, and it treats polarity using the \textbf{Bag of Words} (BOW) model~\cite{harris1954}. In this model, a document is represented by the occurrences of words in it regardless their position in the document. This is implemented with the \textit{NLTK} \verb|movie_reviews| corpus by creating feature vectors based on the appearance of words in each sub-corpus, with each sub-corpus forming a single training instance. We do this separately for both the \textit{oositive} and \textit{negative} categories. 
+
+\subsection{Naive Bayes Classifier}
+Classification is then performed by a Naive Bayes classifier~\cite{lewis1998naive, mccallum1998comparison} using the feature vector of word-appearances, using the following approximation:
 
 \begin{equation*} Pr[polarity | w_1, \dots, w_n] 	\approx	 Pr[polarity]  \prod_{n=1}^nPr[w_i|polarity] \end{equation*}
 
@@ -370,7 +378,6 @@ u'I was fine with having to exit ads on previous Angry Birds games, but this is 
 ['I', 'was', 'fine', 'with', 'having', 'to', 'exit', 'ads', 'on', 'previous', 'Angry', 'Birds', 'games', ',', 'but', 'this', 'is', 'a', 'two', '-step', 'requirement.', 'You', 'have', 'to', 'expand', 'first', 'and', 'then', 'exit', 'the', 'ad', ',', 'and', 'for', 'me', ',', 'using', 'a', 'Samsung', 'Galaxy', 'S3', ',', 'it', 'will', 'only', 'take', 'me', 'to', 'the', 'ad', 'link', 'when', 'I', 'touch', 'the', 'X.', 'Broken', 'ad', 'exit', 'button', 'will', 'not', 'let', 'me', 'play.', 'Uninstalling', '.']
 
 >>> text_features = word_feats(sample_text_tokens)
->>> text_features
 {'and': True, 'ad': True, 'S3': True, 'Angry': True, 'it': True, 'two': True, 'have': True, 'touch': True, 'You': True, 'fine': True, 'previous': True, '-step': True, 'X.': True, 'ads': True, 'for': True, 'Broken': True, 'when': True, ',': True, '.': True, 'to': True, 'only': True, 'exit': True, 'take': True, 'was': True, 'is': True, 'then': True, 'Samsung': True, 'I': True, 'but': True, 'me': True, 'link': True, 'play.': True, 'not': True, 'using': True, 'let': True, 'with': True, 'expand': True, 'a': True, 'on': True, 'Uninstalling': True, 'this': True, 'button': True, 'having': True, 'will': True, 'games': True, 'requirement.': True, 'the': True, 'Birds': True, 'Galaxy': True, 'first': True}
 
 >>> classifier.classify(text_features)
@@ -381,6 +388,86 @@ u'I was fine with having to exit ads on previous Angry Birds games, but this is 
 \label{fig:naivebayes_classifying_review}
 \end{figure}
 
+\section{Hierarchical Classification}
+In our implementation, we aimed to provide a way to make use of both the semantic orientation (Section~\ref{section:phrase_sentiment}) and the polarity(Section~\ref{section:text_polarity}) of a user revie in order to generate more accurate reviews on a 5-star rating scale. The approach we took makes use of a \textbf{Hierarchical Classifier}~\cite{ruiz2002hierarchical,sun2001hierarchical}, in which the review to be classified is first classified based on its polarity. Next, we predict the exact star-rating based on the semantic-orientation of the review's extracted phrases.
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, 
+    text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, 
+    text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,    minimum height=2em]
+\tikzstyle{smallcloud} = [draw, circle ,fill=yellow!20, minimum height=3em]
+\begin{figure}[h!]
+\center
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [block] (init) {text-polarity};
+    \node [cloud, below left of=init] (negative) {negative};
+    \node [cloud, below right of=init] (positive) {positive};
+	\node [block, below of=negative] (so-neg) {semantic orientation};
+	\node [block, below of=positive] (so-pos) {semantic orientation};
+\node [smallcloud, below left=1cm and 1.0cm of so-neg] (star1) {1-star};
+\node [smallcloud, below left=1cm and -1.5cm of so-neg] (star2) {2-star};
+\node [smallcloud, below left=1cm and -3.75cm of so-neg] (star3) {3-star};
+\node [smallcloud, below right=1cm and -1.5cm of so-pos] (star4) {4-star};
+\node [smallcloud, below right=1cm and 1.0cm of so-pos] (star5) {5-star};
+
+
+    % Draw edges
+
+ \path [line,dashed] (init) -- (negative);
+\path [line,dashed] (init) -- (positive);
+\path [line] (negative) -- (so-neg);
+\path [line] (positive) -- (so-pos);
+
+\path [line, dashed] (so-neg) -- (star1);
+\path [line, dashed] (so-neg) -- (star2);
+\path [line, dashed] (so-neg) -- (star3);
+\path [line, dashed] (so-pos) -- (star3);
+\path [line, dashed] (so-pos) -- (star4);
+\path [line, dashed] (so-pos) -- (star5);
+
+
+\end{tikzpicture}
+ \caption{Hierarchical Classification of User Review}
+\label{fig:hierarchical_classification}
+\end{figure}
+
+Figure~\ref{fig:hierarchical_classification} illustrates how our system is laid out. A review's text is first classified based on its polarity using a Naive Bayes classifier trained on the Bag of Words model. Once the polarity is determined, we narrow down the range for which a review's star-rating can achieve. A \textit{negative} polarity restricts the star-ratings to $[1.0, 3.0]$ and a \textit{positive} polarity restricts the star-ratings to $[3.0, 5.0]$. 
+
+In order to map the semantic-orientation (SO) of a review to an exact star rating, we needed a method of translating the SO value to a star-rating. We approached this using two methods: the first involved empirically determining two SO values for each polarity while the second makes use of an supervized machine learning technique involving \textbf{Support Vector Machines}.
+
+\subsection{Sentiment Thresholds}
+Once a review is determined to be \textit{positive}, we are restricted to the star-rating values of $3.0$, $4.0$, and $5.0$. If the SO value is below the first threshold, the review is given a star-rating of $3.0$. If the SO value is between the first and second threshold, it is given a star-rating of $4.0$. Finally, if the SO value is greater than the second threshold, it is given a star-rating of $5.0$. A similar reasoning assigns SO values for the \textit{negative} reviews to star-rating values of $1.0$, $2.0$ and $3.0$.
+
+\subsection{Support Vector Machines}
+The second method we used involves the use of \textbf{support vector machines}, which have been shown to deal well in the domain of sentiment analysis and text classification~\cite{mullen2004sentiment,gamon2004sentiment}. Support Vector Machines (SVMs) are a form of supervised learning methods which can be used for classification or regression problems. In a binary classification example, we would train the SVM on a labelled dataset and if they they are linearly separable, the SVM will find a unique separation boundary in the form of a hyperplane with points falling on each side having different classifications. The separation boundary would be one in which the margin is maximized. The general formulation of SVMs as constrained quadratic programming problem is as follows
+
+	\begin{equation*}
+	\label{equation:svm}
+	\begin{aligned}
+	& \underset{\theta}{\text{minimize}}
+	& & C\sum_{i=0}^n\xi_{i} + \frac{1}{2} \parallel\mathbf{\theta}\parallel^{2}  \\
+	& \text{subject to}
+	& & y_{i}(\theta\cdot\mathbf{x}_{n}+\theta_{0}) \ge 1 - \xi_{i}, \; i = 1, \ldots, m
+	\end{aligned}
+	\end{equation*}
+
+	where $x_{i}$ represents each training data point, with $y_{i}$ being its corresponding target classification. $\mathbf{\theta}$ is the model, or parameter, of the classifier with offset $\theta_{0}$, while C and $\xi$ represent the penalty and slack variables respectively, which are used as tuning parameters in order to improve the classification results. In our design. we experimented with different feature vectors:
+
+\begin{enumerate}
+\item{Semantic-Orientation Value as the only value in the feature vector.}
+\item {Text Polarity and Semantic-Orientation Value as two values in a feature vector.}
+\item {Title Polarity, Text Polarity and Semantic-Orientation Value as 3 values in a feature vector.}
+\end{enumerate}
+
+From initial findings, found that using the hierarchical classification approach, we only needed to use the SO-value in order to achieve accurate star-rating scores. 
+
+\begin{comment}
+In our project, we are interested in the use of SVMs to classify a review into multiple discrete star-rating labels based the a given feature vector. Extending SVMs to support multiple target classifications requires us to train multiple binary classifiers, one for each individual target character. Given an input vector, each classifier would give a possible classification, and we then employ \textbf{voting} as a way of deciding the best classification result for our data. The common voting strategies to decide on a classification described as follows. 	In \textbf{one-versus-one} voting, the idea is to fit a classifier for each pair of classes, and when it comes to making the prediction, we select the class with the most number of votes. In \textbf{one-versus-rest} voting, each character has a classifier which is fit to it. When making the prediction, the class with the highest classification output is chosen in a \textit{winner-takes-all} strategy.
+\end{comment}
 
 
 %%% END Chapter: Design
@@ -766,7 +853,8 @@ thresholds with SVMs made this even better.
 \chapter{Datasets}
 
 
-\bibliographystyle{plain}
+%\bibliographystyle{plain}
+\bibliographystyle{ieeetr}
 \bibliography{references}
 
 \end{document}
