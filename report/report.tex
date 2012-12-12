@@ -335,6 +335,52 @@ pprint(bad_free[55])
 \end{table}
 
 \section{Text Polarity}
+A second method into gaining insight into the sentiments expressed within a sentence is to determine its polarity. The polarity may be either \textit{positive} or \textit{negative}, and it treats polarity using the \textbf{Bag of Words} (BOW) model~\cite{harris1954}. In this model, a document is represented by the occurrences of words in it regardless their position in the document. This is implemented with the \textit{NLTK} \verb|movie_reviews| corpus by creating feature vectors based on the appearance of words in each sub-corpus, with each sub-corpus forming a single training instance. We do this separately for both the \textit{oositive} and \textit{negative} categories. Classification is then performed by a Naive Bayes classifier~\cite{lewis1998naive, mccallum1998comparison} using the feature vector of word-appearances, using the following approximation:
+
+\begin{equation*} Pr[polarity | w_1, \dots, w_n] 	\approx	 Pr[polarity]  \prod_{n=1}^nPr[w_i|polarity] \end{equation*}
+
+The LHS of the equation is the probability of the polarity taking a certain value conditioned on the joint probability of occurrence of a given sequence of words $w_1, \dots, w_n$. By using Bayes' Theorem, the result of the equation can be re-written based on the prior probability of attaining a certain polarity classificaiton $Pr[polarity]$, and the conditional polarity of generating a sequence of words $w_1, \dots, w_n$ given a known polarity. By assuming conditional independence of the appearance of each word $w_i$ given a $polarity$, we may represent the joint conditional probability as a product of individual probabilities of the occurrence of a word $w_i$ given a $polarity$, $Pr[w_i|polarity]$, thus revealing the formula on the RHS of the equation.
+
+\begin{table}[h]
+	\centering
+    \begin{tabular}{  c || c  c  c  c  c ||  c  }
+    \hline\hline
+    	 fileid & \dots & abberline & ably & achieve &\dots & category \\ \hline
+	 \verb|pos/cv000_29590.txt|& \dots & \verb|true| & \verb|true| & \verb|false| &\dots & \verb|positive| \\ \hline
+	 \verb|pos/cv001_18431.txt|& \dots & \verb|false| & \verb|false| & \verb|true| &\dots & \verb|positive| \\ \hline
+	 \vdots & \vdots  & \vdots  & \vdots & \vdots &\vdots & \vdots \\ \hline
+	 \verb|neg/cv999_14636.txt|& \dots & \verb|false| & \verb|false| & \verb|false| &\dots & \verb|negative| \\ \hline
+
+
+    \hline
+    \end{tabular}
+\caption{Constructing Naive Bayes Training Data from NLTKs movie\_reviews corpus}
+\label{fig:naivebayes}
+\end{table}
+
+The \textit{NLTK} \verb|movie_reviews| corpus contains 1000 files associated with the \textit{positive} sentiment, and 1000 files associated with the \textit{negative} sentiment (identified by the category type \verb|"pos"| and \verb|"neg"|.) Table~\ref{fig:naivebayes} shows how the training data was constructed using the \verb|movie_reviews| corpus. Figure~\ref{fig:naivebayes_classifying_review} illustrates the process of determining the polarity of a user's review. The text is first tokenized into individual word tokens and then converted into a feature vector. Finally, our classifier is used to classify the feature vector, in which it calculates the label \verb|neg|, indicating a negative polarity in the user's review.
+
+\begin{figure}[h!]
+  \centering
+\begin{lstlisting}
+>>> sample_text
+u'I was fine with having to exit ads on previous Angry Birds games, but this is a two -step requirement. You have to expand first and then exit the ad, and for me, using a Samsung Galaxy S3, it will only take me to the ad link when I touch the X. Broken ad exit button will not let me play. Uninstalling.'
+
+>>> sample_text_tokens
+['I', 'was', 'fine', 'with', 'having', 'to', 'exit', 'ads', 'on', 'previous', 'Angry', 'Birds', 'games', ',', 'but', 'this', 'is', 'a', 'two', '-step', 'requirement.', 'You', 'have', 'to', 'expand', 'first', 'and', 'then', 'exit', 'the', 'ad', ',', 'and', 'for', 'me', ',', 'using', 'a', 'Samsung', 'Galaxy', 'S3', ',', 'it', 'will', 'only', 'take', 'me', 'to', 'the', 'ad', 'link', 'when', 'I', 'touch', 'the', 'X.', 'Broken', 'ad', 'exit', 'button', 'will', 'not', 'let', 'me', 'play.', 'Uninstalling', '.']
+
+>>> text_features = word_feats(sample_text_tokens)
+>>> text_features
+{'and': True, 'ad': True, 'S3': True, 'Angry': True, 'it': True, 'two': True, 'have': True, 'touch': True, 'You': True, 'fine': True, 'previous': True, '-step': True, 'X.': True, 'ads': True, 'for': True, 'Broken': True, 'when': True, ',': True, '.': True, 'to': True, 'only': True, 'exit': True, 'take': True, 'was': True, 'is': True, 'then': True, 'Samsung': True, 'I': True, 'but': True, 'me': True, 'link': True, 'play.': True, 'not': True, 'using': True, 'let': True, 'with': True, 'expand': True, 'a': True, 'on': True, 'Uninstalling': True, 'this': True, 'button': True, 'having': True, 'will': True, 'games': True, 'requirement.': True, 'the': True, 'Birds': True, 'Galaxy': True, 'first': True}
+
+>>> classifier.classify(text_features)
+"neg"
+
+\end{lstlisting}
+ \caption{User Reviews on the Google Play Store}
+\label{fig:naivebayes_classifying_review}
+\end{figure}
+
 
 
 %%% END Chapter: Design
