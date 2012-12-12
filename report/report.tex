@@ -99,14 +99,12 @@ To acquire more accurate information from customer feedback, we propose the remo
 %%% BEGIN Chapter: Design
 \chapter{Design}
 \section{User Reviews}
-\subsection{Extraction from Google Play}
-\subsection{Tagging}
+\subsection{Data Collection}
+Google does not supply any publicly available Application Programming Interfaces (APIs) to query for data or results on the Google Play Store. Also, in searching for user reviews for a given application, one has to first navigate to the associated page and is at first initially presented with only the first 10 reviews, with the rest only asynchronously provided when a user clicks on the paginated links at the bottom. However, attempts to automated the querying for more results were blocked by Google. As such, we had to manually obtain the data by first clicking through all the provided pagination links at the bottom in order to load all the user reviews. After which, we made use of Google Chrome's View Source functionality to extract all DOM elements between the \verb|<html>| element.
 \subsection{Phrase Extraction}
 \label{subsection:phrase_extraction}
-Extending upon the work performed by Turney~\cite{Turney2001}, we used the following keywords to correspond to the each of the 5 stars 
-of a customer review on the Google Play store. 
-\subsection{Semantic Orientation}
 
+\subsection{Semantic Orientation}
 In order to gain insight regarding the user's sentiment based on his or her review, we make use of the extracted phrases from 
 Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application. The basis of extracting information from the phrases is derived from the mutual information of the words contained within the phrase, against known words that we identified as having either \textit{positive} or \textit{negative} sentiment polarity. The Pointwise Mutual Information (PMI) between two words\cite{church1990}, is defined with the following equation:
 
