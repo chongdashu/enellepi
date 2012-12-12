@@ -49,9 +49,39 @@
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
-\usepackage[parfill]{parskip} % Uncomment this to have no paragraph indentation
+%%% Share Figure and Table Numbering %%%
+\makeatletter
+\renewcommand*{\thetable}{\arabic{table}}
+\renewcommand*{\thefigure}{\arabic{figure}}
+\let\c@table\c@figure
 
+%%% Code Listings %%%
+\usepackage{color}
+\usepackage{listings}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{
+  language=Python,
+  showstringspaces=false,
+  formfeed=\newpage,
+  tabsize=2,
+  commentstyle=\itshape,
+  basicstyle=\ttfamily,
+  morekeywords={models, lambda, forms},
+keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+frame=shadowbox,
+breaklines=true
+}
+
+
+\usepackage[parfill]{parskip} % Uncomment this to have no paragraph indentation
 \usepackage{mathtools}
+\usepackage[english]{babel}
+\usepackage{graphicx}
 
 %%% END Article customizations
 
@@ -61,14 +91,14 @@
 
 \title{Automatic Star-rating Generation from Text Reviews}
 \author{
-  Sang-Woo Jun\\
-  \texttt{wjun@csail.mit.edu}
-  \and
   Chong-U Lim\\
   \texttt{culim@csail.mit.edu}
   \and
   Pablo Ortiz\\
   \texttt{portiz@csail.mit.edu}
+  \and
+ Sang-Woo Jun\\
+  \texttt{wjun@csail.mit.edu}
 }
 %\date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -94,35 +124,88 @@ One well-established format for customer reviews is that of five-star ratings pa
 To acquire more accurate information from customer feedback, we propose the removal of five-star ratings from these review formats entirely. Instead, we propose that the star ratings be generated in a uniform fashion from the sentiment of the text commentary. To  realize this proposal, we created a analyzes customer reviews of mobile applications from the Google Play store.
 
 \chapter{Background}
-	\section{Sentiment Analysis}
 
 %%% BEGIN Chapter: Design
 \chapter{Design}
-\section{User Reviews}
-\subsection{Extraction from Google Play}
-\subsection{Tagging}
-\subsection{Phrase Extraction}
-\label{subsection:phrase_extraction}
-Extending upon the work performed by Turney~\cite{Turney2001}, we used the following keywords to correspond to the each of the 5 stars 
-of a customer review on the Google Play store. 
-\subsection{Semantic Orientation}
+\section{Data Collection}
 
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.6\textwidth]{figures/playstore.png}
+ \caption{User Reviews on the Google Play Store}
+\label{fig:playstore}
+\end{figure}
+
+Google does not supply any publicly available Application Programming Interfaces (APIs) to query for data or results on the Google Play Store. Also, in searching for user reviews for a given application, one has to first navigate to the associated page and is at first initially presented with only the first 10 reviews, with the rest only asynchronously provided when a user clicks on the paginated links at the bottom (Figure~\ref{fig:playstore}). 
+
+\begin{figure}[h!]
+  \centering
+    \includegraphics[width=0.8\textwidth]{figures/user_review.png}
+ \caption{User Reviews on the Google Play Store}
+\label{fig:user_review}
+\end{figure}
+
+However, attempts to automated the querying for more results were blocked by Google. As such, we had to manually obtain the data by first clicking through all the provided pagination links at the bottom in order to load all the user reviews. After which, we made use of Google Chrome's View Source functionality to extract all DOM elements between the \verb|<html>| element. A python script was then used to locate each user review, and extract out 3 main features, namely, the \textbf{Review Title}, \textbf{Review Text} and the \textbf{Star-Rating} (Figure~\ref{fig:user_review}).
+
+\section{Phrase Extraction}
+\label{subsection:phrase_extraction}
+\subsection{Parts-Of-Speech (POS) Tagging}
+The text gathered as part of the \textbf{review text} often varies in length (i.e. number of sentences, number of words). Our aim is to extract out the important phrases in each review and use them to guide our calculation of the overall sentiment of the user's review. In order to do so, we first process the review text by splitting them into sentences, followed by determining the part-of-speech (POS) tags for each word in the sentence. 
+\subsection{Pattern Matching}
+\begin{table}[h]
+	\centering
+    \begin{tabular}{  l  l  l  l}
+    \hline\hline
+    	 & First Word & Second Word & \shortstack{Third Word \\ (Not Extracted} \\ \hline
+	1. & JJ, JJS, JJR & NN, NNS & anything \\ \hline
+	2. & RB, RBR, RBS &JJ, JJS, JJR & neither NN nor NNS \\ \hline
+	3. & JJ, JJS, JJR & JJ, JJS, JJRS & neither NN nor NNS \\ \hline
+	4. & NN, NNS & JJ, JJS, JJRS & neither NN nor NNS \\ \hline
+	5. & RB, RBR, RBS &VB, VBD, VBN, VBG & anything \\ \hline
+	6. & DT & JJ, JJS, JJRS & anything \\ \hline
+	7. & VBZ & JJ, JJS, JJRS & anything \\ \hline
+    \hline
+    \end{tabular}
+\caption{Patterns of POS Tags for 2-Word Phrase Extraction}
+\label{fig:postags}
+\end{table}
+
+Given the tokenized form of the sentence, we proceed to extract 2-word phrases from the review via pattern matching against a set of phrase patterns, as shown in Table~\ref{fig:postags}. The patterns of POS tags are extended from an original list proposed by Turney~\cite{Turney2001}. Our extensions were required in order to better match style of reviews on the Google Play Store, and also to match the tokens used in the \textit{NLTK} library. One notable addition was the addition of \textit{superlative} adjectives (JJS), which we were emperically found o occur substantially in our dataset, with sentences such as \`` \textit{\dots this game is \textbf{the best} ! \dots}." We also added comparative adjectives (JJS) to our matched tags. Figure~\ref{fig:phrase_extraction} shows the results of our phrase extraction on a user review in our dataset.
+
+\begin{figure}[h!]
+  \centering
+\begin{lstlisting}
+text = "This is a great game but lags horribly. I'm constantly dying because it freezes up on me! Pleasseee do something to fix it!:)"
+>>> get_phrases_from_text(text)
+[[('a', 'DT'), ('great', 'JJ')], [('great', 'JJ'), ('game', 'NN')], [('constantly', 'RB'), ('dying', 'VBG')]]
+
+\end{lstlisting}
+ \caption{User Reviews on the Google Play Store}
+\label{fig:phrase_extraction}
+\end{figure}
+
+\section{Phrase Sentiment}
 In order to gain insight regarding the user's sentiment based on his or her review, we make use of the extracted phrases from 
-Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application. The basis of extracting information from the phrases is derived from the mutual information of the words contained within the phrase, against known words that we identified as having either \textit{positive} or \textit{negative} sentiment polarity. The Pointwise Mutual Information (PMI) between two words\cite{church1990}, is defined with the following equation:
+Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application. The basis of extracting information from the phrases is derived from the mutual information of the words contained within the phrase, against known words that we identified as having either \textit{positive} or \textit{negative} sentiment polarity. 
+
+\subsection{Pointwise Mutual Information (PMI)}
+The Pointwise Mutual Information (PMI) between two words\cite{church1990}, is defined with the following equation:
 
 % \begin{math}...\end{math}
 \begin{equation*} PMI(word_1, word_2) = \log_2 \left(\frac{Pr[word_1 \: and \: word_2]}{Pr[word_1] \times Pr[word_2]}\right) \end{equation*}
 
-In the equation, the term $Pr[word]$ refers to the probability of the word appearing if we were to sample randomly from a text corpus, while  $Pr[word_1 \: and \: word_2]$ refers to the probability of both words appearing together. The ratio between p(word1 \& word2) and p(word1) p(word2) is thus a measure of the degree of statistical dependence between the words. The log of this ratio is the information gain from one of the words when the other is observed. The PMI score has an additional property in which it assigns a proportionally higher score to the words that appear infrequently in a given corpus, but with a higher likelihood of appearing together in the event they do\cite{Vargas2010}. The semantic orientation of a given phrase is thus given by the formula:
+In the equation, the term $Pr[word]$ refers to the probability of the word appearing if we were to sample randomly from a text corpus, while  $Pr[word_1 \: and \: word_2]$ refers to the probability of both words appearing together. The ratio between p(word1 \& word2) and p(word1) p(word2) is thus a measure of the degree of statistical dependence between the words. The log of this ratio is the information gain from one of the words when the other is observed. The PMI score has an additional property in which it assigns a proportionally higher score to the words that appear infrequently in a given corpus, but with a higher likelihood of appearing together in the event they do\cite{Vargas2010}. 
 
+\subsection{Semantic Orientation}
+The semantic orientation of a given phrase is thus given by the formula:
 \begin{equation*} SO(phrase) = PMI(phrase, \verb|<positive>|) - PMI(phrase, \verb|<negative>|)\end{equation*}
 
 In the formula, the terms \verb|positive| and \verb|negative| refer to words which are respectively associated with positive sentiments and negative sentiments. 
 
-\subsubsection{PMI-IR}
+\subsection{PMI-IR}
 In Turney's implementation, he made used of the the words \textit{"excellent"} and \textit{"negative"}. Also, he introduces a technique called PMI-IR (Information Retrieval) in order to estimate the PMI values by using hit counts returned from search engine queries. He estimates the semantic orientation using the formula:
 
-\begin{equation*} PMI(word_1, word_2) = \log_2 \left(\frac{hits(phrase \: NEAR ``excellent") \times hits(``poor") ]}{hits(phrase \: NEAR ``poor") \times hits(``excellent") }\right) \end{equation*}
+\begin{equation*} SO(phrase) = \log_2 \left(\frac{hits(phrase \: NEAR \: ``excellent") \times hits(``poor") }{hits(phrase \: NEAR \: ``poor") \times hits(``excellent") }\right) \end{equation*}
 
 The term \textit{NEAR} in the equation above is a search query modifier which only returns results in which the items are located within a fixed number of words between each other. 
 
@@ -132,12 +215,126 @@ However, based on our initial findings, we identified two problems with this app
 
 The second problem was associated with the accuracy of the calculated results, which are outlined in greater detail in Chapter~\ref{chapter:results}. In short, the results failed to convincingly associate phrases with the correct polarity, partly due to the fact that the Google Search API does not actually return accurate values for the number of hits.
 
-\subsubsection{Corpus-Derived PMI}
+\subsection{Corpus-Derived PMI}
 In order to find a method of calculating SO scores for phrases quickly, and without limit, we turned towards an offline SO estimator which uses the \textit{NLTK} \verb|movie_reviews| corpus. The corpus is a collection of user reviews from the \textit{IMDB Movie Database} , and is separated into sentences associated with \textit{positive} and \textit{negative} reviews. In our implementation, we first created a probability distribution of words which appear in the \text{positive} reviews and \text{negative} reviews separately. Next, we estimated the semantic orientation of a phrase using the formula:
 
 \begin{equation*} SO(word) = \log_2 \left(\frac{Pr_{pos}[word]}{Pr_{neg}[word]}\right) \end{equation*}
 
 Where the term $Pr_{pos}[word]$ is the probability of occurence of the word $word$ using the frequency distribution model acquired from the \textit{positive} corpus. The term $Pr_{pos}[word]$ naturally refers to the corresponding definition associated with the \textit{negative} corpus. We can easily extend this to a phrase with two words, such as ``very annoying" by calculating $SO(``very") + SO(``annoying")$. This allows us to attain values such as $SO(`excellent`")=1.2432$, $SO(``poor")=-0.9219$, $SO(``very \: annoying")=-0.3952$ and $SO(``very \: happy")=0.6716$. Thus, this gives us a nice form in which positive phrases are given positive values, and negative phrases are given negative values. Also, the magnitude of a value indicates a stroner association with the polarity.
+
+\subsection{Text Semantic Orientation}
+Given that a review text often contains several sentences, which in part contain several phrases which match our phrase patterns, we calculate the semantic orientation of a given text by averaging the semantic orientation values of its constituent matched-phrases. We present the calculation of two reviews from our dataset, one corresponding to a positive user review (Figure~\ref{fig:positive_review}) and another corresponding to a negative user review (Figure~\ref{fig:negative_review}). We illustrate the phrase extracted together with its constituent POS tags and the results of the per-phrase semantic-orientation calculation and overall semantic orientation of the review.
+
+\pagebreak
+\subsubsection{Positive Review}
+\begin{comment}
+pprint(res_free[130])
+{'original_index': 32,
+ 'phrases': [[(u'is', 'VBZ'), (u'such', 'JJ')],
+             [(u'an', 'DT'), (u'entertaining', 'JJ')],
+             [(u'entertaining', 'JJ'), (u'game', 'NN')],
+             [(u'is', 'VBZ'), (u'great', 'JJ')],
+             [(u'Another', 'DT'), (u'great', 'JJ')]],
+ 'rating-calculated': 5.0,
+ 'rating-user': 5.0,
+ 'so': 0.4126400904562006,
+ 'text': u'This is such an entertaining game that is great for killing time. Another great Angry Birds game :-)',
+ 'text-cls': 'pos',
+ 'title': u'Fantastic Game',
+ 'title-cls': 'pos'}
+
+>>> so_2("is", "such")
+0.15734872244647513
+>>> so_2("an", "entertaining")
+0.32014397089151714
+>>> so_2("entertaining", "game")
+0.385981805784978
+>>> so_2("is", "great")
+0.6650209890754402
+>>> so_2("another", "great")
+0.4515674226156673
+\end{comment}
+\begin{table}[h!]
+	\centering
+    \begin{tabular}{  l  l  c}
+    \hline\hline
+    	 Extracted Phrase & POS Tags & Semantic Orientation \\ \hline
+	is such & VBZ JJ & 0.1573 \\ \hline
+	an entertaining & DT JJ & 0.3201 \\ \hline
+	entertaining game & JJ NN & -0.1939 \\ \hline \hline
+	is great & VBZ JJ & 0.6650 \\ \hline \hline
+	another great & DT JJ & 0.4515 \\ \hline \hline
+	Average Semantic Orientation & & 0.4126\\ \hline
+    \hline
+    \end{tabular}
+\caption{Semantic Orientation Calculation for a Positive Review}
+\label{fig:positive_review}
+\end{table}
+
+
+\subsubsection{Negative Review}
+\begin{comment}
+pprint(bad_free[55])
+{'original_index': 936,
+ 'phrases': [[(u'a', 'DT'), (u'big', 'JJ')],
+             [(u'big', 'JJ'), (u'fan', 'NN')],
+             [(u'a', 'DT'), (u'huge', 'JJ')],
+             [(u'huge', 'JJ'), (u'problem', 'NN')],
+             [(u"n't", 'RB'), (u'work', 'VB')],
+             [(u'even', 'RB'), (u'uninstalled', 'VBD')],
+             [(u'then', 'RB'), (u'reinstalled', 'VBD')],
+             [(u'again', 'RB'), (u'help', 'VB')],
+             [(u"n't", 'RB'), (u'stay', 'VB')]],
+ 'rating-calculated': 1.0,
+ 'rating-user': 2.0,
+ 'so': -0.29789422119460257,
+ 'text': u"I love this game a lot! I'm a big fan and an addict to this game but recently I have been Facing a huge problem now I open this game it doesn't work it opens and then closes straight away I even uninstalled it and then reinstalled it but no difference same thing again help me please I love this can't stay without playing it",
+ 'text-cls': 'neg',
+ 'title': u'Fix it !!!',
+ 'title-cls': 'neg'}
+
+>>> so_2("a", "big")
+-0.33098922965584293
+>>> so_2("big", "fan")
+-0.7056408179636935
+>>> so_2("a", "huge")
+-0.23955015985152298
+>>> so_2("huge", "problem")
+-0.7483314776169897
+>>> so_2("not", "work")
+-0.06760705836956686
+>>> so_2("even", "uninstalled")
+-0.26451873835339673
+>>> so_2("then", "reinstsalled")
+-0.3341268897682953
+>>> so_2("again", "help")
+0.07927221248239999
+>>> so_2("not", "stay")
+-0.06955583165451482
+
+\end{comment}
+\begin{table}[h]
+	\centering
+    \begin{tabular}{  l  l  c }
+    \hline\hline
+    	 Extracted Phrase & POS Tags & Semantic Orientation \\ \hline
+	 a big & DT JJ & -0.3309 \\ \hline
+	big fan & JJ NN & -0.7056 \\ \hline
+	a huge & DT JJ & -0.2395 \\ \hline \hline
+	huge problem & JJ NN & -0.7483 \\ \hline \hline
+	not work &  RB VBD & -0.0676 \\ \hline \hline
+	even uninstalled & RB VBD  & -0.2645 \\ \hline \hline
+	then reinstalled &  RB VBD & 0.3341 \\ \hline \hline
+	again help &  RB VB  & 0.0792 \\ \hline \hline
+	not stay & RB VB & -0.0695\\ \hline \hline
+	Average Semantic Orientation & & -0.2978 \\ \hline
+    \hline
+    \end{tabular}
+\caption{Semantic Orientation Calculation for a Negative Review}
+\label{fig:negative_review}
+\end{table}
+
+\section{Text Polarity}
 
 
 %%% END Chapter: Design
