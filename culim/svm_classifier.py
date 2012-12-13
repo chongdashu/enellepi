@@ -12,6 +12,8 @@ from sklearn import svm
 from sklearn import cross_validation
 from sklearn import metrics
 
+import crossvalidation
+
 '''
 Some useful printing methods.
 Do 'pprint' to pretty print things.
@@ -51,8 +53,29 @@ def svm_classify(datapoints):
 
 	classifier = svm.LinearSVC()
 	# classifier.fit(datafeats, datalabels)
-	scores = cross_validation.cross_val_score(classifier, datafeats, datalabels, cv=5)
+	scores = cross_validation.cross_val_score(classifier, datafeats, datalabels, cv=10)
+	precision = cross_validation.cross_val_score(classifier, datafeats, datalabels, cv=10, score_func=metrics.precision_score)
+	recall = cross_validation.cross_val_score(classifier, datafeats, datalabels, cv=10, score_func=metrics.recall_score)
+	f1 = cross_validation.cross_val_score(classifier, datafeats, datalabels, cv=10, score_func=metrics.f1_score)
+	
 	print "Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std() / 2)
+	print "Precision: %0.2f (+/- %0.2f)" % (precision.mean(), precision.std() / 2)
+	print "Recall: %0.2f (+/- %0.2f)" % (recall.mean(), recall.std() / 2)
+	print "F1-score: %0.2f (+/- %0.2f)" % (f1.mean(), f1.std() / 2)
+
+	return (scores, precision, recall, f1)
+
+def svm_tune_parameters(datapoints):
+	datafeats = [sci_features(datapoint) for datapoint in datapoints]
+	datalabels = [datapoint["rating-user"] for datapoint in datapoints]
+
+	crossvalidation.tune_parameters(datafeats, datalabels)
+
+def get_sci_X_and_Y(datapoints):
+	datafeats = [sci_features(datapoint) for datapoint in datapoints]
+	datalabels = [datapoint["rating-user"] for datapoint in datapoints]
+
+	return (datafeats, datalabels)
 
 
 results_free = pickle.load(open('results/results_free.dat'))
@@ -83,6 +106,8 @@ print \
 if we use semantic-orientation to calculate the exact star rating, we get the following results:"
 svm_classify(results_free_neg)
 
+print ""
+
 print \
 'Analyzing paid apps:'
 print '-----------------------------------------'
@@ -97,6 +122,26 @@ print \
 "Assuming we correctly classify the the negative reviews, \
 if we use semantic-orientation to calculate the exact star rating, we get the following results:"
 svm_classify(results_paid_neg)
+
+print ""
+
+results_combined_pos = results_free_pos + results_paid_pos
+results_combined_neg = results_free_neg + results_paid_neg
+
+print \
+'Analyzing combined:'
+print '-----------------------------------------'
+print \
+"Assuming we correctly classify the the positive reviews, \
+if we use semantic-orientation to calculate the exact star rating, we get the following results:"
+svm_classify(results_combined_pos)
+
+print '-----------------------------------------'
+
+print \
+"Assuming we correctly classify the the negative reviews, \
+if we use semantic-orientation to calculate the exact star rating, we get the following results:"
+svm_classify(results_combined_neg)
 
 #results_free_pos = [datapoint for datapoint in results_free if datapoint['text-cls'] == "pos"]
 #results_free_neg = [datapoint for datapoint in results_free if datapoint['text-cls'] == "neg"]
@@ -115,6 +160,53 @@ print 'train on %d instances, test on %d instances' % (len(trainfeats), len(test
 classifier = NaiveBayesClassifier.train(trainfeats)
 print 'accuracy:', nltk.classify.util.accuracy(classifier, testfeats)
 classifier.show_most_informative_features()
+'''
+
+''' 
+Plot
+
+(X,Y) = get_sci_X_and_Y(results_free_pos)
+h = .02  # step size in the mesh
+
+# we create an instance of SVM and fit out data. We do not scale our
+# data since we want to plot the support vectors
+C = 1.0  # SVM regularization parameter
+svc = svm.SVC(kernel='linear', C=C).fit(X, Y)
+#rbf_svc = svm.SVC(kernel='rbf', gamma=0.7, C=C).fit(X, Y)
+#poly_svc = svm.SVC(kernel='poly', degree=3, C=C).fit(X, Y)
+#lin_svc = svm.LinearSVC(C=C).fit(X, Y)
+
+# create a mesh to plot in
+x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
+                     np.arange(y_min, y_max, h))
+
+# title for the plots
+titles = ['SVC with linear kernel',
+          'SVC with RBF kernel',
+          'SVC with polynomial (degree 3) kernel',
+          'LinearSVC (linear kernel)']
+
+print 'asdasdsada'
+
+for i, clf in enumerate((svc)):
+    # Plot the decision boundary. For that, we will asign a color to each
+    # point in the mesh [x_min, m_max]x[y_min, y_max].
+    pl.subplot(2, 2, i + 1)
+    Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
+
+    # Put the result into a color plot
+    Z = Z.reshape(xx.shape)
+    pl.contourf(xx, yy, Z, cmap=pl.cm.Paired)
+    pl.axis('off')
+
+    # Plot also the training points
+    pl.scatter(X[:, 0], X[:, 1], c=Y, cmap=pl.cm.Paired)
+
+    pl.title(titles[i])
+
+pl.show()
 '''
 
 

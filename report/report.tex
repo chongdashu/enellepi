@@ -29,7 +29,7 @@
 \usepackage{array} % for better arrays (eg matrices) in maths
 \usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
 \usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+\usepackage{subfigure} % make it possible to include more than one captioned figure/table in a single float
 % These packages are all incorporated in the memoir class to one degree or another...
 
 %%% HEADERS & FOOTERS
@@ -84,6 +84,7 @@ breaklines=true
 \usepackage[english]{babel}
 \usepackage{graphicx}
 \usepackage{tikz}
+% \usepackage{subfigure}
 \usetikzlibrary{positioning}
 \usetikzlibrary{shapes,arrows}
 %%% END Article customizations
@@ -545,7 +546,7 @@ Compared to our previous experiment, we were able to match the application revie
 	\label{fig:pmi-cd-paid}
 	\end{figure}
 
-	\section{Results: PMI-Hierarchical Classification}
+	\section{Results: Hierarchical Classification}
 
 	\subsection{Characterisation of Corpora} 
 
@@ -562,9 +563,121 @@ As shown above, our test set has a tremendous bias in favor of positive reviews.
 
 As our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
 
-		\subsection{With SVMs}
-		\subsection{Without SVMs}
+		\subsection{Classification with SO-value Thresholds}
+\newpage
+		\subsection{Classification using Support Vector Machines}
 
+\subsubsection{Unfiltered Datasets}
+
+%%% FREE APPS REVIEWS %%%
+\begin{figure}[h!]
+\centering
+\subfigure[Caption of subfigure 1]{
+	%%% FREE, POSITIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Free Applications} \\ \hline \hline
+\multicolumn{4}{c}{Positive Reviews (Rating: $\geq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.70 & 0.49 & 0.70 & 0.58 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig1}
+}
+\subfigure[Caption of subfigure 2]{
+	%%% FREE NEGATIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Free Applications} \\ \hline \hline
+\multicolumn{4}{c}{Negative Reviews (Rating: $\leq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.58 & 0.57 & 0.96 & 0.72 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig2}
+}
+\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
+\label{fig:subfigureExample}
+\end{figure}
+%%% END FREE APPS REVIEWS %%%
+
+%%% PAID APPS REVIEWS %%%
+\begin{figure}[h!]
+\centering
+\subfigure[Caption of subfigure 1]{
+	%%% FREE, POSITIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Paid Applications} \\ \hline \hline
+\multicolumn{4}{c}{Positive Reviews (Rating: $\geq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.57 & 0.33 & 0.57 & 0.42 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig1}
+}
+\subfigure[Caption of subfigure 2]{
+	%%% FREE NEGATIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Paid Applications} \\ \hline \hline
+\multicolumn{4}{c}{Neg Reviews (Rating: $\leq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.79 & 0.79 & 1.00 & 0.88 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig2}
+}
+\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
+\label{fig:subfigureExample}
+\end{figure}
+%%% END PAID APPS REVIEWS %%%
+
+%%% COMBINED APPS REVIEWS %%%
+\begin{figure}[h!]
+\centering
+\subfigure[Caption of subfigure 1]{
+	%%% FREE, POSITIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Combined Free \& Paid Applications} \\ \hline \hline
+\multicolumn{4}{c}{Positive Reviews (Rating: $\geq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.63 &0.40 &0.63 & 0.49 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig1}
+}
+\subfigure[Caption of subfigure 2]{
+	%%% FREE NEGATIVE %%%
+    \begin{tabular*}{0.45\textwidth}{ l l  l  l }
+ \hline
+\multicolumn{4}{c}{Combined Free \& Paid Applications} \\ \hline \hline
+\multicolumn{4}{c}{Neg Reviews (Rating: $\leq 3$)} \\
+    \hline \hline
+    	 Accuracy & Precision & Recall & F1-score \\ \hline
+	0.74 & 0.74 & 1.00 & 0.85 \\ \hline
+    \hline
+    \end{tabular*}
+	\label{fig:subfig2}
+}
+\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
+\label{fig:subfigureExample}
+\end{figure}
+%%% END COMBINED APPS REVIEWS %%%
+
+
+\subsubsection{Filtered Datasets}
+
+
+
+
+\newpage
 \begin{verbatim}
 
 --------------------------------------------------------------------------------
@@ -630,7 +743,7 @@ Calculated Star Rating Success%: 46.5955701395
 --------------------------------------------------------------------------------
 
 \end{verbatim}
-
+\newpage
 \begin{verbatim}
 
 --------------------------------------------------------------------------------
