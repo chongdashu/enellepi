@@ -1,0 +1,7 @@
+Polarity Accuracy of Titles : 0.677604593929
+Polarity Accuracy of Text   : 0.643150123052
+
+Overlap of Above Polarities : 0.456931911403
+
+# Based on what we see above, it seems like we should assign a polarity
+# to a review based on the polarity of its title for high accuracy.

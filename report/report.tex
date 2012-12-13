@@ -481,7 +481,7 @@ As noted in the previous chapter, we obtained two small corpora of Google Play a
 
 To test the effectiveness of the PMI-IR approach in generating star-ratings, we first had to collect more data than what was at our disposal. For every phrase whose semantic orientation we wanted to analyze, we were required to provide search engine hit counts by the algorithm. We were largely unsuccessful in this endeavor. 
 
-Nevertheless, we were able to obtain a small set of data on which we ran experiments. From the first 50 reviews in the free application review corpus, we were able to get all the hit counts we needed. Unfortunately, when we tried to do the same for the first 50 reviews of the paid application review corpus, we were blocked from using the AJAX interface to Google's search engine after 3 queries. Given this unfortunate sequence of events, we were only able to experiment with the hit counts obtained from the free application review corpus.
+Nevertheless, we were able to obtain a small set of data on which we ran experiments. From the first 50 reviews in the free application review corpus, we were able to get some of the hit counts we needed. Of the 50 reviews we wished to analyze, we were able to obtain usable data for 37 of them. It was on this subset of a subset of the test set that we ran our experiment. Unfortunately, when we tried to do the same for the first 50 reviews of the paid application review corpus, we were blocked from using the AJAX interface to Google's search engine after 3 queries. Given this unfortunate sequence of events, we were only able to experiment with the hit counts obtained from the free application review corpus.
 
 To generate star-ratings, we calculated the semantic orientation of each phrase in each review of our small test set. Then, by examining the produced values in a rather unsophisticated fashion, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. These boundary settings are almost guaranteed to not be optimal. The manner in which they are chosen is simple trial and error based on a cursory glance at the semantic orientation values produced and the resulting accuracy of the star ratings produced by previous boundaries with respect to the original author's star-rating. The results of this experiment can be found in Chapter 4.
 
@@ -489,7 +489,7 @@ To generate star-ratings, we calculated the semantic orientation of each phrase 
 
 After discovering that the PMI-IR method was not producing great results, we began looking at offline methods of calculating semantic orientation values. We settled on somehow making use of a corpus in a similar problem domain as the one we were analyzing (\textit{NLTK} \verb|movie_reviews|) to calculate semantic orientation values for words, phrases, and sentences. 
 
-Before using the method outlined in the previous chapter for Corpus-Derived PMI score calculation, however, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to be equally as effective as the PMI-IR appraoch.
+Before using the method outlined in the previous chapter for Corpus-Derived PMI score calculation, however, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to slightly better than the PMI-IR appraoch.
 
 As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
 
@@ -505,16 +505,14 @@ In the first experiment, we set the boundaries for the range of semantic orienta
 
 	\subsection{With SVMs}
 
-In the second experiment, the optimal values for maximizing star-generation accuracy were calculated by SVMs. This boosted the quality of the results significantly. All the constituent elements of the hierarchical classifier combine to produce an excellent star-rating generator. With more time and resources, this method could probably be made competitive.
+In the second experiment, the optimal values for maximizing star-generation accuracy were calculated by SVMs. This boosted the quality of the results significantly. All the constituent elements of the hierarchical classifier combine to produce an excellent star-rating generator. With more time and resources, this method could probably be made competitive. The results we obtained from this experiment were excellent and can be found at the end of Chapter 4.
 
 %%% End Chapter: Experiments
 
 
 \chapter{Results}
 \label{chapter:results}
-	\section{PMI-IR}
-
-Below are the results for the free applications only.
+	\section{Results: PMI-IR}
 
 	\begin{figure}[H]
 	\centering
@@ -523,13 +521,11 @@ Below are the results for the free applications only.
 	\label{fig:pmi-free}
 	\end{figure}
 
-The average absolute error is 2.04 stars.
+The results of our first experiment in which we calculated the semantic orientations of phrases based on Google's search engine hit counts are shown above. As can be seen above, our ability at that point to reasonably match an application reviewer's star-rating was quite poor. The average absolute error was 2.04 stars. This meant that, if the reviewer had rated an application with a 3-star rating, we would, on average, generate a star-rating of 1-star or 5-stars. This is not good.
 
-The results are for Yahoo! and Bing were not kept, and, thus, will not be shown.
+To make sure that the magnitude of the absolute error was not artificial, we went through all the reviews for which our generated star-rating was off by 2 or more star-ratings. The only way in which the absolute error could have been artificial is if there were a significant number of reviews in our small test set of 50 reviews whose star-ratings did not match the sentiment of the review. Unfortunately, this was not the case, Our implementation of the PMI-IR method of generating sentiment scores was simply not good enough.
 
-	\section{PMI-CD}
-
-Below are the results for the free applications.
+	\section{Results: PMI-Concordance}
 	
 	\begin{figure}[H]
 	\centering
@@ -538,9 +534,9 @@ Below are the results for the free applications.
 	\label{fig:pmi-cd-free}
 	\end{figure}
 
-The average absolute error is 1.39 stars.
+The results of our second experiment in which we calculated the semantic orientations of phrases based on the concordance of words in \textit{NLTK}'s \verb|movie_reviews| corpus are shown above and below. Unlike the PMI-IR experiment, we were able to obtain results for 50 full reviews from both the free application review corpus and the paid application review corpus. Thus, the results are a bit more meaningful.
 
-Below are the results for the paid applications.
+Compared to our previous experiment, we were able to match the application reviewer's star-rating much better. It was still nowhere near as good as we would have liked, especially given that the expanded data set we worked with had no incongruities between star-ratings and reviews as before. The average absolute error when generating a star-rating over the subset of free reviews was 1.39 stars. The average absolute error when generating a star-rating over the subset of paid reviews was 1.39 stars.
 	
 	\begin{figure}[H]
 	\centering
@@ -549,22 +545,26 @@ Below are the results for the paid applications.
 	\label{fig:pmi-cd-paid}
 	\end{figure}
 
-The average absolute error is 1.44 stars.
+	\section{Results: PMI-Hierarchical Classification}
 
+	\subsection{Characterisation of Corpora} 
 
-	\section{PMI-CUE}
+In our last set of experiments, we used the entirety of both review corpora to obtain our results. In the process of doing so we characterized the contents of the corpora for the sake of obtaining more accurate results. What follows is our characterization of the test set.
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{data/dist_corpora.png}
+	\caption{The distribution of star-ratings among reviews in each corpus}
+	\label{fig:pmi-hc-corp-dist}
+	\end{figure}
+
+		\subsection{With SVMs}
+		\subsection{Without SVMs}
 
 \begin{verbatim}
 
 --------------------------------------------------------------------------------
 Free Apps
-
-Rating Distribution
-1.0 	#= 80 	%= 6.56275635767
-2.0 	#= 62 	%= 5.08613617719
-3.0 	#= 96 	%= 7.8753076292
-4.0 	#= 224 	%= 18.3757178015
-5.0 	#= 752 	%= 61.6899097621
 
 By-Rating Analysis
 ( 1.0 )
@@ -631,13 +631,6 @@ Calculated Star Rating Success%: 46.5955701395
 
 --------------------------------------------------------------------------------
 Paid Apps
-
-Rating Distribution
-1.0 	#= 350 	%= 19.9771689498
-2.0 	#= 91 	%= 5.19406392694
-3.0 	#= 212 	%= 12.100456621
-4.0 	#= 343 	%= 19.5776255708
-5.0 	#= 751 	%= 42.8652968037
 
 By-Rating Analysis
 ( 1.0 )

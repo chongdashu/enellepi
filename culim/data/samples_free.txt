@@ -1,0 +1,333 @@
+ACCURATE
+---------------------------------------------------------------------------
+~(1.0)~ #5
+[ 611 ]
+- info -
+rating : 1.0
+text : How can you complete all your objectives when it keeps freezing all the time, its annoying pls fix it. If its fixed I will change my ratings to a full 5 stars  Thank you
+title : Waste of Time right now
+
+[ 689 ]
+- info -
+rating : 1.0
+text : I download this game to play it you know? I try to open this game and it just closed out. Honestly, if I could I'd give you no stars. Its frustrating. This is such a good game but I can not play it. Please fix.
+title : Won't open
+
+[ 797 ]
+- info -
+rating : 1.0
+text : For whatever reason, it gets all glitchy on my phone. I don't have any background apps running, but it messes me up every time I try to play. Robot unicorn doesn't get glitchy, nor does doodle jump, so I don't know what's up..
+title : Lag is driving me insane
+
+[ 883 ]
+- info -
+rating : 1.0
+text : Doesn't run well on galaxy s3. Locks up a lot and causes gestures to not respond.
+title : Yep
+
+[ 995 ]
+- info -
+rating : 1.0
+text : Mb so high. Crazy~ And everytime Force close. Sometimes let me lose the game. No good
+title : :-(
+
+
+
+~(2.0)~ #5
+[ 772 ]
+- info -
+rating : 2.0
+text : Initially the game was working beautifully on my S3 but since last week I noticed that the sound and music are not working properly, there is a lag or disruption (the music keeps on breaking up intermittently). Would normally have my 5 stars but this problem is a total turn off for me.
+title : Sound issues on SGS3
+
+[ 871 ]
+- info -
+rating : 2.0
+text : good game but when i slide, jump and turn left or right the actions are delayed so i got dead bcause of tht..and sometimes its freezng, 2 stars for now
+title : delay
+
+[ 899 ]
+- info -
+rating : 2.0
+text : The game was cool until the last two updates. Now it freezes up constantly. Hope there is an update soon.
+title : Needs an update
+
+[ 1108 ]
+- info -
+rating : 2.0
+text : It is fun for a little while then you realize the gas is not gas but a timer and doesn't work properly and the break is not a break but is reverse and that is not good either. Let the fuel gauge be a fuel gauge based on gas , not time. And you need motor vehicles in more tracks. The only thing I use this game force to help put me to bed.
+title : So so
+
+[ 1118 ]
+- info -
+rating : 2.0
+text : Game is fun, for ten maybe fifteen minutes. My touch screen isn't analog so when I press gas or brake its game over and not fun. If their was a better balance for gas and brake, and upgrade made noticeable differences then maybe. Hopefully gets fixed would be a great time sync.
+title : Fun for ten minutes
+
+
+
+~(3.0)~ #5
+[ 934 ]
+- info -
+rating : 3.0
+text : Worked fine when installed. But after some days, there was a lag between the actions and response. The gaming experience was much better in iphone 4S.
+title : The movements lag in S3
+
+[ 971 ]
+- info -
+rating : 3.0
+text : Can't give it 4 Star because it freeze often when I am playing it on my Xperia tipo
+title : Alright but cud do better
+
+[ 1057 ]
+- info -
+rating : 3.0
+text : Ok game. Touchy controls
+title : Bouncy ride
+
+[ 1133 ]
+- info -
+rating : 3.0
+text : Trying to figure out if its a keeper, so far i like It though
+title : New to game...still making up mind
+
+[ 1143 ]
+- info -
+rating : 3.0
+text : i hope that we can earn easy coins here.. coz the cost  of the upgrade for parts is too expensive and to unlock the other stages and vehicles... otherwise its interesting so i'll give this game 3 stars for now...
+title : interesting but
+
+
+
+~(4.0)~ #5
+[ 1161 ]
+- info -
+rating : 4.0
+text : The new motorcycle is too large to fit in the cave tunnels after 1100, you should be able to get alot more $$ per level, other than that absolutely fantastic game.
+title : Caves
+
+[ 1179 ]
+- info -
+rating : 4.0
+text : great fun game.... addictive ... although it takes a long time to build up cash after first levels. but really good fun game
+title : great fun
+
+[ 1194 ]
+- info -
+rating : 4.0
+text : This game is great! It's so addictive! I recommend you get this game. But it does get boring because its so hard but awesome game.still!
+title : This game is great! It's so addictive! I recommend you get this game. But ...
+
+[ 1199 ]
+- info -
+rating : 4.0
+text : fun game great for killing time could do with more upgrades or more varied version of the current upgrades do this and I'll give 5*'s
+title : just a lil more work
+
+
+[ 1214 ]
+- info -
+rating : 4.0
+text : Unlike other car hands out there this is simple fast loading and yet engrossing! Nice game Developers keep it up
+title : Nice car game
+
+
+
+~(5.0)~ #5
+[ 1205 ]
+- info -
+rating : 5.0
+text : This is one of the best games I. Have ever played on a phone! Does not have overly annoying ads, nor does it constantly bug you to play! That being said it is extremely addictive and spend way to much time with nose to the phone playing. I would recomend this game to any and everyone!
+title : Amazing
+
+[ 1206 ]
+- info -
+rating : 5.0
+text : this is the best app on the mkt. I can't put this down it's totally addictive. w/ all the same boring apps out there this is the dload of the year!
+title : this is the best app on the mkt. I can't put this down it's ...
+
+[ 1209 ]
+- info -
+rating : 5.0
+text : Good game, really like that you can upgrade vehicles. Levels can be challenging but easy enough for the beginner.
+title : Great game for killing time!
+
+[ 1216 ]
+- info -
+rating : 5.0
+text : This is one of the best games I. Have ever played on a phone! Does not have overly annoying ads, nor does it constantly bug you to play! That being said it is extremely addictive and spend way to much time with nose to the phone playing. I would recomend this game to any and everyone!
+title : Amazing
+
+[ 1218 ]
+- info -
+rating : 5.0
+text : this is the best app on the mkt. I can't put this down it's totally addictive. w/ all the same boring apps out there this is the dload of the year!
+title : this is the best app on the mkt. I can't put this down it's ...
+---------------------------------------------------------------------------
+
+
+INACCURATE
+---------------------------------------------------------------------------
+~(1.0)~ #5
+[ 641 ]
+- info -
+rating : 1.0
+text : i love this game! i can't download it because an error always comes up, "package file invalid." only began with the new update.
+title : package file invalid.
+
+[ 666 ]
+- info -
+rating : 1.0
+text : But I hve some probs....it slows down always...plzz fix it for htc one v
+title : Awesome....
+
+[ 811 ]
+- info -
+rating : 1.0
+text : I was happy to get this game on the android finally, but when I start playing, it freezes, lags, stutters and skips which makes me die and get a low score. Way better on iPhone.
+title : Bad on android, good on iPhone
+
+[ 917 ]
+- info -
+rating : 1.0
+text : This game is fun but it freezes and my player want move from side to side
+title : Game
+
+[ 1154 ]
+- info -
+rating : 1.0
+text : Game is quite good but I find it locks up and restarts my android pad without even a warning,  which means i keep losing an acrued point and coins. getting very annoyed with it.
+title : Ok but very unstable.
+
+
+
+~(2.0)~ #5
+[ 694 ]
+- info -
+rating : 2.0
+text : It is laging on my tab 2 .. Sometimes i feel horrible plz... Fix this issue ....
+title : Lag lag lot of lags
+
+[ 716 ]
+- info -
+rating : 2.0
+text : Used to play this on iphone and loved it. Have Galaxy Siii now and it totally stinks. Freezes and lags constantly, not even worth trying to play on this system.
+title : Bugs are killing me!
+
+[ 814 ]
+- info -
+rating : 2.0
+text : Fun game, but sometimes it is still loading on startup, so when you try to avoid danger it doesn't register. AND after saving up 10,000 coins by playing multiple games, the so-called "permanent" Resurrection Wings go away after the first use. They should either be cheaper or they should clarify "permanent." Uninstalling.
+title : Meh
+
+[ 913 ]
+- info -
+rating : 2.0
+text : I have the free version and played over 2000 games so far. Can anyone tell me why this game hesitates so much. It will not allow me to achieve 2500 coins.
+title : Temple Run
+
+[ 936 ]
+- info -
+rating : 2.0
+text : I love this game a lot! I'm a big fan and an addict to this game but recently I have been Facing a huge problem now I open this game it doesn't work it opens and then closes straight away I even uninstalled it and then reinstalled it but no difference same thing again help me please I love this can't stay without playing it
+title : Fix it !!!
+
+
+
+~(3.0)~ #5
+[ 894 ]
+- info -
+rating : 3.0
+text : Used to love this game. Now some stupid glitch means that Karma looks like a deformed monkey when jumping - fix her arms please!
+title : Monkey Karma?
+
+[ 947 ]
+- info -
+rating : 3.0
+text : Seems to lag quite frequently. Frustrating being stuck under a million due to lag.
+title : Fun but still needs work
+
+[ 1089 ]
+- info -
+rating : 3.0
+text : The game is a lot of fun but right at strategic times the game closes and all your progress is lost. Please fix!!!
+title : FIX IT!!!
+
+[ 1129 ]
+- info -
+rating : 3.0
+text : Love the game bit the accelerator fails nearly every time I play it bit sometimes itbsoes sometimes it don't??
+title : Gas fails
+
+[ 1160 ]
+- info -
+rating : 3.0
+text : Game crashed and lost all my game data after a couple of hours of playing, which was rather annoying! Still, pretty addictive little game.
+title : Better if it didn't keep crashing
+
+
+
+~(4.0)~ #5
+[ 851 ]
+- info -
+rating : 4.0
+text : Don't waste your coins on switching over to different runners. They don't have any extra feature or power. And don't spend your coins on wallpapers. . Its simply not worth it. Of course. The game is exciting albeit for first few days . Reached 32x and can't avoid skipping . Its just too fast to concentrate .
+title : Bored after 5 days of play.
+
+[ 1131 ]
+- info -
+rating : 4.0
+text : It's a fun and challenging app but loses a star for asking me to rate 1,000 times. I said no and shuldnt be asked again every time i die like its mandary at that point. Lol
+title : Forced to rate
+
+[ 1166 ]
+- info -
+rating : 4.0
+text : I've Maxed out all vehicles including bike. The bike is too wobbly at max and I would like to see a life bar incorporated, as in not ending from one minor neck injury, you'd get a chance to keep going or pick up health at points. Also sucks when you run out of gas in mid air and you're headed for a gas can but the game ends your progress before you reach it.
+title : Fun but has minor issues
+
+[ 1176 ]
+- info -
+rating : 4.0
+text : You should invest in new game modes. Such as a monster chasing you or something have time trials to see how far you can get in a certain time and also maps should get traps or someting to make the game more intresting. Also add customizing cars 2 the scenario I'm sure not everyone wants a jeep, monster truck, and a race car and definitely not just red and orange and even custom character would be nice and i would defiantly give this game five stars,so think about that as you are doing your next upgrade
+title : New game modes
+
+[ 1186 ]
+- info -
+rating : 4.0
+text : So I bought all the cars, upgrades and levels and I have over 17 million coins...now what? Add more levels or even a new car
+title : Now what.....
+
+
+
+~(5.0)~ #5
+[ 658 ]
+- info -
+rating : 5.0
+text : When I reach near 1000 lifetime games the progress gets deleted. I don't know how this happens. Please fix it.
+title : Restarting progress
+
+[ 1181 ]
+- info -
+rating : 5.0
+text : Ya it is cool so far but u need to make the other cars keep records and no lagging issues yet
+title : Ya it is cool so far but u need to make the other cars ...
+
+[ 1187 ]
+- info -
+rating : 5.0
+text : I have some tips for the update can you put new characters and a army jeep vehicle and it has been almost two weeks without a update
+title : new update tips
+
+[ 1189 ]
+- info -
+rating : 5.0
+text : To easy to make money I literally have 3 million dollars that I can't use.
+title : Gets boring
+
+[ 1204 ]
+- info -
+rating : 5.0
+text : This game is awesome but having different vehicals should have the best for each vehical not the best of the stage no matter the vehical. Great updates and looking forward for the next one.
+title : Great game but....
+---------------------------------------------------------------------------
