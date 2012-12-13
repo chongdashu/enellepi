@@ -169,7 +169,7 @@ The text gathered as part of the \textbf{review text} often varies in length (i.
 \label{fig:postags}
 \end{table}
 
-Given the tokenized form of the sentence, we proceed to extract 2-word phrases from the review via pattern matching against a set of phrase patterns, as shown in Table~\ref{fig:postags}. The patterns of POS tags are extended from an original list proposed by Turney~\cite{Turney2001}. Our extensions were required in order to better match style of reviews on the Google Play Store, and also to match the tokens used in the \textit{NLTK} library. One notable addition was the addition of \textit{superlative} adjectives (JJS), which we were emperically found o occur substantially in our dataset, with sentences such as \`` \textit{\dots this game is \textbf{the best} ! \dots}." We also added comparative adjectives (JJS) to our matched tags. Figure~\ref{fig:phrase_extraction} shows the results of our phrase extraction on a user review in our dataset.
+Given the tokenized form of the sentence, we proceed to extract 2-word phrases from the review via pattern matching against a set of phrase patterns, as shown in Table~\ref{fig:postags}. The patterns of POS tags are extended from an original list proposed by Turney~\cite{Turney2001}. Our extensions were required in order to better match style of reviews on the Google Play Store, and also to match the tokens used in the \textit{NLTK} library. One notable addition was the addition of \textit{superlative} adjectives (JJS), which we were emperically found to occur substantially in our dataset, with sentences such as `` \textit{\dots this game is \textbf{the best} ! \dots}." We also added comparative adjectives (JJS) to our matched tags. Figure~\ref{fig:phrase_extraction} shows the results of our phrase extraction on a user review in our dataset.
 
 \begin{figure}[h!]
   \centering
@@ -189,12 +189,12 @@ In order to gain insight regarding the user's sentiment based on his or her revi
 Section~\ref{subsection:phrase_extraction} as a measure of a user's sentiment towards the application. The basis of extracting information from the phrases is derived from the mutual information of the words contained within the phrase, against known words that we identified as having either \textit{positive} or \textit{negative} sentiment polarity. 
 
 \subsection{Pointwise Mutual Information (PMI)}
-The Pointwise Mutual Information (PMI) between two words\cite{church1990}, is defined with the following equation:
+The Pointwise Mutual Information (PMI) between two words \cite{church1990} is defined with the following equation:
 
 % \begin{math}...\end{math}
 \begin{equation*} PMI(word_1, word_2) = \log_2 \left(\frac{Pr[word_1 \: and \: word_2]}{Pr[word_1] \times Pr[word_2]}\right) \end{equation*}
 
-In the equation, the term $Pr[word]$ refers to the probability of the word appearing if we were to sample randomly from a text corpus, while  $Pr[word_1 \: and \: word_2]$ refers to the probability of both words appearing together. The ratio between p(word1 \& word2) and p(word1) p(word2) is thus a measure of the degree of statistical dependence between the words. The log of this ratio is the information gain from one of the words when the other is observed. The PMI score has an additional property in which it assigns a proportionally higher score to the words that appear infrequently in a given corpus, but with a higher likelihood of appearing together in the event they do\cite{Vargas2010}. 
+In the equation, the term $Pr[word]$ refers to the probability of the word appearing if we were to sample randomly from a text corpus, while  $Pr[word_1 \: and \: word_2]$ refers to the probability of both words appearing together. The ratio between p(word1 \& word2) and p(word1) p(word2) is thus a measure of the degree of statistical dependence between the words. The log of this ratio is the information gain from one of the words when the other is observed. The PMI score has an additional property in which it assigns a proportionally higher score to the words that appear infrequently in a given corpus, but with a higher likelihood of appearing together in the event they do. \cite{Vargas2010} 
 
 \subsection{Semantic Orientation}
 The semantic orientation of a given phrase is thus given by the formula:
@@ -211,7 +211,7 @@ The term \textit{NEAR} in the equation above is a search query modifier which on
 
 As a basis for our implementation, we used a similar PMI-IR estimation for semantic orientation of the extracted phrases, but using Google as the search engine of choice, and replacing the \textit{NEAR} operator with Google's corresponding \textit{AROUND(n)} operator (where \text{n} indicates the maximum range of words of which the two items in the search could differ by.)
 
-However, based on our initial findings, we identified two problems with this approach. Firstly, automated queries to Google go against its Terms of Service Agreement. Despite attempts to decrease the likelihood of being detected such as by limiting our queries to a random interval between 10-15 seconds, we got blocked after about 80-100 calls. A survey of other alternative search engines either resulted in similar limits enforced (Bing), or deprecated APIs (Yahoo, Altavista). This made the process a slow and cumbersome endeavour.
+However, based on our initial findings, we identified two problems with this approach. Firstly, automated queries to Google go against its Terms of Service Agreement. Despite attempts to decrease the likelihood of being detected such as by limiting our queries to a random interval between 10-15 seconds, we got blocked after about 50-60 calls. A survey of other alternative search engines either resulted in similar limits enforced (Bing), or deprecated APIs (Yahoo, Altavista). This made the process a slow and cumbersome endeavour.
 
 The second problem was associated with the accuracy of the calculated results, which are outlined in greater detail in Chapter~\ref{chapter:results}. In short, the results failed to convincingly associate phrases with the correct polarity, partly due to the fact that the Google Search API does not actually return accurate values for the number of hits.
 
@@ -220,7 +220,7 @@ In order to find a method of calculating SO scores for phrases quickly, and with
 
 \begin{equation*} SO(word) = \log_2 \left(\frac{Pr_{pos}[word]}{Pr_{neg}[word]}\right) \end{equation*}
 
-Where the term $Pr_{pos}[word]$ is the probability of occurence of the word $word$ using the frequency distribution model acquired from the \textit{positive} corpus. The term $Pr_{pos}[word]$ naturally refers to the corresponding definition associated with the \textit{negative} corpus. We can easily extend this to a phrase with two words, such as ``very annoying" by calculating $SO(``very") + SO(``annoying")$. This allows us to attain values such as $SO(`excellent`")=1.2432$, $SO(``poor")=-0.9219$, $SO(``very \: annoying")=-0.3952$ and $SO(``very \: happy")=0.6716$. Thus, this gives us a nice form in which positive phrases are given positive values, and negative phrases are given negative values. Also, the magnitude of a value indicates a stroner association with the polarity.
+Where the term $Pr_{pos}[word]$ is the probability of occurence of the word $word$ using the frequency distribution model acquired from the \textit{positive} corpus. The term $Pr_{pos}[word]$ naturally refers to the corresponding definition associated with the \textit{negative} corpus. We can easily extend this to a phrase with two words, such as ``very annoying" by calculating $SO(``very") + SO(``annoying")$. This allows us to attain values such as $SO(`excellent`")=1.2432$, $SO(``poor")=-0.9219$, $SO(``very \: annoying")=-0.3952$ and $SO(``very \: happy")=0.6716$. Thus, this gives us a nice form in which positive phrases are given positive values, and negative phrases are given negative values. Also, the magnitude of a value indicates a stronger association with the polarity.
 
 \subsection{Text Semantic Orientation}
 Given that a review text often contains several sentences, which in part contain several phrases which match our phrase patterns, we calculate the semantic orientation of a given text by averaging the semantic orientation values of its constituent matched-phrases. We present the calculation of two reviews from our dataset, one corresponding to a positive user review (Figure~\ref{fig:positive_review}) and another corresponding to a negative user review (Figure~\ref{fig:negative_review}). We illustrate the phrase extracted together with its constituent POS tags and the results of the per-phrase semantic-orientation calculation and overall semantic orientation of the review.
@@ -337,7 +337,7 @@ pprint(bad_free[55])
 \section{Text Polarity}
 \label{section:text_polarity}
 \subsection{Bag of Words}
-A second method into gaining insight into the sentiments expressed within a sentence is to determine its polarity. The polarity may be either \textit{positive} or \textit{negative}, and it treats polarity using the \textbf{Bag of Words} (BOW) model~\cite{harris1954}. In this model, a document is represented by the occurrences of words in it regardless their position in the document. This is implemented with the \textit{NLTK} \verb|movie_reviews| corpus by creating feature vectors based on the appearance of words in each sub-corpus, with each sub-corpus forming a single training instance. We do this separately for both the \textit{oositive} and \textit{negative} categories. 
+A second method into gaining insight into the sentiments expressed within a sentence is to determine its polarity. The polarity may be either \textit{positive} or \textit{negative}, and it treats polarity using the \textbf{Bag of Words} (BOW) model~\cite{harris1954}. In this model, a document is represented by the occurrences of words in it regardless their position in the document. This is implemented with the \textit{NLTK} \verb|movie_reviews| corpus by creating feature vectors based on the appearance of words in each sub-corpus, with each sub-corpus forming a single training instance. We do this separately for both the \textit{positive} and \textit{negative} categories. 
 
 \subsection{Naive Bayes Classifier}
 Classification is then performed by a Naive Bayes classifier~\cite{lewis1998naive, mccallum1998comparison} using the feature vector of word-appearances, using the following approximation:
@@ -386,7 +386,7 @@ u'I was fine with having to exit ads on previous Angry Birds games, but this is 
 \end{figure}
 
 \section{Hierarchical Classification}
-In our implementation, we aimed to provide a way to make use of both the semantic orientation (Section~\ref{section:phrase_sentiment}) and the polarity(Section~\ref{section:text_polarity}) of a user revie in order to generate more accurate reviews on a 5-star rating scale. The approach we took makes use of a \textbf{Hierarchical Classifier}~\cite{ruiz2002hierarchical,sun2001hierarchical}, in which the review to be classified is first classified based on its polarity. Next, we predict the exact star-rating based on the semantic-orientation of the review's extracted phrases.
+In our implementation, we aimed to provide a way to make use of both the semantic orientation (Section~\ref{section:phrase_sentiment}) and the polarity(Section~\ref{section:text_polarity}) of a user review in order to generate more accurate reviews on a 5-star rating scale. The approach we took makes use of a \textbf{Hierarchical Classifier}~\cite{ruiz2002hierarchical,sun2001hierarchical} in which the review to be classified is first classified based on its polarity. Next, we predict the exact star-rating based on the semantic-orientation of the review's extracted phrases.
 
 % Define block styles
 \tikzstyle{decision} = [diamond, draw, fill=blue!20, 
@@ -471,6 +471,31 @@ In our project, we are interested in the use of SVMs to classify a review into m
 
 %%% Begin Chapter: Experiments
 \chapter{Experiments}
+
+For each approach to generating mobile application review star-ratings we implemented, we executed a corresponding experiment. These experiments were knowingly conducted with limited data resources and severe time constraints. Our experimental setup and results should be judged with that in mind. 
+
+As noted in the previous chapter, we obtained two small corpora of Google Play application reviews. One corpus consisted of 1,218 reviews for free applications. The other corpus contained 1,751 reviews for paid applications. The development and test sets used to determine the effectiveness of each star-rating generator were gleaned from these corpora. The actual development and test sets used in each experiment often differed in their precise contents. The results obtained are no less meaningful because of it, however.
+
+\section{Experimental Setup: PMI-IR}
+
+To test the effectiveness of the PMI-IR approach in generating star-ratings, we first had to collect more data than what was at our disposal. For every phrase whose semantic orientation we wanted to analyze, we were required to provide search engine hit counts by the algorithm. We were largely unsuccessful in this endeavor. 
+
+Nevertheless, we were able to obtain a small set of data on which we ran experiments. From the first 50 reviews in the free application review corpus, we were able to get all the hit counts we needed. Unfortunately, when we tried to do the same for the first 50 reviews of the paid application review corpus, we were blocked from using the AJAX interface to Google's search engine after 3 queries. Given this unfortunate sequence of events, we were only able to experiment with the hit counts obtained from the free application review corpus.
+
+To generate star-ratings, we calculated the semantic orientation of each phrase in each review of our small test set. Then, by examining the produced values in a rather unsophisticated fashion, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4.
+
+\section{Experimental Setup: PMI-Concordance}
+
+After discovering that the PMI-IR method was not producing great results, we began looking at offline methods of calculating semantic orientation values. We settled on somehow making use of a corpus in a similar problem domain as the one we were analyzing (\textit{NLTK} \verb|movie_reviews|) to calculate semantic orientation values for words, phrases, and sentences. 
+
+Before using the method outlined in the previous chapter for Corpus-Derived PMI score calculation, however, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to be equally as effective as the PMI-IR appraoch.
+
+As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
+
+\section{Experimental Setup: PMI-Hierarchical Classification}
+	\subsection{Without SVMs}
+	\subsection{With SVMs}
+
 %%% End Chapter: Experiments
 
 
