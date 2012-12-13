@@ -558,6 +558,10 @@ In our last set of experiments, we used the entirety of both review corpora to o
 	\label{fig:pmi-hc-corp-dist}
 	\end{figure}
 
+As shown above, our test set has a tremendous bias in favor of positive reviews. If we were to guess a star-rating between 3 and 5, we would be correct most of the time. It is interesting to note that reviewers seemed more willing to assign 5-star-ratings to free applications and more willing to assign 1-star ratings for paid applications. This may be indicative of how forgiving people are of the quality of an application based on its cost. As the total number of reviews from both corpora numbers only 2,969, it is not really possible to make sweeping sociological remarks based on the figure shown above. 
+
+As our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
+
 		\subsection{With SVMs}
 		\subsection{Without SVMs}
 

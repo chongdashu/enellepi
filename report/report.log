@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  13 DEC 2012 15:23
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  13 DEC 2012 15:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2929,43 +2929,43 @@ File: data/dist_corpora.png Graphic file (type png)
 Package pdftex.def Info: data/dist_corpora.png used on input line 556.
 (pdftex.def)             Requested size: 334.60422pt x 232.9932pt.
  [20 <./data/pmi-cd-paid.pdf>]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 566--566
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 570--570
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
 
-[21 <./data/dist_corpora.png>]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 626--626
+[21 <./data/dist_corpora.png>] [22]
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 630--630
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
 
-[22]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 632--632
+
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 636--636
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
 
 [23]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 692--692
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 696--696
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
 
 
-Overfull \hbox (16.77519pt too wide) in paragraph at lines 696--697
+Overfull \hbox (16.77519pt too wide) in paragraph at lines 700--701
 []\OT1/cmr/m/n/10.95 Below are the re-sults for the free ap-pli-ca-tions af-ter
  train-ing the thresh-olds us-ing SVMs. 
  []
 
 
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 700--700
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 704--704
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
 
 [24]
-Overfull \hbox (41.64134pt too wide) in paragraph at lines 732--732
+Overfull \hbox (41.64134pt too wide) in paragraph at lines 736--736
 []\OT1/cmtt/m/n/10.95 ---------------------------------------------------------
 -----------------------[] 
  []
@@ -2987,14 +2987,11 @@ No file report.bbl.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  17627 strings out of 493633
  330817 string characters out of 3143378
- 722073 words of memory out of 3000000
+ 722076 words of memory out of 3000000
  20545 multiletter control sequences out of 15000+200000
  15585 words of font info for 55 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
@@ -3015,7 +3012,7 @@ xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
 live/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texl
 ive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texli
 ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (29 pages, 437657 bytes).
+Output written on report.pdf (29 pages, 438693 bytes).
 PDF statistics:
  200 PDF objects out of 1000 (max. 8388607)
  138 compressed objects within 2 object streams
