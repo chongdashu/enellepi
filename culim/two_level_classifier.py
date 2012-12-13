@@ -39,11 +39,16 @@ random.shuffle(data_free)
 data_paid = pickle.load(open('data/dataset_paid.dat'))
 random.shuffle(data_paid)
 
+data_accurate_free = pickle.load(open('data/dataset_accurate_free.dat'))
+data_accurate_paid = pickle.load(open('data/dataset_accurate_paid.dat'))
+
 '''
 Create lists of the data, so that it's easier to iterate subsets of them.
 '''
 dataset_free = get_list_from_dictionary(data_free)
 dataset_paid = get_list_from_dictionary(data_paid)
+dataset_accurate_free = get_list_from_dictionary(data_accurate_free)
+dataset_accurate_paid = get_list_from_dictionary(data_accurate_paid)
 
 def analyze(datapoint):
 
@@ -109,6 +114,10 @@ def analyze_all(datasetType):
 		dataset = dataset_free
 	elif datasetType == "paid":
 		dataset = dataset_paid
+	elif datasetType == "accurate_free":
+		dataset = dataset_accurate_free
+	elif datasetType == "accurate_paid":
+		dataset = dataset_accurate_paid
 
 	for datapoint in dataset:
 
