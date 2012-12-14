@@ -237,7 +237,7 @@ In Turney's implementation, he made used of the the words \textit{"excellent"} a
 
 The term \textit{NEAR} in the equation above is a search query modifier which only returns results in which the items are located within a fixed number of words between each other. 
 
-As a basis for our implementation, we used a similar PMI-IR estimation for semantic orientation of the extracted phrases, but using Google as the search engine of choice, and replacing the \textit{NEAR} operator with Google's corresponding \textit{AROUND(n)} operator (where \text{n} indicates the maximum range of words of which the two items in the search could differ by.)
+As a basis for our implementatiiorion, we used a similar PMI-IR estimation for semantic orientation of the extracted phrases, but using Google as the search engine of choice, and replacing the \textit{NEAR} operator with Google's corresponding \textit{AROUND(n)} operator (where \text{n} indicates the maximum range of words of which the two items in the search could differ by.)
 
 However, based on our initial findings, we identified two problems with this approach. Firstly, automated queries to Google go against its Terms of Service Agreement. Despite attempts to decrease the likelihood of being detected such as by limiting our queries to a random interval between 10-15 seconds, we got blocked after about 50-60 calls. A survey of other alternative search engines either resulted in similar limits enforced (Bing), or deprecated APIs (Yahoo, Altavista). This made the process a slow and cumbersome endeavour.
 
@@ -578,7 +578,11 @@ Compared to our previous experiment, we were able to match the application revie
 	\label{fig:pmi-cd-paid}
 	\end{figure}
 
-	\section{Results: Hierarchical Classification}
+\section{Results: PMI-CUE}
+TODO: Graph here.
+TODO: Absolute error here.
+
+\section{Results: Hierarchical Classification}
 
 	\subsection{Characterisation of Corpora} 
 
@@ -609,6 +613,7 @@ In order to accurately generate star-ratings for reviews, we had to be able to a
 	\end{figure}
 
 Since our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
+
 
 \subsection{Classification with Empirically Defined SO-value Thresholds}
 \label{subsection:empirically_defined_so}
