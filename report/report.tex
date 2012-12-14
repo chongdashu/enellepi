@@ -524,8 +524,6 @@ After discovering that the PMI-IR method was not producing great results,
 
 As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
 
-\section{Experimental Setup: PMI-CUE}
-
 \section{Experimental Setup: Hierarchical Classification}
 
 Our best and final approach to generating star-ratings for mobile application reviews was tested the most rigorously. Instead of using small subsets of the free and paid application review corpora as the test sets for this experiments, we used the full corpora themselves. This gives the results of the following two experiments significantly more weight than the previous ones.
@@ -558,6 +556,8 @@ The results of our first experiment in which we calculated the semantic orientat
 
 To make sure that the magnitude of the absolute error was not artificial, we went through all the reviews for which our generated star-rating was off by 2 or more star-ratings. The only way in which the absolute error could have been artificial is if there were a significant number of reviews in our small test set of 50 reviews whose star-ratings did not match the sentiment of the review. Unfortunately, this was not the case, Our implementation of the PMI-IR method of generating sentiment scores was simply not good enough.
 
+\newpage
+
 	\section{Results: PMI-Concordance}
 	
 	\begin{figure}[H]
@@ -567,10 +567,6 @@ To make sure that the magnitude of the absolute error was not artificial, we wen
 	\label{fig:pmi-cd-free}
 	\end{figure}
 
-The results of our second experiment in which we calculated the semantic orientations of phrases based on the concordance of words in \textit{NLTK}'s \verb|movie_reviews| corpus are shown above and below. Unlike the PMI-IR experiment, we were able to obtain results for 50 full reviews from both the free application review corpus and the paid application review corpus. Thus, the results are a bit more meaningful.
-
-Compared to our previous experiment, we were able to match the application reviewer's star-rating much better. It was still nowhere near as good as we would have liked, especially given that the expanded data set we worked with had no incongruities between star-ratings and reviews as before. The average absolute error when generating a star-rating over the subset of free reviews was 1.39 stars. The average absolute error when generating a star-rating over the subset of paid reviews was 1.39 stars.
-	
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{data/pmi-cd-paid.pdf}
@@ -578,9 +574,10 @@ Compared to our previous experiment, we were able to match the application revie
 	\label{fig:pmi-cd-paid}
 	\end{figure}
 
-\section{Results: PMI-CUE}
-TODO: Graph here.
-TODO: Absolute error here.
+The results of our second experiment in which we calculated the semantic orientations of phrases based on the concordance of words in \textit{NLTK}'s \verb|movie_reviews| corpus are shown above. Unlike the PMI-IR experiment, we were able to obtain results for 50 full reviews from both the free application review corpus and the paid application review corpus. Thus, the results are a bit more meaningful.
+
+Compared to our previous experiment, we were able to match the application reviewer's star-rating much better. It was still nowhere near as good as we would have liked, especially given that the expanded data set we worked with had no incongruities between star-ratings and reviews as before. The average absolute error when generating a star-rating over the subset of free reviews was 1.39 stars. The average absolute error when generating a star-rating over the subset of paid reviews was 1.39 stars.
+	
 
 \section{Results: Hierarchical Classification}
 
