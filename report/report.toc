@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {2.4}Text Polarity}{10}
 \contentsline {subsection}{\numberline {2.4.1}Bag of Words}{10}
 \contentsline {subsection}{\numberline {2.4.2}Naive Bayes Classifier}{11}
-\contentsline {section}{\numberline {2.5}Hierarchical Classification}{12}
+\contentsline {section}{\numberline {2.5}Hierarchical Classification}{11}
 \contentsline {subsection}{\numberline {2.5.1}Sentiment Thresholds}{13}
 \contentsline {subsection}{\numberline {2.5.2}Support Vector Machines}{14}
 \contentsline {chapter}{\numberline {3}Experiments}{15}
@@ -31,13 +31,17 @@
 \contentsline {chapter}{\numberline {4}Results}{18}
 \contentsline {section}{\numberline {4.1}Results: PMI-IR}{18}
 \contentsline {section}{\numberline {4.2}Results: PMI-Concordance}{19}
-\contentsline {section}{\numberline {4.3}Results: PMI-Hierarchical Classification}{20}
+\contentsline {section}{\numberline {4.3}Results: Hierarchical Classification}{20}
 \contentsline {subsection}{\numberline {4.3.1}Characterisation of Corpora}{20}
-\contentsline {subsection}{\numberline {4.3.2}Without SVMs}{23}
-\contentsline {subsection}{\numberline {4.3.3}With SVMs}{24}
-\contentsline {chapter}{\numberline {5}Analysis}{25}
-\contentsline {section}{\numberline {5.1}PMI-IR}{25}
-\contentsline {section}{\numberline {5.2}PMI-Concordance}{25}
-\contentsline {section}{\numberline {5.3}PMI-CUE}{25}
-\contentsline {chapter}{\numberline {6}Conclusion}{26}
-\contentsline {chapter}{\numberline {A}Datasets}{27}
+\contentsline {subsection}{\numberline {4.3.2}Classification with SO-value Thresholds}{24}
+\contentsline {subsection}{\numberline {4.3.3}Classification using Support Vector Machines}{25}
+\contentsline {subsubsection}{Unfiltered Datasets}{25}
+\contentsline {subsubsection}{Filtered Datasets}{25}
+\contentsline {subsection}{\numberline {4.3.4}Without SVMs}{26}
+\contentsline {subsection}{\numberline {4.3.5}With SVMs}{26}
+\contentsline {chapter}{\numberline {5}Analysis}{28}
+\contentsline {section}{\numberline {5.1}PMI-IR}{28}
+\contentsline {section}{\numberline {5.2}PMI-Concordance}{28}
+\contentsline {section}{\numberline {5.3}PMI-CUE}{28}
+\contentsline {chapter}{\numberline {6}Conclusion}{29}
+\contentsline {chapter}{\numberline {A}Datasets}{30}
