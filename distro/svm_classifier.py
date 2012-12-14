@@ -20,8 +20,8 @@ Do 'pprint' to pretty print things.
 pp = pprint.PrettyPrinter()
 pprint = pp.pprint
 
-results_free = pickle.load(open('results/results_free.dat'))
-results_paid = pickle.load(open('results/results_paid.dat'))
+results_free = pickle.load(open('backup_results/results_free.dat'))
+results_paid = pickle.load(open('backup_results/results_paid.dat'))
 
 #results_accurate_free = pickle.load(open('results/results_accurate_free.dat'))
 #results_accurate_paid = pickle.load(open('results/results_accurate_paid.dat'))
