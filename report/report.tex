@@ -838,7 +838,33 @@ The following are some examples of cases where user ratings do not match the con
 There is an often unaddressed need to make sure that customers classify their reviews correctly. There are reviewers out there who, for whatever reason, incorrectly assign their reviews for a product or service a much higher or lower rating than the meat of their review would have you believe is deserved. There is a sizable body of published work out there that describe projects with the aim of determining whether or not a review is positive or negative based on the underlying sentiment of text. In that body of literature, there are very few endeavors that seek to classify a passage of text as positive, negative or neutral. We sought to do much more than that. We sought to classify reviews along the 5-star spectrum. Not only that, but we strove to make the star-ratings we generated classify the reviews better than star-ratings that reviewers themselves assigned. This was a large undertaking and, given the constraints on this work, we obtianed reasonable results. We tried many methods of generating star-ratings and stumbled upon one that works quite well. Our moderate success shows that this direction holds promise, and our pitfalls showed that there is much more work to be done and avenues to be explored. 
 
 \section{Limitations \& Future Work}
+In this section, we outline aspects of the project that could be extended upon and how we hypothesize they would improve results. 
+\subsection{Improving Polarity Detection}
+The first step in the hierarchical classification is to detect the polarity of the review text in question into \textit{positive} or \textit{negative}. As we showcased, this step is important as it also determines the subsequent SVM model used to classify the review into exact star-ratings.
+\subsubsection{More Features for Naive Bayes Polarity Classifier}
+ In our implementation, we made use of a Bag-of-Words (BOW) model over feature sets created from the \textit{NLTK} \verb|movie_reviews| corpus. However, we suspect that using other features to classify the polarity of the text might work better, such as using the length of the text, number of fully-capitalized words and number of exclamation marks used. We could create feature vectors of each of these individual features and train them on the corpus. This would likely improve polarity detection.
+\subsection{Improving Semantic-Orientation Estimation}
+Semantic-orientation (SO) is based on the Pointwise Mutual Information (PMI) values, which have been shown to be difficult to calculate and require estimators. We implemented and show-cased online methods (PMI-IR), and offline methods (PMI-Concordance, PMI-CUE). The PMI-IR method outlined has had positive results, but is limited due to restrictions placed by search engine providers and also by the lack of transparency required to verify the accuracy of the results. The PMI-Concordance method showed positive results,  but runs slowly. The PMI-CUE method showed the most promise in terms of accuracy and speed.
+\subsubsection{Using n-gram Models}
+The PMI-CUE method of estimating the SO-values lies on creating probability distributions on words. However, it does not take into account the order of the words, so \verb|SO("very", "annoying")| and \verb|SO("annoying", "very")| will return the same results. It also assumes independence of the words appearing together. By using a bigram or trigram model, we would be able to take word order into account, and also have a better approximation of the co-occurrences of each phrase consisting of 2 words.
 
+\subsection{Improving SVM classification}
+The Support Vector Machines (SVM) were used to identify the exact star-ratings based on the SO-values of a given text. However, we noted that the SO-values did not have a distinct enough variation in order to accurately distinguish between some of the star-ratings.
+
+\subsubsection{Richer Features}
+Instead of just using the SO-value of the text as the only feature set, we could also take into account the SO-value of the title, and other aspects of a review into having a richer feature set. We suspect that this would enable the classifiers to distinguish between two star-ratings on the same side of polarity with much greater accuracy.
+
+\subsection{Better Datasets}
+The system structure relies heavily on the availability of datasets in order to work well. We outline some aspects of data collection which would likely improve ease and accuracy of the results.
+
+\subsubsection{Easier Collection Methods}
+It would be ideal if the Google Play Store provided official APIs to enable us to query and extract information from their store. Manual collection is slow, and results in a much smaller set of data due to time and logistical constraints. 
+
+\subsubsection{Less Noise}
+As outlined, some of the reviews by users have huge discrepancies in their assigned star-ratings and the contents and sentiments of their reviews. This makes testing and validation difficult under time and logistical constraints. 
+
+\section{Closing Remarks}
+Sentiment analysis of text is a difficult task, more so in the context of user reviews. The language used by reviewers varies greatly across domains, making it difficult to have a single system or method of analyzing sentiments. However, we have showcased a framework which has positive results, which can also be naturally extended to fit reviews across different domains. We achieved excellent progress in determining sentiment and polarity, both using supervized and unsupervized methods. We expect that the system and results shown will aid in improving the fields of sentiment analysis for the future.
 
 %\bibliographystyle{plain}
 \bibliographystyle{ieeetr}
