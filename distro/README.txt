@@ -27,7 +27,13 @@ Result:
 --------
 Two files containing all the information will be placed in the ./results folder.
 	- results/results_free.dat
-	- results/d.dat
+	- results/results_paid.dat
+
+Note:
+--------
+Because the classifier in this case uses SVMs from the scikit-learn package, 
+in the event trouble is encountered with producing the resulting .dat files, 
+we have provided the .dat files in the folder /backup_results/
 
 ---------------------------------------------------------------------------
 Step 2:

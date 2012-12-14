@@ -1,0 +1,1 @@
+Output directory for the results_free.dat and results_paid.dat files.
