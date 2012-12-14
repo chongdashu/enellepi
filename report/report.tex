@@ -8,6 +8,7 @@
 
 \usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 \usepackage{float}
+\usepackage{tabularx}
 
 %%% Examples of Article customizations
 % These packages are optional, depending whether you want the features they provide.
@@ -778,9 +779,30 @@ As far as we know, the PMI-Concordance method is also a perfectly reasonable met
 TODO: fill it in
 	\section{Noisy Training and Test Data}
 \subsection{Inconsistent Reviews and Ratings from Users}
-TODO: Examples are present in  \verb|datasets/datadataset_inaccurate_free.dat| and \verb|data/dataset_inaccurate_paid.dat|, talk about how the training set contains unfiltered reviews where the star-ratings and reviews don't seem to make logical sense. Explain that this is a naturally difficult problem which can only be solved by spending time annotating and filtering "correct" reviews. Give 1-2 examples of 5-star ratings given to poor reviews, etc.
+
+One difficulty in learning from training examples, and one of the motivations of this work is that the users often give star ratings that do not match their text review. This adds noise to the training set, making accurate prediction very difficult. The only sure way around this is to carefully hand-tag the reliable reviews in the training set. Features such as \'Was this review helpful?\' implemented in Amazon and few other review sites might help in determining the stable training sets, as this feature will allow the system to recognize reviews with less noise. But there was no such feature in the Google app store.
+
+The following are some examples of cases where user ratings do not match the contents.
+
+\begin{table}[h]
+	\centering
+    \begin{tabularx}{\textwidth}{ l | l | l |  l | X}
+    \hline\hline
+		Price  & Index & User Rating & Title & Text Review\\ 
+    \hline
+		Paid & 1678 & 5.0 & It won't work & I can click on app but it.just flashes the screen then nothing doesn't go into app...maybe my phone but idk... but whatev i got.it for .99 pennies ...save.for when i get tablet... skeet skeet skeet \\
+		Paid & 1143 & 2.0 & One of the best & Entertaining and fun I always play it. Its worth the money \\
+		Free & 1189 & 5.0 & Gets boring & To easy to make money I literally have 3 million dollars that I can't use. \\
+		Free & 666 & 1.0 & Awesome.... & But I hve some probs....it slows down always...plzz fix it for htc one v \\
+    \hline
+    \end{tabularx}
+\caption{Examples of user rating/content mismatch}
+\label{fig:postags}
+\end{table}
+
 \subsection{Inconsistent Review Text and Review Title}
 TODO: Another example talking about how just with the text and title, there are already huge discrepancies.
+FIXME: I couldn't find much examples of this. Have you seen any?
 
 \chapter{Conclusion}
 

@@ -6,8 +6,6 @@ import random
 import math
 import nltk
 
-from nltk.classify.svm import SvmClassifier
-from nltk.classify import NaiveBayesClassifier
 from sklearn import svm
 from sklearn import cross_validation
 from sklearn import metrics
@@ -25,8 +23,8 @@ pprint = pp.pprint
 results_free = pickle.load(open('results/results_free.dat'))
 results_paid = pickle.load(open('results/results_paid.dat'))
 
-results_accurate_free = pickle.load(open('results/results_accurate_free.dat'))
-results_accurate_paid = pickle.load(open('results/results_accurate_paid.dat'))
+#results_accurate_free = pickle.load(open('results/results_accurate_free.dat'))
+#results_accurate_paid = pickle.load(open('results/results_accurate_paid.dat'))
 
 classifier_free_pos = pickle.load(open('models/cls_free_pos.model'))
 classifier_free_neg = pickle.load(open('models/cls_free_neg.model'))

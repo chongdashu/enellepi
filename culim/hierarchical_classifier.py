@@ -44,6 +44,9 @@ random.shuffle(data_paid)
 data_accurate_free = pickle.load(open('data/dataset_accurate_free.dat'))
 data_accurate_paid = pickle.load(open('data/dataset_accurate_paid.dat'))
 
+data_inaccurate_free = pickle.load(open('data/dataset_inaccurate_free.dat'))
+data_inaccurate_paid = pickle.load(open('data/dataset_inaccurate_paid.dat'))
+
 '''
 Create lists of the data, so that it's easier to iterate subsets of them.
 '''
@@ -51,6 +54,8 @@ dataset_free = get_list_from_dictionary(data_free)
 dataset_paid = get_list_from_dictionary(data_paid)
 dataset_accurate_free = get_list_from_dictionary(data_accurate_free)
 dataset_accurate_paid = get_list_from_dictionary(data_accurate_paid)
+dataset_inaccurate_free = get_list_from_dictionary(data_inaccurate_free)
+dataset_inaccurate_paid = get_list_from_dictionary(data_inaccurate_paid)
 
 def analyze(datapoint):
 
@@ -104,6 +109,10 @@ def analyze_all(datasetType):
 		dataset = dataset_accurate_free
 	elif datasetType == "accurate_paid":
 		dataset = dataset_accurate_paid
+	elif datasetType == "inaccurate_free":
+		dataset = dataset_inaccurate_free
+	elif datasetType == "inaccurate_paid":
+		dataset = dataset_inaccurate_paid
 
 	for datapoint in dataset:
 
@@ -140,3 +149,13 @@ def analyze_all_free():
 
 def analyze_all_paid():
 	return analyze_all("paid")
+
+def inaccurate_all_free(strr):
+	res = analyze_all(strr);
+	for r in res:
+		print r['original_index'], r['rating-user'], r['rating-calculated'], r['title'], "__", r['text']
+
+def accurate_all_free():
+	res = analyze_all("accurate_free");
+	for r in res:
+		print r['rating-user'], r['rating-calculated']
