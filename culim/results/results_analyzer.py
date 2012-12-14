@@ -98,9 +98,8 @@ def analyze_all_by_user_rating():
 		print "Average Semantic Orientation      : ", analysis_struct[analysis_keys[i]]['so'] * 1.0 / dist[analysis_keys[i]]
 		print "Percantage of Good Ratings        : ", analysis_struct[analysis_keys[i]]['num_hits'] * 100.0 / dist[analysis_keys[i]], "%"
 		print "\n"
-		
-	print "Calculated Star Rating Success%:", num_hits * 100.0 / len(data)
-	
+
+	print "Calculated Star Rating Success%:", num_hits * 100.0 / len(data)	
 	print ""
 	print "index", "\t", "old *-val", "\t", "new *-val", "\t", "delta"
 	delta_table = get_delta_table()
