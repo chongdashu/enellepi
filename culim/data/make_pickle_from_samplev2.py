@@ -7,7 +7,7 @@ if sys.argv[1] < 3:
 	print "USAGE: ./make_pickle_from_sample.py sample_file1 sample_file2"
 
 x = pickle.load(open('dataset_free.dat'))
-y = pickle.load(open('dataset_free.dat'))
+y = pickle.load(open('dataset_paid.dat'))
 
 f1 = open(sys.argv[1], 'r')
 f2 = open(sys.argv[2], 'r')
@@ -63,18 +63,18 @@ for i in range(2, len(f2_lines)):
 		f2_line = f2_line.split(' ')
 		index = int(f2_line[1])
 		if accuracy_switch:
-			f2_accurate.append(i)
+			f2_accurate.append(index)
 		else:
-			f2_inaccurate.append(i)
-			
+			f2_inaccurate.append(index)
+		
 f2_accurate_words = {}
-for i in range(len(x)):
-	if x[i]['original_index'] in f2_accurate:
-		f1_accurate_words[ x[i]['original_index'] ] = x[i]
+for i in range(len(y)):
+	if y[i]['original_index'] in f2_accurate:
+		f2_accurate_words[ y[i]['original_index'] ] = y[i]
 f2_inaccurate_words = {}
-for i in range(len(x)):
-	if x[i]['original_index'] in f2_inaccurate:
-		f2_inaccurate_words[ x[i]['original_index'] ] = x[i]
+for i in range(len(y)):
+	if y[i]['original_index'] in f2_inaccurate:
+		f2_inaccurate_words[ y[i]['original_index'] ] = y[i]
 
 pickle.dump(f2_accurate_words, open('dataset_accurate_paid.dat', 'w'))
 pickle.dump(f2_inaccurate_words, open('dataset_inaccurate_paid.dat', 'w'))
