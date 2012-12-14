@@ -762,8 +762,7 @@ As far as we know, the PMI-IR method is a perfectly reasonable method for genera
 
 	\section{PMI-Concordance}
 
-Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
-We did better with this approach than the previous one but it still was not good enough.
+As far as we know, the PMI-Concordance method is also a perfectly reasonable method for generating star-ratings. When the PMI-IR method did not pan out, we decided to try to replace hit counts for concordance values. To keep the amount of time it took to calculate the semantic orientation for a single word based on concordance low, we only considered the first 20 or so occurences of a word whose semantic orientation we were calculating in \textit{NLTK} 's \verb|movie_review| database. The window of words we used around the word whose semantic orientation we were calculating was only about 20 words in either direction. Perhaps if we had used all occurences of a word in the movie reviews and a window of words that spanned the whole corpus, we would have been able to produce better results. Such an approach would have been prohibitively time-consuming, however. As we did not obtain good results by using this method to generate star-ratings, we discarded it in favor of another. 
 
 	\section{PMI-Hierarchical Classification}
 
