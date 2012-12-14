@@ -48,6 +48,8 @@ for i in range(2, len(f1_lines)):
 pickle.dump(f1_accurate, open('dataset_accurate_free.dat', 'w'))
 pickle.dump(f1_inaccurate, open('dataset_inaccurate_free.dat', 'w'))
 
+accuracy_switch = True
+cur_star_rating = 0.0
 for i in range(2, len(f2_lines)):
 
 	f2_line = f2_lines[i].rstrip()

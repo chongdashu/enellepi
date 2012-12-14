@@ -33,11 +33,11 @@
 \contentsline {section}{\numberline {4.2}Results: PMI-Concordance}{19}
 \contentsline {section}{\numberline {4.3}Results: PMI-Hierarchical Classification}{20}
 \contentsline {subsection}{\numberline {4.3.1}Characterisation of Corpora}{20}
-\contentsline {subsection}{\numberline {4.3.2}With SVMs}{21}
-\contentsline {subsection}{\numberline {4.3.3}Without SVMs}{21}
-\contentsline {chapter}{\numberline {5}Analysis}{26}
-\contentsline {section}{\numberline {5.1}PMI-IR}{26}
-\contentsline {section}{\numberline {5.2}PMI-CD}{26}
-\contentsline {section}{\numberline {5.3}PMI-CUE}{26}
-\contentsline {chapter}{\numberline {6}Conclusion}{27}
-\contentsline {chapter}{\numberline {A}Datasets}{28}
+\contentsline {subsection}{\numberline {4.3.2}Without SVMs}{23}
+\contentsline {subsection}{\numberline {4.3.3}With SVMs}{24}
+\contentsline {chapter}{\numberline {5}Analysis}{25}
+\contentsline {section}{\numberline {5.1}PMI-IR}{25}
+\contentsline {section}{\numberline {5.2}PMI-Concordance}{25}
+\contentsline {section}{\numberline {5.3}PMI-CUE}{25}
+\contentsline {chapter}{\numberline {6}Conclusion}{26}
+\contentsline {chapter}{\numberline {A}Datasets}{27}

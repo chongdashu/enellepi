@@ -121,7 +121,7 @@ Accurate customer feedback is much sought after by commercial enterprises. The i
 
 One well-established format for customer reviews is that of five-star ratings paired with short text reviews. Feedback in this form allows a customer to both give an overall rating for a product/service and provide meaningful commentary about the product/service. Unfortunately, a problem related to the accuracy of the reviews comes up when feedback is formatted this way. A particular star rating can mean completely different things to two different customers. For example, suppose there is one customer who sees the world in black and white and another customer who sees the world along the full five-star gradient. A one-star review from the first customer could mean anything between minor dislike and absolute hatred. The content of his/her text review would likely shed light on that. A one-star review from the second customer would definitely indicate absolute hatred. Though this example is quite extreme, it illustrates a flaw inherent to this system of obtaining feedback: some star ratings will not match the corresponding sentiment seen in the accompanying text commentary. For a commercial enterprise looking to collect accurate feedback from its customer reviews, this should be a matter of much concern.
 
-To acquire more accurate information from customer feedback, we propose the removal of five-star ratings from these review formats entirely. Instead, we propose that the star ratings be generated in a uniform fashion from the sentiment of the text commentary. To  realize this proposal, we created a analyzes customer reviews of mobile applications from the Google Play store.
+To acquire more accurate information from customer feedback, we propose the removal of five-star ratings from these review formats entirely. Instead, we propose that the star ratings be generated in a uniform fashion from the sentiment of the text commentary.
 
 \section{Contributions}
 
@@ -558,144 +558,38 @@ In our last set of experiments, we used the entirety of both review corpora to o
 	\label{fig:pmi-hc-corp-dist}
 	\end{figure}
 
-As shown above, our test set has a tremendous bias in favor of positive reviews. If we were to guess a star-rating between 3 and 5, we would be correct most of the time. It is interesting to note that reviewers seemed more willing to assign 5-star-ratings to free applications and more willing to assign 1-star ratings for paid applications. This may be indicative of how forgiving people are of the quality of an application based on its cost. As the total number of reviews from both corpora numbers only 2,969, it is not really possible to make sweeping sociological remarks based on the figure shown above. 
+As shown above, our test set has a tremendous number of positive reviews. If we were to guess a star-rating between 3 and 5, we would be correct most of the time. It is interesting to note that reviewers seemed more willing to assign 5-star-ratings to free applications and more willing to assign 1-star ratings for paid applications. This may be indicative of how forgiving people are of the quality of an application based on its cost. As the total number of reviews from both corpora numbers only 2,969, it is not really possible to make sweeping sociological remarks based on the figure shown above. 	
 
-As our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{data/pmi-cue-free-pol-acc.png}
+	\caption{Accuracy with which different indicators produced correct review polarity from free app corpus.}
+	\label{fig:pmi-cue-free-pol-acc}
+	\end{figure}
 
-		\subsection{With SVMs}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{data/pmi-cue-paid-pol-acc.png}
+	\caption{Accuracy with which different indicators produced correct review polarity from paid app corpus.}
+	\label{fig:pmi-cue-paid-pol-acc}
+	\end{figure}
+
+In order to accurately generate star-ratings for reviews, we had to be able to accurately determine the polarity of a review. To determine the best indicator of a review's polarity, we compared the star-rating assigned by the reviewer to four different indicators: the polarity of a review's title, the polarity of a review's text, the polarity of both the review's title and text if they were the same, and the calculated semantic orientation of the review's text. As shown above, the polarity of a review's text is the best indicator on average of a review's polarity. At first, we mistakenly believed that the title was a better indicator of the overall polarity of a review, but, after collecting and analyzing the data, we came to the correct conclusion. The result was a much better star-rating generator. 
+
+Since our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
+
 		\subsection{Without SVMs}
 
-\begin{verbatim}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{data/pmi-cue-accuracy.png}
+	\caption{Accuracy of generated star-ratings w.r.t star-ratings of original reviewers.}
+	\label{fig:pmi-cue-acc}
+	\end{figure}
 
---------------------------------------------------------------------------------
-Free Apps
+The results shown above were obtained as described in Section 2.5.1. The polarity of each review was determined by the polarity of review's text and the threshold values for the star ratings were obtained via the same crude method used in previous experiments. The results above show a clear, vast improvement over our other attempts to generate star-ratings. Without using SVMs we acheived an accuracy of 46.6\% for the free applications and 47.7\% for the paid applications.  
 
-By-Rating Analysis
-( 1.0 )
-# Correct Title      Polarizations:  23 	28.75 %
-# Correct Text       Polarizations:  45 	56.25 %
-# Correct Title/Text Polarizations:  16 	20.0 %
-# Correct w.r.t. SO  Polarizations:  47 	58.75 %
-Minimum Semantic Orientation      :  -4.10800522164
-Maximum Semantic Orientation      :  4.32499847078
-Average Semantic Orientation      :  -0.11806191259
-Percantage of Good Ratings        :  47.5 %
-
-
-( 2.0 )
-# Correct Title      Polarizations:  20 	32.2580645161 %
-# Correct Text       Polarizations:  28 	45.1612903226 %
-# Correct Title/Text Polarizations:  11 	17.7419354839 %
-# Correct w.r.t. SO  Polarizations:  34 	54.8387096774 %
-Minimum Semantic Orientation      :  -7.89135107031
-Maximum Semantic Orientation      :  0.85747362778
-Average Semantic Orientation      :  -0.646424002864
-Percantage of Good Ratings        :  83.8709677419 %
-
-
-( 3.0 )
-# Correct Title      Polarizations:  63 	65.625 %
-# Correct Text       Polarizations:  55 	57.2916666667 %
-# Correct Title/Text Polarizations:  39 	40.625 %
-# Correct w.r.t. SO  Polarizations:  54 	56.25 %
-Minimum Semantic Orientation      :  -5.30069117426
-Maximum Semantic Orientation      :  1.82577891005
-Average Semantic Orientation      :  -0.183704238283
-Percantage of Good Ratings        :  71.875 %
-
-
-( 4.0 )
-# Correct Title      Polarizations:  150 	66.9642857143 %
-# Correct Text       Polarizations:  147 	65.625 %
-# Correct Title/Text Polarizations:  91 	40.625 %
-# Correct w.r.t. SO  Polarizations:  114 	50.8928571429 %
-Minimum Semantic Orientation      :  -4.81854773522
-Maximum Semantic Orientation      :  7.18992078279
-Average Semantic Orientation      :  0.130427122314
-Percantage of Good Ratings        :  75.8928571429 %
-
-
-( 5.0 )
-# Correct Title      Polarizations:  570 	75.7978723404 %
-# Correct Text       Polarizations:  509 	67.6861702128 %
-# Correct Title/Text Polarizations:  400 	53.1914893617 %
-# Correct w.r.t. SO  Polarizations:  493 	65.5585106383 %
-Minimum Semantic Orientation      :  -8.19453865845
-Maximum Semantic Orientation      :  9.47057572679
-Average Semantic Orientation      :  0.114342450064
-Percantage of Good Ratings        :  31.7819148936 %
-
-
-Calculated Star Rating Success%: 46.5955701395
---------------------------------------------------------------------------------
-
-\end{verbatim}
-
-\begin{verbatim}
-
---------------------------------------------------------------------------------
-Paid Apps
-
-By-Rating Analysis
-( 1.0 )
-# Correct Title      Polarizations:  144 	41.1428571429 %
-# Correct Text       Polarizations:  194 	55.4285714286 %
-# Correct Title/Text Polarizations:  70 	20.0 %
-# Correct w.r.t. SO  Polarizations:  170 	48.5714285714 %
-Minimum Semantic Orientation      :  -8.29669100827
-Maximum Semantic Orientation      :  8.47343869582
-Average Semantic Orientation      :  -0.16184925747
-Percantage of Good Ratings        :  44.8571428571 %
-
-
-( 2.0 )
-# Correct Title      Polarizations:  46 	50.5494505495 %
-# Correct Text       Polarizations:  46 	50.5494505495 %
-# Correct Title/Text Polarizations:  27 	29.6703296703 %
-# Correct w.r.t. SO  Polarizations:  37 	40.6593406593 %
-Minimum Semantic Orientation      :  -7.43835455131
-Maximum Semantic Orientation      :  4.51920906072
-Average Semantic Orientation      :  -0.174449181627
-Percantage of Good Ratings        :  79.1208791209 %
-
-
-( 3.0 )
-# Correct Title      Polarizations:  145 	68.3962264151 %
-# Correct Text       Polarizations:  131 	61.7924528302 %
-# Correct Title/Text Polarizations:  82 	38.679245283 %
-# Correct w.r.t. SO  Polarizations:  121 	57.0754716981 %
-Minimum Semantic Orientation      :  -3.6766697051
-Maximum Semantic Orientation      :  4.41430787775
-Average Semantic Orientation      :  0.0859199580954
-Percantage of Good Ratings        :  70.2830188679 %
-
-
-( 4.0 )
-# Correct Title      Polarizations:  192 	55.9766763848 %
-# Correct Text       Polarizations:  224 	65.306122449 %
-# Correct Title/Text Polarizations:  129 	37.6093294461 %
-# Correct w.r.t. SO  Polarizations:  206 	60.0583090379 %
-Minimum Semantic Orientation      :  -4.25449167662
-Maximum Semantic Orientation      :  9.47057572679
-Average Semantic Orientation      :  0.187845557391
-Percantage of Good Ratings        :  71.7201166181 %
-
-
-( 5.0 )
-# Correct Title      Polarizations:  511 	68.0426098535 %
-# Correct Text       Polarizations:  502 	66.844207723 %
-# Correct Title/Text Polarizations:  341 	45.4061251664 %
-# Correct w.r.t. SO  Polarizations:  420 	55.9254327563 %
-Minimum Semantic Orientation      :  -7.96369454305
-Maximum Semantic Orientation      :  8.32073661216
-Average Semantic Orientation      :  0.110658084853
-Percantage of Good Ratings        :  28.0958721704 %
-
-
-Calculated Star Rating Success%: 47.6598173516
---------------------------------------------------------------------------------
-
-\end{verbatim}
+		\subsection{With SVMs}
 
 Below are the results for the free applications after training the thresholds using SVMs.
 
@@ -739,11 +633,9 @@ Accuracy: 0.79 (+/- 0.00)
 \chapter{Analysis}
 	\section{PMI-IR}
 
-Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
-The great success of this was discovering that it was not a good choice for a fast
-project.
+As far as we know, the PMI-IR method is a perfectly reasonable method for generating star-ratings. Unfortunately, the tiny amount of data we were able to obtain did not provide us with enough data to make a good model for generating star-ratings accurately. Previous work has shown that this method produces promising results \cite{Turney2001}. This work was performed almost a decade ago, however, and search engines have become far more sensitive to automatic queries. To collect enough data to accurately assess and use the PMI-IR method would require either intimate access to a search engine's inner workings or enough time to manually obtain all the hit counts required from the browser interface to a search engine. Either way, this method was not a good fit for our project and it was good that we discovered this early.
 
-	\section{PMI-CD}
+	\section{PMI-Concordance}
 
 Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
 We did better with this approach than the previous one but it still was not good enough.
