@@ -149,8 +149,16 @@ been explored in depth~\cite{Pang+Lee:05a}.
 
 
 \section{Contributions}
+In this project, we present the system design, results and analysis of various methods, and as a result, make the following contributions:
+\begin{itemize}
+	\item A method of extracting datasets of user reviews for top free and top paid applications from the Google Play Store despite the lack of an available official application programming interface (API).
+	\item An unsupervized method of determining sentiment of a user review by extracting POS-tagged phrases based on 2-word phrase patterns.
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the concordance information of the respective words and phrases within a given corpus. (PMI-Concordance)
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the underlying frequency distribution of words in a given corpus. (PMI-CUE)
+	\item A application of the above methods in a  hierarchical classifier in order to perform sentiment analysis and accurately predict the star-ratings of user reviews in a new domain and actively growing domain -- namely the Google Play Store for Mobile Applications.
+\end{itemize}
 
-In this work, we explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the PMI-IR method in the context of movie reviews.
+We explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the previously work in unsupervized sentiment analysis (PMI-IR on movie reviews).
 
 %%% BEGIN Chapter: Design
 \chapter{Design}
