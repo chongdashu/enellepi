@@ -746,47 +746,6 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 \paragraph{Overall Performance}
 We obtained 4 different classifiers by using the trained SVMs, resulting in two hierarchical classifiers per application group (free/paid). We then ran similar benchmarks to those performed on the empirically defined SO-threshold hierarchical classifier from Section~\ref{subsection:empirically_defined_so}. We achieved improved accuracy rates of 60.1\% for free applications and 55.1\% for paid applications. It is noted that our classifier performs best near the extremities of the star-rating scale, with few 3-star rating reviews correctly identified.
 
-\begin{comment}
-Below are the results for the free applications after training the thresholds using SVMs.
-
-\begin{verbatim}
-
---------------------------------------------------------------------------------
-Free Apps
-
------------------------------------------
-Assuming we correctly classify the the positive reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.70 (+/- 0.00)
-
------------------------------------------
-Assuming we correctly classify the the negative reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.58 (+/- 0.03)
-
-Paid Apps
------------------------------------------
-Assuming we correctly classify the the positive reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.57 (+/- 0.00)
-
------------------------------------------
-Assuming we correctly classify the the negative reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.79 (+/- 0.00)
-
---------------------------------------------------------------------------------
-\end{verbatim}
-\end{comment}
-
 \section{Selected Examples}
 \subsection{Star-rating Prediction on Filtered Dataset}
 TODO: Filtered dataset refer to \verb|datasets/datadataset_accurate_free.dat| and \verb|data/dataset_accurate_paid.dat|, and mean that they have consistent and logical review-text to star-ratings. We need to show case a 1-star review and 5-star review and how the polarity and so and classification accurately predicts the star rating.
@@ -799,10 +758,6 @@ As far as we know, the PMI-IR method is a perfectly reasonable method for genera
 	\section{PMI-Concordance}
 
 As far as we know, the PMI-Concordance method is also a perfectly reasonable method for generating star-ratings. When the PMI-IR method did not pan out, we decided to try to replace hit counts for concordance values. To keep the amount of time it took to calculate the semantic orientation for a single word based on concordance low, we only considered the first 20 or so occurences of a word whose semantic orientation we were calculating in \textit{NLTK} 's \verb|movie_review| database. The window of words we used around the word whose semantic orientation we were calculating was only about 20 words in either direction. Perhaps if we had used all occurences of a word in the movie reviews and a window of words that spanned the whole corpus, we would have been able to produce better results. Such an approach would have been prohibitively time-consuming, however. As we did not obtain good results by using this method to generate star-ratings, we discarded it in favor of another. 
-
-	\section{PMI-CUE}
-
-TODO: fill it in
 
 	\section{Hierarchical Classification}
 
