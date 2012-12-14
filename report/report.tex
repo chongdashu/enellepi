@@ -586,7 +586,7 @@ In order to accurately generate star-ratings for reviews, we had to be able to a
 Since our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
 
 \subsection{Classification with Empirically Defined SO-value Thresholds}
-
+\label{subsection:empirically_defined_so}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{data/pmi-cue-accuracy.png}
@@ -603,7 +603,7 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 %%% FREE APPS REVIEWS %%%
 \begin{figure}[h!]
 \centering
-\subfigure[Caption of subfigure 1]{
+\subfigure[Results of Positive Reviews]{
 	%%% FREE, POSITIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -614,9 +614,9 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 	0.70 & 0.49 & 0.70 & 0.58 \\ \hline
     \hline
     \end{tabular*}
-	\label{fig:subfig1}
+	\label{fig:results_free_pos}
 }
-\subfigure[Caption of subfigure 2]{
+\subfigure[Results of Negative Reviews]{
 	%%% FREE NEGATIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -627,17 +627,20 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 	0.58 & 0.57 & 0.96 & 0.72 \\ \hline
     \hline
     \end{tabular*}
-	\label{fig:subfig2}
+	\label{fig:results_free_neg}
 }
-\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
-\label{fig:subfigureExample}
+%\caption[Optional caption for list of figures]{10-fold Cross Validation Results for Positive \subref{fig:subfig1} and Negative \subref{fig:subfig2} Reviews}
+\caption[Optional caption for list of figures]{10-fold Cross Validation Scores and Accuracy Measures for Free Applications }
+\label{fig:analysis_free}
 \end{figure}
 %%% END FREE APPS REVIEWS %%%
+
+\paragraph{Free Applications} For the dataset containing the free applications, we observe that the accuracy for is higher for the \textit{positive} reviews compared to the \textit{negative} reviews. The precision scores for both \textit{positive} and \textit{negative} reviews are comparable at around 50\%, but the largest difference affecting the F1-score is the recall score, which is much higher for \textit{negative} reviews.
 
 %%% PAID APPS REVIEWS %%%
 \begin{figure}[h!]
 \centering
-\subfigure[Caption of subfigure 1]{
+\subfigure[Results of Positive Reviews]{
 	%%% FREE, POSITIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -648,9 +651,9 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 	0.57 & 0.33 & 0.57 & 0.42 \\ \hline
     \hline
     \end{tabular*}
-	\label{fig:subfig1}
+	\label{fig:analysis_paid_pos}
 }
-\subfigure[Caption of subfigure 2]{
+\subfigure[Results of Negative Reviews]{
 	%%% FREE NEGATIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -661,17 +664,19 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 	0.79 & 0.79 & 1.00 & 0.88 \\ \hline
     \hline
     \end{tabular*}
-	\label{fig:subfig2}
+	\label{fig:analysis_paid_neg}
 }
-\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
+\caption[Optional caption for list of figures]{10-fold Cross Validation Scores and Accuracy Measures for Paid Applications }
 \label{fig:subfigureExample}
 \end{figure}
 %%% END PAID APPS REVIEWS %%%
 
+\paragraph{Paid Applications} For the dataset containing the paid applications, we observe that the accuracy for is higher for the \textit{negative} review compared to the \textit{positive} reviews. The scores and accuracy measures for the \textit{negative} reviews indicate the classifier performs much better overall with negative reviews.
+
 %%% COMBINED APPS REVIEWS %%%
 \begin{figure}[h!]
 \centering
-\subfigure[Caption of subfigure 1]{
+\subfigure[Results of Positive Reviews]{
 	%%% FREE, POSITIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -684,7 +689,7 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
     \end{tabular*}
 	\label{fig:subfig1}
 }
-\subfigure[Caption of subfigure 2]{
+\subfigure[Results of Negative Reviews]{
 	%%% FREE NEGATIVE %%%
     \begin{tabular*}{0.45\textwidth}{ l l  l  l }
  \hline
@@ -697,10 +702,12 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
     \end{tabular*}
 	\label{fig:subfig2}
 }
-\caption[Optional caption for list of figures]{Caption of subfigures \subref{fig:subfig1}, \subref{fig:subfig2} and \subref{fig:subfig3}}
+\caption[Optional caption for list of figures]{10-fold Cross Validation Scores and Accuracy Measures for Both Applications}
 \label{fig:subfigureExample}
 \end{figure}
 %%% END COMBINED APPS REVIEWS %%%
+
+\paragraph{Mixed Dataset} When trained on a combined dataset containing a mixture of free and paid application user reviews, the classifier appears to perform better on classifying \textit{negative} reviews than \textit{positive} reviews. The accuracy, precision, recall and F1-scores for the classifier on \textit{negative} reviews all outperform that of the classifier on \textit{positive} reviews. The precision score for \textit{positive} reviews are particularly low.
 
 \begin{figure}[H]
 	\centering
@@ -709,8 +716,8 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 	\label{fig:pmi-cue-wsvm-acc}
 	\end{figure}
 
-Average Star Rating Success\%: 60.1312551272 (Free)\\
-Average Star Rating Success\%: 55.1369863014 (Paid)	
+\paragraph{Overall Performance}
+We obtained 4 different classifiers by using the trained SVMs, resulting in two hierarchical classifiers per application group (free/paid). We then ran similar benchmarks to those performed on the empirically defined SO-threshold hierarchical classifier from Section~\ref{subsection:empirically_defined_so}. We achieved improved accuracy rates of 60.1\% for free applications and 55.1\% for paid applications. It is noted that our classifier performs best near the extremities of the star-rating scale, with few 3-star rating reviews correctly identified.
 
 \begin{comment}
 Below are the results for the free applications after training the thresholds using SVMs.
