@@ -244,8 +244,10 @@ However, based on our initial findings, we identified two problems with this app
 The second problem was associated with the accuracy of the calculated results, which are outlined in greater detail in Chapter~\ref{chapter:results}. In short, the results failed to convincingly associate phrases with the correct polarity, partly due to the fact that the Google Search API does not actually return accurate values for the number of hits.
 
 \subsection{Corpus-Derived PMI}
+We began looking at offline methods of calculating semantic orientation values. We settled on somehow making use of a corpus in a similar problem domain as the one we were analyzing (\textit{NLTK} \verb|movie_reviews|) to calculate semantic orientation values for words, phrases, and sentences. 
 
 \subsubsection{PMI-Concordance}
+In our first experiment, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to slightly better than the PMI-IR approach in terms of accuracy, but the calculations took a  long time to process.
 
 \subsubsection{PMI-CUE}
 In order to find a method of calculating SO scores for phrases quickly, and without limit, we turned towards an offline SO estimator which uses the \textit{NLTK} \verb|movie_reviews| corpus. The corpus is a collection of user reviews from the \textit{IMDB Movie Database} , and is separated into sentences associated with \textit{positive} and \textit{negative} reviews. In our implementation, we first created a probability distribution of words which appear in the \text{positive} reviews and \text{negative} reviews separately. Next, we estimated the semantic orientation of a phrase using the formula:
@@ -518,9 +520,7 @@ To generate star-ratings, we calculated the semantic orientation of each phrase 
 
 \section{Experimental Setup: PMI-Concordance}
 
-After discovering that the PMI-IR method was not producing great results, we began looking at offline methods of calculating semantic orientation values. We settled on somehow making use of a corpus in a similar problem domain as the one we were analyzing (\textit{NLTK} \verb|movie_reviews|) to calculate semantic orientation values for words, phrases, and sentences. 
-
-Before using the method outlined in the previous chapter for Corpus-Derived PMI score calculation, however, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to slightly better than the PMI-IR appraoch.
+After discovering that the PMI-IR method was not producing great results, 
 
 As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
 
