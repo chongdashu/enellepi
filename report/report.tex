@@ -747,8 +747,55 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 We obtained 4 different classifiers by using the trained SVMs, resulting in two hierarchical classifiers per application group (free/paid). We then ran similar benchmarks to those performed on the empirically defined SO-threshold hierarchical classifier from Section~\ref{subsection:empirically_defined_so}. We achieved improved accuracy rates of 60.1\% for free applications and 55.1\% for paid applications. It is noted that our classifier performs best near the extremities of the star-rating scale, with few 3-star rating reviews correctly identified.
 
 \section{Selected Examples}
-\subsection{Star-rating Prediction on Filtered Dataset}
-TODO: Filtered dataset refer to \verb|datasets/datadataset_accurate_free.dat| and \verb|data/dataset_accurate_paid.dat|, and mean that they have consistent and logical review-text to star-ratings. We need to show case a 1-star review and 5-star review and how the polarity and so and classification accurately predicts the star rating.
+
+The low values of our accuracy results above should be taken with a grain of salt. As we have mentioned previously, there are times when a reviewer will classify their own review incorrectly in terms of star ratings. However, the accuracy results shown above only indicate how well our generated star-ratings matched the star-ratings assigned by the original reviewers. We have observed many instances in which our generated star-rating classifies a text review better than the original reviewer's star-ratiing. The following examples illustrate this phenomenon:
+
+\newpage
+
+\begin{verbatim}
+Free Apps
+
+[ 658 ]
+- info -
+our rating      : 3.0
+original rating : 5.0
+title           : Restarting progress
+text            : When I reach near 1000 lifetime games the progress gets deleted. 
+                  I don't know how this happens. Please fix it.
+
+[ 917 ]
+- info -
+our rating      : 3.0
+original rating : 1.0
+title           : Game
+text            : This game is fun but it freezes and my player want move from 
+                  badside to side
+
+
+Paid Apps
+
+[ 1672 ]
+- info -
+our rating      : 1.0 
+original rating : 4.0
+title           : Ok
+text            : Audio is really choppy like there's too much bass really staticy 
+                  car controls clunky and aiming and fighting controls difficult also 
+                  update pls....but tis exactly GTA 3 ps2 graffics included but looks 
+                  great on mobile device still
+
+[ 1678 ]
+- info -
+our rating      : 2.0
+original rating : 5.0
+title           : It won't work
+text            : I can click on app but it.just flashes the screen then nothing 
+                  doesn't go into app...maybe my phone but idk... but whatev i got.it 
+                  for .99 pennies ...save.for when i get tablet... skeet skeet skeet
+\end{verbatim}
+
+Unfortunately, finding examples like the ones shown above must be done by manual observation. We were able to find a decent amount in our data in the time we could set aside to do this, however. This leads us to believe that our accuracy numbers are likely a bit higher than those we are reporting.
+
 
 \chapter{Analysis}
 	\section{PMI-IR}
