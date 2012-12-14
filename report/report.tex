@@ -149,8 +149,16 @@ been explored in depth~\cite{Pang+Lee:05a}.
 
 
 \section{Contributions}
+In this project, we present the system design, results and analysis of various methods, and as a result, make the following contributions:
+\begin{itemize}
+	\item A method of extracting datasets of user reviews for top free and top paid applications from the Google Play Store despite the lack of an available official application programming interface (API).
+	\item An unsupervized method of determining sentiment of a user review by extracting POS-tagged phrases based on 2-word phrase patterns.
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the concordance information of the respective words and phrases within a given corpus. (PMI-Concordance)
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the underlying frequency distribution of words in a given corpus. (PMI-CUE)
+	\item A application of the above methods in a  hierarchical classifier in order to perform sentiment analysis and accurately predict the star-ratings of user reviews in a new domain and actively growing domain -- namely the Google Play Store for Mobile Applications.
+\end{itemize}
 
-In this work, we explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the PMI-IR method in the context of movie reviews.
+We explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the previously work in unsupervized sentiment analysis (PMI-IR on movie reviews).
 
 %%% BEGIN Chapter: Design
 \chapter{Design}
@@ -547,7 +555,7 @@ In the second experiment, the optimal values for maximizing star-generation accu
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-free.pdf}
+	\includegraphics[width=0.8\textwidth]{data/pmi-free.png}
 	\caption{PMI-IR with free applications}
 	\label{fig:pmi-free}
 	\end{figure}
@@ -556,20 +564,26 @@ The results of our first experiment in which we calculated the semantic orientat
 
 To make sure that the magnitude of the absolute error was not artificial, we went through all the reviews for which our generated star-rating was off by 2 or more star-ratings. The only way in which the absolute error could have been artificial is if there were a significant number of reviews in our small test set of 50 reviews whose star-ratings did not match the sentiment of the review. Unfortunately, this was not the case, Our implementation of the PMI-IR method of generating sentiment scores was simply not good enough.
 
-\newpage
-
 	\section{Results: PMI-Concordance}
 	
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-cd-free.pdf}
+<<<<<<< HEAD
+	\includegraphics[width=0.8\textwidth]{data/pmi-cd-free.png}
+=======
+	\includegraphics[width=0.7\textwidth]{data/pmi-cd-free.pdf}
+>>>>>>> c579e327b4e86123d2b19f671146360bd256935b
 	\caption{PMI-CD with free applications}
 	\label{fig:pmi-cd-free}
 	\end{figure}
 
 	\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-cd-paid.pdf}
+<<<<<<< HEAD
+	\includegraphics[width=0.8\textwidth]{data/pmi-cd-paid.png}
+=======
+	\includegraphics[width=0.7\textwidth]{data/pmi-cd-paid.pdf}
+>>>>>>> c579e327b4e86123d2b19f671146360bd256935b
 	\caption{PMI-CD with paid applications}
 	\label{fig:pmi-cd-paid}
 	\end{figure}

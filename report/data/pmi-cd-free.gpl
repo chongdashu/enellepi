@@ -9,8 +9,8 @@ set key right top
 set style data linespoints
 set xtic 10
 
-set term pdf
-set output "pmi-cd-free.pdf"
+set term png
+set output "pmi-cd-free.png"
 plot    "pmi-cd-free.txt" using 2:xticlabels(1) title 'Author Star Rating' lc rgb "red" lt 1 ps 3, \
       "pmi-cd-free.txt" using 3:xticlabels(1) title 'Generated Star Rating' lc rgb "green" lt -1 ps 2, \
       "pmi-cd-free.txt" using 4:xticlabels(1) title 'Difference' lc rgb "blue" lt 3 ps 1
