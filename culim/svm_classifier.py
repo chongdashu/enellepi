@@ -29,7 +29,7 @@ def review_features(datapoint):
 	"title-cls" : datapoint["title-cls"],
 	"so" : datapoint["so"]}
 
-def sci_features(datapoint):
+def sci_features(datapoint, n=1):
 	'''
 	Feature vector for use with SVMs.
 	'''
@@ -45,10 +45,15 @@ def sci_features(datapoint):
 	else:
 		title_cls = -1.0
 
-	return [datapoint["so"]]
+	if n == 1:
+		return [datapoint["so"]]
+	elif n == 2:
+		return [txt_cls, datapoint["so"]]
+	else:
+		return [title_cls, txt_cls, datapoint["so"]]
 
-def svm_classify(datapoints):
-	datafeats = [sci_features(datapoint) for datapoint in datapoints]
+def svm_classify(datapoints, nFeatures = 1):
+	datafeats = [sci_features(datapoint, nFeatures) for datapoint in datapoints]
 	datalabels = [datapoint["rating-user"] for datapoint in datapoints]
 
 	classifier = svm.LinearSVC()
@@ -87,7 +92,7 @@ Unfiltered Datasets
 
 print ""
 print '========================================'
-print 'Datasets'
+print '	Datasets (Pre-sorted)'
 print '========================================'
 STAR_RATING_POSITIVE_THRESHOLD_VALUE = 3.0
 
@@ -148,6 +153,30 @@ print \
 "Assuming we correctly classify the the negative reviews, \
 if we use semantic-orientation to calculate the exact star rating, we get the following results:"
 svm_classify(results_combined_neg)
+
+print ""
+print '========================================'
+print '	Datasets (Unsorted)'
+print '========================================'
+
+
+print \
+'Analyzing free apps:'
+print '-----------------------------------------'
+print \
+"Assuming we do not pre-sort the free apps \
+if we use semantic-orientation to calculate the exact star rating, we get the following results:"
+svm_classify(results_free, 3)
+
+print '-----------------------------------------'
+
+print \
+'Analyzing free apps:'
+print '-----------------------------------------'
+print \
+"Assuming we do not pre-sort the paid apps \
+if we use semantic-orientation to calculate the exact star rating, we get the following results:"
+svm_classify(results_paid, 3)
 
 
 
