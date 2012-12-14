@@ -36,7 +36,7 @@ Percantage of Good Ratings        :  50.5494505495 %
 Minimum Semantic Orientation      :  -3.6766697051
 Maximum Semantic Orientation      :  4.41430787775
 Average Semantic Orientation      :  0.0859199580954
-Percantage of Good Ratings        :  0.0 %
+Percantage of Good Ratings        :  3.30188679245 %
 
 
 ( 4.0 )
@@ -61,4 +61,4 @@ Average Semantic Orientation      :  0.110658084853
 Percantage of Good Ratings        :  66.844207723 %
 
 
-Calculated Star Rating Success%: 55.1369863014
+Calculated Star Rating Success%: 55.5365296804

@@ -587,11 +587,18 @@ Since our goal was not to model what star-ratings reviwers assign to mobile appl
 
 		\subsection{Classification with SO-value Thresholds}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{data/pmi-cue-accuracy.png}
+	\caption{Accuracy of generated star-ratings w.r.t star-ratings of original reviewers.}
+	\label{fig:pmi-cue-acc}
+	\end{figure}
+
+The results shown above were obtained as described in Section 2.5.1. The polarity of each review was determined by the polarity of review's text and the threshold values for the star ratings were obtained via the same crude method used in previous experiments. The results above show a clear, vast improvement over our other attempts to generate star-ratings. Without using SVMs we acheived an accuracy of 46.6\% for the free applications and 47.7\% for the paid applications.  
+
 \newpage
 
 		\subsection{Classification using Support Vector Machines}
-
-\subsubsection{Unfiltered Datasets}
 
 %%% FREE APPS REVIEWS %%%
 \begin{figure}[h!]
@@ -695,37 +702,17 @@ Since our goal was not to model what star-ratings reviwers assign to mobile appl
 \end{figure}
 %%% END COMBINED APPS REVIEWS %%%
 
-
-\subsubsection{Filtered Datasets}
-
-
-
-
-\newpage
-
-		\subsection{Without SVMs}
-
-	\begin{figure}[H]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-cue-accuracy.png}
-	\caption{Accuracy of generated star-ratings w.r.t star-ratings of original reviewers.}
-	\label{fig:pmi-cue-acc}
-	\end{figure}
-
-The results shown above were obtained as described in Section 2.5.1. The polarity of each review was determined by the polarity of review's text and the threshold values for the star ratings were obtained via the same crude method used in previous experiments. The results above show a clear, vast improvement over our other attempts to generate star-ratings. Without using SVMs we acheived an accuracy of 46.6\% for the free applications and 47.7\% for the paid applications.  
-
-		\subsection{With SVMs}
-
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-cue-acc-wsvm.png}
+	\includegraphics[width=0.7\textwidth]{data/pmi-cue-acc-wsvm.png}
 	\caption{Accuracy of generated star-ratings w.r.t star-ratings of original reviewers.}
 	\label{fig:pmi-cue-wsvm-acc}
 	\end{figure}
 
 Average Star Rating Success\%: 60.1312551272 (Free)\\
-Average Star Rating Success\%: 55.1369863014 (Paid)
+Average Star Rating Success\%: 55.1369863014 (Paid)	
 
+\begin{comment}
 Below are the results for the free applications after training the thresholds using SVMs.
 
 \begin{verbatim}
@@ -764,6 +751,7 @@ Accuracy: 0.79 (+/- 0.00)
 
 --------------------------------------------------------------------------------
 \end{verbatim}
+\end{comment}
 
 \chapter{Analysis}
 	\section{PMI-IR}
