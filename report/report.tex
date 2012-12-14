@@ -238,6 +238,10 @@ However, based on our initial findings, we identified two problems with this app
 The second problem was associated with the accuracy of the calculated results, which are outlined in greater detail in Chapter~\ref{chapter:results}. In short, the results failed to convincingly associate phrases with the correct polarity, partly due to the fact that the Google Search API does not actually return accurate values for the number of hits.
 
 \subsection{Corpus-Derived PMI}
+
+\subsubsection{PMI-Concordance}
+
+\subsubsection{PMI-CUE}
 In order to find a method of calculating SO scores for phrases quickly, and without limit, we turned towards an offline SO estimator which uses the \textit{NLTK} \verb|movie_reviews| corpus. The corpus is a collection of user reviews from the \textit{IMDB Movie Database} , and is separated into sentences associated with \textit{positive} and \textit{negative} reviews. In our implementation, we first created a probability distribution of words which appear in the \text{positive} reviews and \text{negative} reviews separately. Next, we estimated the semantic orientation of a phrase using the formula:
 
 \begin{equation*} SO(word) = \log_2 \left(\frac{Pr_{pos}[word]}{Pr_{neg}[word]}\right) \end{equation*}
