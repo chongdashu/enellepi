@@ -26,8 +26,8 @@ python main.py
 Result:
 --------
 Two files containing all the information will be placed in the ./results folder.
-	- results/
-	- results/
+	- results/results_free.dat
+	- results/d.dat
 
 ---------------------------------------------------------------------------
 Step 2:
@@ -38,11 +38,13 @@ Step 1.
 
 Command:
 --------
-python view.py
+Free applications:
+python view.py results/results_free.dat 
+python view.py results/results_free.dat > results_free.txt 
 
-or 
-
-python view.py > results.txt (to pipe the results into a file.)
+Paid applications:
+python view.py results/results_paid.dat 
+python view.py results/results_paid.dat > results_paid.txt
 
 ---------------------------------------------------------------------------
 Step 3:
