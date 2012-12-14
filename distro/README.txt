@@ -46,6 +46,17 @@ Paid applications:
 python view.py results/results_paid.dat 
 python view.py results/results_paid.dat > results_paid.txt
 
+Result:
+--------
+Shows every example in the dataset, each entry containing the following fields:
+ - rating-user: the original rating given by the user
+ - title-cls: polarity classification of the title
+ - title: the title of the review
+ - text: the text of the review
+ - text-cls: polarity classification of the text
+ - original_index: the index of the review before the shuffling was performed
+ - rating calculated: predicted star-rating of the review. 
+
 ---------------------------------------------------------------------------
 Step 3:
 ---------------------------------------------------------------------------
@@ -60,6 +71,11 @@ python results_analyzer.py results/results_free.dat
 
 Paid applications:
 python results_analyzer.py results/results_paid.dat
+
+Result:
+--------
+Shows every example in the dataset, the original user rating and our predicted rating.
+At the end, a summary on data including the accuracy and performance is printed.
 
 
 
