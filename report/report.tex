@@ -754,7 +754,7 @@ We obtained 4 different classifiers by using the trained SVMs, resulting in two 
 
 \section{Selected Examples}
 
-The low values of our accuracy results above should be taken with a grain of salt. As we have mentioned previously, there are times when a reviewer will classify their own review incorrectly in terms of star ratings. However, the accuracy results shown above only indicate how well our generated star-ratings matched the star-ratings assigned by the original reviewers. We have observed many instances in which our generated star-rating classifies a text review better than the original reviewer's star-ratiing. The following examples illustrate this phenomenon:
+The low values of our accuracy results above should be taken with a grain of salt. As we have mentioned previously, there are times when a reviewer will classify their own review incorrectly in terms of star ratings. However, the accuracy results shown above only indicate how well our generated star-ratings matched the star-ratings assigned by the original reviewers. We have observed many instances in which our generated star-rating classifies a text review better than the original reviewer's star-ratiing. Table~\ref{fig:better_ratings} illustrate this:
 
 \newpage
 
@@ -783,8 +783,8 @@ The low values of our accuracy results above should be taken with a grain of sal
 									skeet \\
     \hline
     \end{tabularx}
-\caption{Examples of user rating/content mismatch}
-\label{fig:postags_}
+\caption{Examples the Hierarchical Classifier Predicting Better Star-ratings than Users}
+\label{fig:better_ratings}
 \end{table}
 
 Unfortunately, finding examples like the ones shown above must be done by manual observation. We were able to find a decent amount in our data in the time we could set aside to do this, however. This leads us to believe that our accuracy numbers are likely a bit higher than those we are reporting.

@@ -28,6 +28,14 @@ for i in range(len(data)):
 
 #Analyze the data on a per-rating basis
 def analyze_all_by_user_rating():
+	print ""
+	print "index", "\t", "old *-val", "\t", "new *-val", "\t", "delta"
+	delta_table = get_delta_table()
+	for i in range(len(delta_table)):
+		table_entry = delta_table[i]
+		print table_entry[0], "\t", table_entry[1], "\t", table_entry[2], "\t", table_entry[3]
+	print ""
+	
 	dist = get_rating_distribution()
 	analysis_struct = {}
 	
@@ -100,12 +108,6 @@ def analyze_all_by_user_rating():
 		print "\n"
 
 	print "Calculated Star Rating Success%:", num_hits * 100.0 / len(data)	
-	print ""
-	print "index", "\t", "old *-val", "\t", "new *-val", "\t", "delta"
-	delta_table = get_delta_table()
-	for i in range(len(delta_table)):
-		table_entry = delta_table[i]
-		print table_entry[0], "\t", table_entry[1], "\t", table_entry[2], "\t", table_entry[3]
 		
 #Obtains the delta table for the star-ratings in the provided data
 def get_delta_table():
