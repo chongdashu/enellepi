@@ -1,0 +1,64 @@
+Rating Distribution
+1.0 	#= 80 	%= 6.56275635767
+2.0 	#= 62 	%= 5.08613617719
+3.0 	#= 96 	%= 7.8753076292
+4.0 	#= 224 	%= 18.3757178015
+5.0 	#= 752 	%= 61.6899097621
+
+By-Rating Analysis
+( 1.0 )
+# Correct Title      Polarizations:  23 	28.75 %
+# Correct Text       Polarizations:  45 	56.25 %
+# Correct Title/Text Polarizations:  16 	20.0 %
+# Correct w.r.t. SO  Polarizations:  47 	58.75 %
+Minimum Semantic Orientation      :  -4.10800522164
+Maximum Semantic Orientation      :  4.32499847078
+Average Semantic Orientation      :  -0.11806191259
+Percantage of Good Ratings        :  56.25 %
+
+
+( 2.0 )
+# Correct Title      Polarizations:  20 	32.2580645161 %
+# Correct Text       Polarizations:  28 	45.1612903226 %
+# Correct Title/Text Polarizations:  11 	17.7419354839 %
+# Correct w.r.t. SO  Polarizations:  34 	54.8387096774 %
+Minimum Semantic Orientation      :  -7.89135107031
+Maximum Semantic Orientation      :  0.85747362778
+Average Semantic Orientation      :  -0.646424002864
+Percantage of Good Ratings        :  45.1612903226 %
+
+
+( 3.0 )
+# Correct Title      Polarizations:  63 	65.625 %
+# Correct Text       Polarizations:  55 	57.2916666667 %
+# Correct Title/Text Polarizations:  39 	40.625 %
+# Correct w.r.t. SO  Polarizations:  54 	56.25 %
+Minimum Semantic Orientation      :  -5.30069117426
+Maximum Semantic Orientation      :  1.82577891005
+Average Semantic Orientation      :  -0.183704238283
+Percantage of Good Ratings        :  4.16666666667 %
+
+
+( 4.0 )
+# Correct Title      Polarizations:  150 	66.9642857143 %
+# Correct Text       Polarizations:  147 	65.625 %
+# Correct Title/Text Polarizations:  91 	40.625 %
+# Correct w.r.t. SO  Polarizations:  114 	50.8928571429 %
+Minimum Semantic Orientation      :  -4.81854773522
+Maximum Semantic Orientation      :  7.18992078279
+Average Semantic Orientation      :  0.130427122314
+Percantage of Good Ratings        :  65.625 %
+
+
+( 5.0 )
+# Correct Title      Polarizations:  570 	75.7978723404 %
+# Correct Text       Polarizations:  509 	67.6861702128 %
+# Correct Title/Text Polarizations:  400 	53.1914893617 %
+# Correct w.r.t. SO  Polarizations:  493 	65.5585106383 %
+Minimum Semantic Orientation      :  -8.19453865845
+Maximum Semantic Orientation      :  9.47057572679
+Average Semantic Orientation      :  0.114342450064
+Percantage of Good Ratings        :  67.6861702128 %
+
+
+Calculated Star Rating Success%: 60.1312551272
