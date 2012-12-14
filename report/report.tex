@@ -759,7 +759,16 @@ As far as we know, the PMI-IR method is a perfectly reasonable method for genera
 
 As far as we know, the PMI-Concordance method is also a perfectly reasonable method for generating star-ratings. When the PMI-IR method did not pan out, we decided to try to replace hit counts for concordance values. To keep the amount of time it took to calculate the semantic orientation for a single word based on concordance low, we only considered the first 20 or so occurences of a word whose semantic orientation we were calculating in \textit{NLTK} 's \verb|movie_review| database. The window of words we used around the word whose semantic orientation we were calculating was only about 20 words in either direction. Perhaps if we had used all occurences of a word in the movie reviews and a window of words that spanned the whole corpus, we would have been able to produce better results. Such an approach would have been prohibitively time-consuming, however. As we did not obtain good results by using this method to generate star-ratings, we discarded it in favor of another. 
 
+
 	\section{Hierarchical Classification}
+	\subsection{Using Empirically Defined SO-Value Thresholds}
+The empirically defined thresholds performs well on star-rating estimations away from the extremities. As such, it was more accurate in predicting ratings of 2, 3 and 4, achieving accuracy results of well over 70\% for them. For predicting extreme star-ratings, such as 1 and 5, it fairs poorly, with values consistently less than 50\%.
+
+	\subsection{Using SVM as Classifiers} 
+\subsubsection{SVM Classification Performance}
+When the polarity of a review is accurately classified, using SVMs to classify the SO-values showed promise. Accuracy was consistently above 50\% across free and paid applications for both positive and negative reviews. It is also worthy to note that for free applications, classifying positive reviews does better than negative reviews but the opposite is true for paid applications. This might indicate some intrinsic properties in terms of the type of reviews that people leave which differ across free and paid applications. The F1-scores for negative reviews were consistently higher than positive reviews across free and paid applications, which might also indicate some bias of negative reviewers being more objective in assigning star-ratings.
+\subsubsection{Overall Performance}
+It would appear that the SO-values are good in helping to steer accuracy of ratings towards the extremities, but do not have enough significance in classifying data towards a more neutral star-rating. This might indicate a need for a richer feature set in order to accurately discern small differences in star-ratings. 
 
 	\section{Noisy Training and Test Data}
 \subsection{Inconsistent Reviews and Ratings from Users}
