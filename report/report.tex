@@ -149,8 +149,16 @@ been explored in depth~\cite{Pang+Lee:05a}.
 
 
 \section{Contributions}
+In this project, we present the system design, results and analysis of various methods, and as a result, make the following contributions:
+\begin{itemize}
+	\item A method of extracting datasets of user reviews for top free and top paid applications from the Google Play Store despite the lack of an available official application programming interface (API).
+	\item An unsupervized method of determining sentiment of a user review by extracting POS-tagged phrases based on 2-word phrase patterns.
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the concordance information of the respective words and phrases within a given corpus. (PMI-Concordance)
+	\item A method for estimating Pointwise Mutual Information (PMI) values and subsequently, the Semantic Orientation (SO) values of words and phrases using the underlying frequency distribution of words in a given corpus. (PMI-CUE)
+	\item A application of the above methods in a  hierarchical classifier in order to perform sentiment analysis and accurately predict the star-ratings of user reviews in a new domain and actively growing domain -- namely the Google Play Store for Mobile Applications.
+\end{itemize}
 
-In this work, we explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the PMI-IR method in the context of movie reviews.
+We explore multiple methods for generating the star-ratings of prodcut/service reviews. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method using mobile application reviews perform comparably with the performance of the previously work in unsupervized sentiment analysis (PMI-IR on movie reviews).
 
 %%% BEGIN Chapter: Design
 \chapter{Design}
@@ -250,7 +258,7 @@ We began looking at offline methods of calculating semantic orientation values. 
 In our first experiment, we tried using the concordance of words in the movie review corpus to calculate the semantic orientation of words, phrases, and, sentences in a small data set. By concordance, we mean the measure of the relative distance between two words in a document. We thought this metric might act as a good substitute for search engine hit counts for comparing how close a particular word is in meaning to a known, very positivel or negativel polarized word. This turned out to slightly better than the PMI-IR approach in terms of accuracy, but the calculations took a  long time to process.
 
 \subsubsection{PMI-CUE}
-In order to find a method of calculating SO scores for phrases quickly, and without limit, we turned towards an offline SO estimator which uses the \textit{NLTK} \verb|movie_reviews| corpus. The corpus is a collection of user reviews from the \textit{IMDB Movie Database} , and is separated into sentences associated with \textit{positive} and \textit{negative} reviews. In our implementation, we first created a probability distribution of words which appear in the \text{positive} reviews and \text{negative} reviews separately. Next, we estimated the semantic orientation of a phrase using the formula:
+In order to find a method of calculating SO scores for phrases quickly, and without limit, we turned towards an offline SO estimator which uses the \textit{NLTK} \verb|movie_reviews| corpus. We term it the PMI-CUE (Corpus Underlying Estimator). The corpus is a collection of user reviews from the \textit{IMDB Movie Database} , and is separated into sentences associated with \textit{positive} and \textit{negative} reviews. In our implementation, we first created a probability distribution of words which appear in the \text{positive} reviews and \text{negative} reviews separately. Next, we estimated the semantic orientation of a phrase using the formula:
 
 \begin{equation*} SO(word) = \log_2 \left(\frac{Pr_{pos}[word]}{Pr_{neg}[word]}\right) \end{equation*}
 
@@ -524,8 +532,6 @@ After discovering that the PMI-IR method was not producing great results,
 
 As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
 
-\section{Experimental Setup: PMI-CUE}
-
 \section{Experimental Setup: Hierarchical Classification}
 
 Our best and final approach to generating star-ratings for mobile application reviews was tested the most rigorously. Instead of using small subsets of the free and paid application review corpora as the test sets for this experiments, we used the full corpora themselves. This gives the results of the following two experiments significantly more weight than the previous ones.
@@ -562,25 +568,30 @@ To make sure that the magnitude of the absolute error was not artificial, we wen
 	
 	\begin{figure}[H]
 	\centering
+<<<<<<< HEAD
 	\includegraphics[width=0.8\textwidth]{data/pmi-cd-free.png}
+=======
+	\includegraphics[width=0.7\textwidth]{data/pmi-cd-free.pdf}
+>>>>>>> c579e327b4e86123d2b19f671146360bd256935b
 	\caption{PMI-CD with free applications}
 	\label{fig:pmi-cd-free}
 	\end{figure}
 
-The results of our second experiment in which we calculated the semantic orientations of phrases based on the concordance of words in \textit{NLTK}'s \verb|movie_reviews| corpus are shown above and below. Unlike the PMI-IR experiment, we were able to obtain results for 50 full reviews from both the free application review corpus and the paid application review corpus. Thus, the results are a bit more meaningful.
-
-Compared to our previous experiment, we were able to match the application reviewer's star-rating much better. It was still nowhere near as good as we would have liked, especially given that the expanded data set we worked with had no incongruities between star-ratings and reviews as before. The average absolute error when generating a star-rating over the subset of free reviews was 1.39 stars. The average absolute error when generating a star-rating over the subset of paid reviews was 1.39 stars.
-	
 	\begin{figure}[H]
 	\centering
+<<<<<<< HEAD
 	\includegraphics[width=0.8\textwidth]{data/pmi-cd-paid.png}
+=======
+	\includegraphics[width=0.7\textwidth]{data/pmi-cd-paid.pdf}
+>>>>>>> c579e327b4e86123d2b19f671146360bd256935b
 	\caption{PMI-CD with paid applications}
 	\label{fig:pmi-cd-paid}
 	\end{figure}
 
-\section{Results: PMI-CUE}
-TODO: Graph here.
-TODO: Absolute error here.
+The results of our second experiment in which we calculated the semantic orientations of phrases based on the concordance of words in \textit{NLTK}'s \verb|movie_reviews| corpus are shown above. Unlike the PMI-IR experiment, we were able to obtain results for 50 full reviews from both the free application review corpus and the paid application review corpus. Thus, the results are a bit more meaningful.
+
+Compared to our previous experiment, we were able to match the application reviewer's star-rating much better. It was still nowhere near as good as we would have liked, especially given that the expanded data set we worked with had no incongruities between star-ratings and reviews as before. The average absolute error when generating a star-rating over the subset of free reviews was 1.39 stars. The average absolute error when generating a star-rating over the subset of paid reviews was 1.39 stars.
+	
 
 \section{Results: Hierarchical Classification}
 
@@ -603,14 +614,14 @@ In our last set of experiments, we used the entirety of both review corpora to o
 	\label{fig:pmi-cue-free-pol-acc}
 	\end{figure}
 
-In order to accurately generate star-ratings for reviews, we had to be able to accurately determine the polarity of a review. To determine the best indicator of a review's polarity, we compared the star-rating assigned by the reviewer to four different indicators: the polarity of a review's title, the polarity of a review's text, the polarity of both the review's title and text if they were the same, and the calculated semantic orientation of the review's text. As shown above, the polarity of a review's text is the best indicator on average of a review's polarity. At first, we mistakenly believed that the title was a better indicator of the overall polarity of a review, but, after collecting and analyzing the data, we came to the correct conclusion. The result was a much better star-rating generator. 
-
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{data/pmi-cue-paid-pol-acc.png}
 	\caption{Accuracy with which different indicators produced correct review polarity from paid app corpus.}
 	\label{fig:pmi-cue-paid-pol-acc}
 	\end{figure}
+
+In order to accurately generate star-ratings for reviews, we had to be able to accurately determine the polarity of a review. To determine the best indicator of a review's polarity, we compared the star-rating assigned by the reviewer to four different indicators: the polarity of a review's title, the polarity of a review's text, the polarity of both the review's title and text if they were the same, and the calculated semantic orientation of the review's text. As shown above, the polarity of a review's text is the best indicator on average of a review's polarity. At first, we mistakenly believed that the title was a better indicator of the overall polarity of a review, but, after collecting and analyzing the data, we came to the correct conclusion. The result was a much better star-rating generator. 
 
 Since our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
 
@@ -749,47 +760,6 @@ The results shown above were obtained as described in Section 2.5.1. The polarit
 \paragraph{Overall Performance}
 We obtained 4 different classifiers by using the trained SVMs, resulting in two hierarchical classifiers per application group (free/paid). We then ran similar benchmarks to those performed on the empirically defined SO-threshold hierarchical classifier from Section~\ref{subsection:empirically_defined_so}. We achieved improved accuracy rates of 60.1\% for free applications and 55.1\% for paid applications. It is noted that our classifier performs best near the extremities of the star-rating scale, with few 3-star rating reviews correctly identified.
 
-\begin{comment}
-Below are the results for the free applications after training the thresholds using SVMs.
-
-\begin{verbatim}
-
---------------------------------------------------------------------------------
-Free Apps
-
------------------------------------------
-Assuming we correctly classify the the positive reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.70 (+/- 0.00)
-
------------------------------------------
-Assuming we correctly classify the the negative reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.58 (+/- 0.03)
-
-Paid Apps
------------------------------------------
-Assuming we correctly classify the the positive reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.57 (+/- 0.00)
-
------------------------------------------
-Assuming we correctly classify the the negative reviews, if we use 
-semantic-orientation to calculate the exact star rating, we get 
-the following results:
-
-Accuracy: 0.79 (+/- 0.00)
-
---------------------------------------------------------------------------------
-\end{verbatim}
-\end{comment}
-
 \section{Selected Examples}
 \subsection{Star-rating Prediction on Filtered Dataset}
 TODO: Filtered dataset refer to \verb|datasets/datadataset_accurate_free.dat| and \verb|data/dataset_accurate_paid.dat|, and mean that they have consistent and logical review-text to star-ratings. We need to show case a 1-star review and 5-star review and how the polarity and so and classification accurately predicts the star rating.
@@ -803,11 +773,16 @@ As far as we know, the PMI-IR method is a perfectly reasonable method for genera
 
 As far as we know, the PMI-Concordance method is also a perfectly reasonable method for generating star-ratings. When the PMI-IR method did not pan out, we decided to try to replace hit counts for concordance values. To keep the amount of time it took to calculate the semantic orientation for a single word based on concordance low, we only considered the first 20 or so occurences of a word whose semantic orientation we were calculating in \textit{NLTK} 's \verb|movie_review| database. The window of words we used around the word whose semantic orientation we were calculating was only about 20 words in either direction. Perhaps if we had used all occurences of a word in the movie reviews and a window of words that spanned the whole corpus, we would have been able to produce better results. Such an approach would have been prohibitively time-consuming, however. As we did not obtain good results by using this method to generate star-ratings, we discarded it in favor of another. 
 
-	\section{PMI-CUE}
-
-TODO: fill it in
 
 	\section{Hierarchical Classification}
+	\subsection{Using Empirically Defined SO-Value Thresholds}
+The empirically defined thresholds performs well on star-rating estimations away from the extremities. As such, it was more accurate in predicting ratings of 2, 3 and 4, achieving accuracy results of well over 70\% for them. For predicting extreme star-ratings, such as 1 and 5, it fairs poorly, with values consistently less than 50\%.
+
+	\subsection{Using SVM as Classifiers} 
+\subsubsection{SVM Classification Performance}
+When the polarity of a review is accurately classified, using SVMs to classify the SO-values showed promise. Accuracy was consistently above 50\% across free and paid applications for both positive and negative reviews. It is also worthy to note that for free applications, classifying positive reviews does better than negative reviews but the opposite is true for paid applications. This might indicate some intrinsic properties in terms of the type of reviews that people leave which differ across free and paid applications. The F1-scores for negative reviews were consistently higher than positive reviews across free and paid applications, which might also indicate some bias of negative reviewers being more objective in assigning star-ratings.
+\subsubsection{Overall Performance}
+It would appear that the SO-values are good in helping to steer accuracy of ratings towards the extremities, but do not have enough significance in classifying data towards a more neutral star-rating. This might indicate a need for a richer feature set in order to accurately discern small differences in star-ratings. 
 
 	\section{Noisy Training and Test Data}
 \subsection{Inconsistent Reviews and Ratings from Users}
@@ -832,17 +807,39 @@ The following are some examples of cases where user ratings do not match the con
 \label{fig:postags}
 \end{table}
 
-\subsection{Inconsistent Review Text and Review Title}
-TODO: Another example talking about how just with the text and title, there are already huge discrepancies.
-FIXME: I couldn't find much examples of this. Have you seen any?
-
 \chapter{Conclusion}
 
 \section{Conclusion}
 There is an often unaddressed need to make sure that customers classify their reviews correctly. There are reviewers out there who, for whatever reason, incorrectly assign their reviews for a product or service a much higher or lower rating than the meat of their review would have you believe is deserved. There is a sizable body of published work out there that describe projects with the aim of determining whether or not a review is positive or negative based on the underlying sentiment of text. In that body of literature, there are very few endeavors that seek to classify a passage of text as positive, negative or neutral. We sought to do much more than that. We sought to classify reviews along the 5-star spectrum. Not only that, but we strove to make the star-ratings we generated classify the reviews better than star-ratings that reviewers themselves assigned. This was a large undertaking and, given the constraints on this work, we obtianed reasonable results. We tried many methods of generating star-ratings and stumbled upon one that works quite well. Our moderate success shows that this direction holds promise, and our pitfalls showed that there is much more work to be done and avenues to be explored. 
 
 \section{Limitations \& Future Work}
+In this section, we outline aspects of the project that could be extended upon and how we hypothesize they would improve results. 
+\subsection{Improving Polarity Detection}
+The first step in the hierarchical classification is to detect the polarity of the review text in question into \textit{positive} or \textit{negative}. As we showcased, this step is important as it also determines the subsequent SVM model used to classify the review into exact star-ratings.
+\subsubsection{More Features for Naive Bayes Polarity Classifier}
+ In our implementation, we made use of a Bag-of-Words (BOW) model over feature sets created from the \textit{NLTK} \verb|movie_reviews| corpus. However, we suspect that using other features to classify the polarity of the text might work better, such as using the length of the text, number of fully-capitalized words and number of exclamation marks used. We could create feature vectors of each of these individual features and train them on the corpus. This would likely improve polarity detection.
+\subsection{Improving Semantic-Orientation Estimation}
+Semantic-orientation (SO) is based on the Pointwise Mutual Information (PMI) values, which have been shown to be difficult to calculate and require estimators. We implemented and show-cased online methods (PMI-IR), and offline methods (PMI-Concordance, PMI-CUE). The PMI-IR method outlined has had positive results, but is limited due to restrictions placed by search engine providers and also by the lack of transparency required to verify the accuracy of the results. The PMI-Concordance method showed positive results,  but runs slowly. The PMI-CUE method showed the most promise in terms of accuracy and speed.
+\subsubsection{Using n-gram Models}
+The PMI-CUE method of estimating the SO-values lies on creating probability distributions on words. However, it does not take into account the order of the words, so \verb|SO("very", "annoying")| and \verb|SO("annoying", "very")| will return the same results. It also assumes independence of the words appearing together. By using a bigram or trigram model, we would be able to take word order into account, and also have a better approximation of the co-occurrences of each phrase consisting of 2 words.
 
+\subsection{Improving SVM classification}
+The Support Vector Machines (SVM) were used to identify the exact star-ratings based on the SO-values of a given text. However, we noted that the SO-values did not have a distinct enough variation in order to accurately distinguish between some of the star-ratings.
+
+\subsubsection{Richer Features}
+Instead of just using the SO-value of the text as the only feature set, we could also take into account the SO-value of the title, and other aspects of a review into having a richer feature set. We suspect that this would enable the classifiers to distinguish between two star-ratings on the same side of polarity with much greater accuracy.
+
+\subsection{Better Datasets}
+The system structure relies heavily on the availability of datasets in order to work well. We outline some aspects of data collection which would likely improve ease and accuracy of the results.
+
+\subsubsection{Easier Collection Methods}
+It would be ideal if the Google Play Store provided official APIs to enable us to query and extract information from their store. Manual collection is slow, and results in a much smaller set of data due to time and logistical constraints. 
+
+\subsubsection{Less Noise}
+As outlined, some of the reviews by users have huge discrepancies in their assigned star-ratings and the contents and sentiments of their reviews. This makes testing and validation difficult under time and logistical constraints. 
+
+\section{Closing Remarks}
+Sentiment analysis of text is a difficult task, more so in the context of user reviews. The language used by reviewers varies greatly across domains, making it difficult to have a single system or method of analyzing sentiments. However, we have showcased a framework which has positive results, which can also be naturally extended to fit reviews across different domains. We achieved excellent progress in determining sentiment and polarity, both using supervized and unsupervized methods. We expect that the system and results shown will aid in improving the fields of sentiment analysis for the future.
 
 %\bibliographystyle{plain}
 \bibliographystyle{ieeetr}
