@@ -124,6 +124,9 @@ One well-established format for customer reviews is that of five-star ratings pa
 
 To acquire more accurate information from customer feedback, we propose the removal of five-star ratings from these review formats entirely. Instead, we propose that the star ratings be generated in a uniform fashion from the sentiment of the text commentary.
 
+\section{Previous Work}
+TODO: Talk about some previous sentiment analysis work done on reviews.
+
 \section{Contributions}
 
 In this work we explore multiple methods for generating star-ratings for the customer reviews of mobile applications. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method for mobile application reviews perform comparably with the performance of the PMI-IR method in the context of movie reviews.
@@ -425,7 +428,7 @@ In our implementation, we aimed to provide a way to make use of both the semanti
 
 \path [line, dashed] (so-neg) -- (star1);
 \path [line, dashed] (so-neg) -- (star2);
-\path [line, dashed] (so-neg) -- (star3);
+% \path [line, dashed] (so-neg) -- (star3);
 \path [line, dashed] (so-pos) -- (star3);
 \path [line, dashed] (so-pos) -- (star4);
 \path [line, dashed] (so-pos) -- (star5);
@@ -502,11 +505,11 @@ Our best and final approach to generating star-ratings for mobile application re
 
 To compare two slightly different methods of generating star-ratings for mobile application reviews, we performed two different experiments.
 
-	\subsection{Without SVMs}
+	\subsection{Method 1: Empirically Assigning SO Thresholds}
 
 In the first experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating by the same crude method used in all the previous experiments. In the process of doing so, we were able to characterize a great many aspects of the corpora we were working with. The results we obtained from this experiment were quite promising and can be found in Chapter 4.
 
-	\subsection{With SVMs}
+	\subsection{Method 2: Automatic Classification using Support Vector Machines}
 
 In the second experiment, the optimal values for maximizing star-generation accuracy were calculated by SVMs. This boosted the quality of the results significantly. All the constituent elements of the hierarchical classifier combine to produce an excellent star-rating generator. With more time and resources, this method could probably be made competitive. The results we obtained from this experiment were excellent and can be found at the end of Chapter 4.
 
@@ -552,8 +555,6 @@ Compared to our previous experiment, we were able to match the application revie
 
 	\subsection{Characterisation of Corpora} 
 
-In our last set of experiments, we used the entirety of both review corpora to obtain our results. In the process of doing so we characterized the contents of the corpora for the sake of obtaining more accurate results. What follows is our characterization of the test set.
-
 	\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{data/dist_corpora.png}
@@ -561,7 +562,7 @@ In our last set of experiments, we used the entirety of both review corpora to o
 	\label{fig:pmi-hc-corp-dist}
 	\end{figure}
 
-As shown above, our test set has a tremendous number of positive reviews. If we were to guess a star-rating between 3 and 5, we would be correct most of the time. It is interesting to note that reviewers seemed more willing to assign 5-star-ratings to free applications and more willing to assign 1-star ratings for paid applications. This may be indicative of how forgiving people are of the quality of an application based on its cost. As the total number of reviews from both corpora numbers only 2,969, it is not really possible to make sweeping sociological remarks based on the figure shown above. 	
+In our last set of experiments, we used the entirety of both review corpora to obtain our results. In the process of doing so we characterized the contents of the corpora for the sake of obtaining more accurate results. What follows is our characterization of the test set. As shown above, our test set has a tremendous number of positive reviews. If we were to guess a star-rating between 3 and 5, we would be correct most of the time. It is interesting to note that reviewers seemed more willing to assign 5-star-ratings to free applications and more willing to assign 1-star ratings for paid applications. This may be indicative of how forgiving people are of the quality of an application based on its cost. As the total number of reviews from both corpora numbers only 2,969, it is not really possible to make sweeping sociological remarks based on the figure shown above. 	
 
 
 	\begin{figure}[H]
@@ -571,21 +572,20 @@ As shown above, our test set has a tremendous number of positive reviews. If we 
 	\label{fig:pmi-cue-free-pol-acc}
 	\end{figure}
 
-	\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{data/pmi-cue-paid-pol-acc.png}
-	\caption{Accuracy with which different indicators produced correct review polarity from paid app corpus.}
-	\label{fig:pmi-cue-paid-pol-acc}
-	\end{figure}
+	% duplicate??
+	%\begin{figure}[H]
+	%\centering
+	%\includegraphics[width=0.8\textwidth]{data/pmi-cue-paid-pol-acc.png}
+	%\caption{Accuracy with which different indicators produced correct review polarity from paid app corpus.}
+	%\label{fig:pmi-cue-paid-pol-acc}
+	%\end{figure}
 
 In order to accurately generate star-ratings for reviews, we had to be able to accurately determine the polarity of a review. To determine the best indicator of a review's polarity, we compared the star-rating assigned by the reviewer to four different indicators: the polarity of a review's title, the polarity of a review's text, the polarity of both the review's title and text if they were the same, and the calculated semantic orientation of the review's text. As shown above, the polarity of a review's text is the best indicator on average of a review's polarity. At first, we mistakenly believed that the title was a better indicator of the overall polarity of a review, but, after collecting and analyzing the data, we came to the correct conclusion. The result was a much better star-rating generator. 
 
 
 Since our goal was not to model what star-ratings reviwers assign to mobile applications but to instead be able to generate star-ratings uniformly based on the sentiment of the text of a review, we decided to assess the accuracy of our star-rating generation a bit differently. To assess the accuracy of our hierarchical classifier, we first determined how well our generated star-ratings matched up to each review's original star-rating by star-rating. The accuracy for each star-rating was granted equal weight and averaged together to determine our overall accuracy. Then, we assessed the validity of this value by getting a sense of how well reviewers classified their own reviews into a star-rating.
 
-\newpage
-
-		\subsection{Classification with SO-value Thresholds}
+\subsection{Classification with Empirically Defined SO-value Thresholds}
 
 \begin{figure}[H]
 	\centering
@@ -753,6 +753,10 @@ Accuracy: 0.79 (+/- 0.00)
 \end{verbatim}
 \end{comment}
 
+\section{Selected Examples}
+\subsection{Star-rating Prediction on Filtered Dataset}
+TODO: Filtered dataset refer to \verb|datasets/datadataset_accurate_free.dat| and \verb|data/dataset_accurate_paid.dat|, and mean that they have consistent and logical review-text to star-ratings. We need to show case a 1-star review and 5-star review and how the polarity and so and classification accurately predicts the star rating.
+
 \chapter{Analysis}
 	\section{PMI-IR}
 
@@ -765,10 +769,19 @@ As far as we know, the PMI-Concordance method is also a perfectly reasonable met
 	\section{PMI-Hierarchical Classification}
 
 TODO: fill it in
+	\section{Noisy Training and Test Data}
+\subsection{Inconsistent Reviews and Ratings from Users}
+TODO: Examples are present in  \verb|datasets/datadataset_inaccurate_free.dat| and \verb|data/dataset_inaccurate_paid.dat|, talk about how the training set contains unfiltered reviews where the star-ratings and reviews don't seem to make logical sense. Explain that this is a naturally difficult problem which can only be solved by spending time annotating and filtering "correct" reviews. Give 1-2 examples of 5-star ratings given to poor reviews, etc.
+\subsection{Inconsistent Review Text and Review Title}
+TODO: Another example talking about how just with the text and title, there are already huge discrepancies.
 
 \chapter{Conclusion}
 
+\section{Conclusion}
 There is an often unaddressed need to make sure that customers classify their reviews correctly. There are reviewers out there who, for whatever reason, incorrectly assign their reviews for a product or service a much higher or lower rating than the meat of their review would have you believe is deserved. There is a sizable body of published work out there that describe projects with the aim of determining whether or not a review is positive or negative based on the underlying sentiment of text. In that body of literature, there are very few endeavors that seek to classify a passage of text as positive, negative or neutral. We sought to do much more than that. We sought to classify reviews along the 5-star spectrum. Not only that, but we strove to make the star-ratings we generated classify the reviews better than star-ratings that reviewers themselves assigned. This was a large undertaking and, given the constraints on this work, we obtianed reasonable results. We tried many methods of generating star-ratings and stumbled upon one that works quite well. Our moderate success shows that this direction holds promise, and our pitfalls showed that there is much more work to be done and avenues to be explored. 
+
+\section{Limitations \& Future Work}
+
 
 %\bibliographystyle{plain}
 \bibliographystyle{ieeetr}
