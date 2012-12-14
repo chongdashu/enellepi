@@ -758,47 +758,30 @@ The low values of our accuracy results above should be taken with a grain of sal
 
 \newpage
 
-\begin{verbatim}
-Free Apps
-
-[ 658 ]
-- info -
-our rating      : 3.0
-original rating : 5.0
-title           : Restarting progress
-text            : When I reach near 1000 lifetime games the progress gets deleted. 
-                  I don't know how this happens. Please fix it.
-
-[ 917 ]
-- info -
-our rating      : 3.0
-original rating : 1.0
-title           : Game
-text            : This game is fun but it freezes and my player want move from 
-                  badside to side
-
-
-Paid Apps
-
-[ 1672 ]
-- info -
-our rating      : 1.0 
-original rating : 4.0
-title           : Ok
-text            : Audio is really choppy like there's too much bass really staticy 
-                  car controls clunky and aiming and fighting controls difficult also 
-                  update pls....but tis exactly GTA 3 ps2 graffics included but looks 
-                  great on mobile device still
-
-[ 1678 ]
-- info -
-our rating      : 2.0
-original rating : 5.0
-title           : It won't work
-text            : I can click on app but it.just flashes the screen then nothing 
+\begin{table}[h]
+	\centering
+    \begin{tabularx}{\textwidth}{ l | l | l | l |  l | X }
+    \hline\hline
+		Price  & Index & U & P & Title & Text Review\\ 
+    \hline
+		Free & 658 & 5 & 3 & Restarting progress & When I reach near 1000 lifetime
+		games the progress gets deleted. I don't know how this happens. Please fix
+		it. \\
+		Free & 917 & 1 & 3 & Game & This game is fun but it freezes and my player
+		want move from badside to side \\
+		Paid & 1672 & 4 & 1 & Ok & Audio is really choppy like there's too much bass
+		really staticy car controls clunky and aiming and fighting controls
+		difficult also update pls....but tis exactly GTA 3 ps2 graffics included but looks 
+		great on mobile device still \\
+		Paid & 1678 & 5 & 2 & It won't work & I can click on app but it.just flashes the screen then nothing 
                   doesn't go into app...maybe my phone but idk... but whatev i got.it 
-                  for .99 pennies ...save.for when i get tablet... skeet skeet skeet
-\end{verbatim}
+                  for .99 pennies ...save.for when i get tablet... skeet skeet
+									skeet \\
+    \hline
+    \end{tabularx}
+\caption{Examples of user rating/content mismatch}
+\label{fig:postags_}
+\end{table}
 
 Unfortunately, finding examples like the ones shown above must be done by manual observation. We were able to find a decent amount in our data in the time we could set aside to do this, however. This leads us to believe that our accuracy numbers are likely a bit higher than those we are reporting.
 
