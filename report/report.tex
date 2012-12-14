@@ -126,6 +126,8 @@ To acquire more accurate information from customer feedback, we propose the remo
 
 \section{Contributions}
 
+In this work we explore multiple methods for generating star-ratings for the customer reviews of mobile applications. Of these methods, the best one we assessed uses a novel approach for determining the underlying sentiment of a passage of text. The star-ratings generated from this method for mobile application reviews perform comparably with the performance of the PMI-IR method in the context of movie reviews.
+
 %%% BEGIN Chapter: Design
 \chapter{Design}
 \section{Data Collection}
@@ -494,7 +496,7 @@ Before using the method outlined in the previous chapter for Corpus-Derived PMI 
 
 As we no longer had to rely on search engine hit counts for words to perform experiments, we were able to perform a slightly more rigorous experiment using the PMI-Concordance method. As in the PMI-IR experiment, we took the first 50 reviews from both the free application and paid application corpora and placed them into separate test sets. We then calculated the semantic orientation values for all the phrases in all the reviews of each test set. Finally, using the same unsophisticated method used for the PMI-IR experiment, we set the boundaries for the range of semantic orientation values corresponding to each star-rating. The results of this experiment can be found in Chapter 4. 
 
-\section{Experimental Setup: PMI-Hierarchical Classification}
+\section{Experimental Setup: Hierarchical Classification}
 
 Our best and final approach to generating star-ratings for mobile application reviews was tested the most rigorously. Instead of using small subsets of the free and paid application review corpora as the test sets for this experiments, we used the full corpora themselves. This gives the results of the following two experiments significantly more weight than the previous ones.
 
@@ -763,17 +765,13 @@ As far as we know, the PMI-IR method is a perfectly reasonable method for genera
 Talk about difficulties. (Why it didn't work. Why we tried it, etc.)
 We did better with this approach than the previous one but it still was not good enough.
 
-	\section{PMI-CUE}
+	\section{PMI-Hierarchical Classification}
 
 Talk about why it works. Talk about things we observed from the data. (We don't have enough
 data to make general conclusions). Considerable improvement over both methods. Training the
 thresholds with SVMs made this even better.
 
 \chapter{Conclusion}
-
-\appendix
-\chapter{Datasets}
-
 
 %\bibliographystyle{plain}
 \bibliographystyle{ieeetr}
